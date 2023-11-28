@@ -1,0 +1,255 @@
+/* Add these styles to your style.css file */
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+  width: 100%;
+  display: flex; /* Προσθήκη display: flex; */
+  justify-content: center; /* Προσθήκη justify-content: center; */
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #111;
+}
+
+    /* Προσθήκη υποκατηγοριών */
+    li:hover .subcategories {
+      display: block;
+    }
+
+    /* Κρυφή αρχικά των υποκατηγοριών */
+    .subcategories {
+      display: none;
+      position: absolute;
+      background-color: #333;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    .subcategory {
+      padding: 12px;
+      text-align: center;
+      color: white;
+      text-decoration: none;
+      display: block;
+    }
+
+
+  
+  .search-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px; /* Προσθέτει απόσταση από το κάτω μέρος του search container */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: top;
+    height: 10vh;
+    flex-direction: column;
+  }
+  
+  .search-icon {
+    width: 30px; /* Adjust the size as needed */
+    height: 30px; /* Adjust the size as needed */
+    margin-right: 10px;
+  }
+  
+  .search-input {
+    padding-left: 10px; /* Προσαρμόζει το πλάτος του πεδίου εισαγωγής για να χωρέσει το εικονίδιο */
+    background-image: url('search.png'); /* Ορίζει την εικόνα ως φόντο */
+    background-size: 20px; /* Προσαρμόζει το μέγεθος της εικόνας */
+    background-repeat: no-repeat; /* Αποτρέπει την επανάληψη της εικόνας */
+    background-position: 5px center; /* Ορίζει τη θέση της εικόνας (σε pixels) */
+    border: 1px solid #ccc; /* Προσθέτει ένα περίγραμμα γύρω από το πεδίο εισαγωγής */
+    border-radius: 5px; /* Κάνει τις γωνίες λίγο πιο στρογγυλεμένες */
+    width: 400px; /* Adjust the width as needed */
+    padding-top: 10px; /* Separate padding for the top */
+    padding-right: 10px; /* Separate padding for the right */
+    padding-bottom: 10px; /* Separate padding for the bottom */
+    padding-left: 30px; /* Separate padding for the left */
+    border: 2px solid #ccc;
+    border-radius: 20px; /* Adjust the border-radius for more curvature */
+    font-size: 16px;
+    margin-top: 20px; /* Adjust the margin-top as needed */
+  }
+  
+  
+  /* Optional: Add hover effect to the search input */
+  .search-input:hover {
+    border-color: #555;
+  }
+
+  .button-container {
+    display: flex;
+    align-items: center; /* Κεντράρει τα αντικείμενα κατά κατακόρυφο άξονα */
+    justify-content: center; /* Κεντράρει τα αντικείμενα κατά οριζόντιο άξονα */
+    font-family: Arial, sans-serif;
+    margin: 140px;
+    flex-direction: row; /* Αλλαγή του κατευθυντήριου άξονα σε οριζόντιο */
+  }
+  
+
+.button {
+    width: 200px;
+    height: 220px;
+    margin-right: 10px; /* Adjust the margin as needed */
+    background-color: #fff; /* Set background color to white */
+    color: #000; /* Set text color to black */
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: box-shadow 0.3s; /* Add transition for smooth shadow effect */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.button img {
+    max-width: 100%; /* Ensure the image doesn't exceed the button size */
+}
+
+
+
+.button:hover {
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* Add shadow on hover */
+}
+
+.slideshow-container {
+  max-width: 800px; /* Διατηρεί την αναλογία πλάτους/ύψους */
+  max-height: 400px; /* Ορίζει το μέγιστο ύψος */
+  width: auto;
+  height: auto;
+  position: relative;
+  margin: auto;
+  margin-top: 100px;
+  border-radius: 15px;  
+}
+
+.mySlides {
+  display: none;
+  
+}
+
+.prev, .next {
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: black;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  cursor: pointer;
+}
+
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+.prev:hover, .next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.text {
+  color: #333;
+  font-size: 15px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+
+.slideshow-container-second {
+  max-width: 800px; /* Διατηρεί την αναλογία πλάτους/ύψους */
+  max-height: 400px; /* Ορίζει το μέγιστο ύψος */
+  width: auto;
+  height: auto;
+  position: relative;
+  margin: auto;
+  margin-top: 100px;
+  border-radius: 15px;  
+}
+
+.mySlides-second {
+  display: none;
+}
+
+.prev-second, .next-second {
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: black;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  cursor: pointer;
+}
+
+.next-second {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+.prev-second:hover, .next-second:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.text-second {
+  color: #333;
+  font-size: 15px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+.container {
+  text-align: right; /* Κείμενο δεξιά */
+  margin-top: -48px; /* Μετακίνηση προς τα πάνω κατά 10px */
+}
+
+.rotate-on-hover {
+  transition: transform 0.5s ease-in-out;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  margin: 0 10px; /* Προσθήκη κενού 5px μεταξύ των κουμπιών */
+  width: 30px;
+  height: 30px;
+  overflow: hidden;
+  float: right; /* Τοποθετούμε τα κουμπιά δεξιά */
+  margin-top: 0px;
+}
+
+.rotate-on-hover img {
+  width: 100%;
+  height: 100%;
+}
+
+.rotate-on-hover:hover {
+  transform: rotate(360deg);
+}
+
