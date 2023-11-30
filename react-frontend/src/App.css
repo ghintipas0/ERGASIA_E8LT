@@ -70,7 +70,7 @@ li a:hover {
 
   .search-input {
     padding-left: 10px; /* Προσαρμόζει το πλάτος του πεδίου εισαγωγής για να χωρέσει το εικονίδιο */
-    background-image: url('search.png'); /* Ορίζει την εικόνα ως φόντο */
+    /*background-image: url('search.png'); /* Ορίζει την εικόνα ως φόντο */
     background-size: 20px; /* Προσαρμόζει το μέγεθος της εικόνας */
     background-repeat: no-repeat; /* Αποτρέπει την επανάληψη της εικόνας */
     background-position: 5px center; /* Ορίζει τη θέση της εικόνας (σε pixels) */
