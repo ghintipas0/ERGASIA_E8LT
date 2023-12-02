@@ -19,5 +19,5 @@ public class Address {
     private String post_code;
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private User user_id;
+    private User user;
 }

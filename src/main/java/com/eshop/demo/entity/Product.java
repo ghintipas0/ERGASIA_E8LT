@@ -23,4 +23,15 @@ public class Product {
     private String brand_name;
     @Column(name = "photo")
     private String photo;
+    @OneToOne(mappedBy = "product",cascade = CascadeType.REMOVE)//if we delete a product we want to delete also from the inventory.
+    private Inventory inventory;
+
+    @OneToOne(mappedBy = "product",cascade = CascadeType.REMOVE)
+    private PhoneDetails phoneDetails;
+    @OneToOne(mappedBy = "product",cascade = CascadeType.REMOVE)
+    private LaptopDetails laptopDetails;
+    @OneToOne(mappedBy = "product",cascade = CascadeType.REMOVE)
+    private TelevisionDetails televisionDetails;
+
+
 }

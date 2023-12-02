@@ -4,14 +4,14 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "television_details")
-public class Television_details {
+public class TelevisionDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
     @OneToOne
     @JoinColumn(name = "product_id")
-    private Product product_id;
+    private Product product;
     @Column(name = "screen_size")
     private String screen_size;
     @Column(name = "screen_resolution")
@@ -24,10 +24,9 @@ public class Television_details {
     private String power;
     @Column(name = "supported_applications")
     private String supported_applications;
-    @Column(name = "wi_fi")
-    private Boolean wi_fi;
-    @Column(name = "bluetooth")
-    private String bluetooth;
+    @Column(name = "connector_type")
+    private String connectorType;
+
     @Column(name = "weight")
     private String weight;
 }

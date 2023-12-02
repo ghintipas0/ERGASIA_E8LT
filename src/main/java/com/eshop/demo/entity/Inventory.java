@@ -11,7 +11,8 @@ public class Inventory {
     private int id;
     @OneToOne
     @JoinColumn(name = "product_id")
-    private Product product_id;
+    private Product product;
     @Column(name = "in_stock_quantity")
     private int in_stock_quantity;
+
 }

@@ -2,6 +2,9 @@ package com.eshop.demo.entity;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "users")
 public class User {
@@ -17,4 +20,6 @@ public class User {
     private String first_name;
     @Column(name = "last_name")
     private String last_name;
+    @OneToMany(mappedBy = "user",cascade = CascadeType.REMOVE)//one user can have many addresses. If a user remove from the db we want to erase his addresses.
+    private List<Address> addresses = new ArrayList<>();
 }

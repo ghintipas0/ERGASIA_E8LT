@@ -4,18 +4,18 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "phone_details")
-public class Phone_details {
+public class PhoneDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
     @OneToOne
     @JoinColumn(name = "product_id")
-    private Product product_id;
+    private Product product;
     @Column(name = "processor_brand")
     private String processor_brand;
-    @Column(name = "pocessor_cores")
-    private String pocessor_cores;
+    @Column(name = "processor_cores")
+    private String processor_cores;
     @Column(name = "ram")
     private String ram;
     @Column(name = "storage")
