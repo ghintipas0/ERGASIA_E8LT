@@ -23,4 +23,58 @@ public class WebOrder {
     @OneToOne
     @JoinColumn(name = "payment_id")
     private Payment payment_id;
+
+    public WebOrder() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public List<WebOrderQuantities> getQuantities() {
+        return quantities;
+    }
+
+    public void setQuantities(List<WebOrderQuantities> quantities) {
+        this.quantities = quantities;
+    }
+
+    public Payment getPayment_id() {
+        return payment_id;
+    }
+
+    public void setPayment_id(Payment payment_id) {
+        this.payment_id = payment_id;
+    }
+
+    @Override
+    public String toString() {
+        return "WebOrder{" +
+                "id=" + id +
+                ", user=" + user +
+                ", address=" + address +
+                ", quantities=" + quantities +
+                ", payment_id=" + payment_id +
+                '}';
+    }
 }
