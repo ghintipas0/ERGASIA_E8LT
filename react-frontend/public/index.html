@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Eshop</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<ul>
+  <li><a href="#home">Home</a></li>
+  <li><a href="#Κατηγορίες">Κατηγορίες</a>
+    <div class="subcategories">
+      <a href="#pc-laptops" class="subcategory">PC & Laptops</a>
+      <a href="#smartphones" class="subcategory">Smartphones</a>
+      <a href="#tv" class="subcategory">Τηλεοράσεις</a>
+    </div>
+  </li>
+  <li><a href="#Προιόντα">Προιόντα</a></li>
+</ul>
+
+<div class="search-container">
+  <input type="text" placeholder="Ψάχνεις για..." class="search-input">
+</div>
+
+<div class="container">
+  <button class="rotate-on-hover"><img src="Media/wishlist.png" alt="Wishlist Icon"></button>
+  <button class="rotate-on-hover special-button"><img src="Media/profile.png" alt="Profile Icon"></button>
+  <button class="rotate-on-hover"><img src="Media/cart.png" alt="Cart Icon"></button>
+</div>
+<div class="button-container">
+  <button class="button">
+    <img src="Media/laptop.png" alt="Image">
+    PC & Laptops
+  </button>
+  <button class="button">
+    <img src="Media/phones.png" alt="Image">
+    Smartphones
+  </button>
+  <button class="button">
+    <img src="Media/tv.png" alt="Image">
+    Τηλεοράσεις
+  </button>
+</div>
+<div class="slideshow-container">
+  <div class="mySlides">
+    <div style="width: 800px; height: 300px; background-color: #f7f7f7; margin: auto; border-radius: 15px;"></div>
+  </div>
+
+  <div class="mySlides">
+    <div style="width: 800px; height: 300px; background-color: #f7f7f7; margin: auto; border-radius: 15px;"></div>
+  </div>
+
+  <div class="mySlides">
+    <div style="width: 800px; height: 300px; background-color: #f7f7f7; margin: auto; border-radius: 15px;"></div>
+  </div>
+
+  <a class="prev" onclick="plusSlides(-1)">❮</a>
+  <a class="next" onclick="plusSlides(1)">❯</a>
+
+  <div class="text">Black Friday Deals</div>
+</div>
+
+<!-- Δεύτερο slideshow -->
+<div class="slideshow-container-second">
+  <div class="mySlides-second">
+    <div style="width: 800px; height: 300px; background-color: #f7f7f7; margin: auto; border-radius: 15px;"></div>
+  </div>
+
+  <div class="mySlides-second">
+    <div style="width: 800px; height: 300px; background-color: #f7f7f7; margin: auto; border-radius: 15px;"></div>
+  </div>
+
+  <div class="mySlides-second">
+    <div style="width: 800px; height: 300px; background-color: #f7f7f7; margin: auto; border-radius: 15px;"></div>
+  </div>
+
+  <a class="prev-second" onclick="plusSlidesSecond(-1)">❮</a>
+  <a class="next-second" onclick="plusSlidesSecond(1)">❯</a>
+
+  <div class="text-second">Top Offers</div>
+</div>
+</body>
