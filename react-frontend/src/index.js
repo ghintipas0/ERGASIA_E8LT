@@ -32,7 +32,7 @@ import reportWebVitals from './reportWebVitals';
 
     slides[slideIndex - 1].style.display = "block";
     dots[slideIndex - 1].className += " active";
-    setTimeout(showSlides, 4000); // Εμφάνιση του επόμενου slide κάθε 4 δευτερόλεπτα
+    setTimeout(showSlides, 3000); // Εμφάνιση του επόμενου slide κάθε 4 δευτερόλεπτα
   }
 
   function currentSlide(n) {
@@ -41,6 +41,8 @@ import reportWebVitals from './reportWebVitals';
 
   // Έναρξη της παρουσίασης των slides
   showSlides();
+
+
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
