@@ -1,11 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
-import Home from "./Pages/Home";
-import {Route,Link} from 'react-router';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Home from './Pages/Home';
+import NavBar from './component/NavBar';
+
 function App() {
-  return <div className="App">
-      <Route exact to="/" component ={Home} />
-  </div>
+    return (
+            <div className="App">
+                <NavBar />
+                <Routes>
+                    <Route path="/Home" element={<Home />} />
+                </Routes>
+            </div>
+    );
 }
 
 export default App;
