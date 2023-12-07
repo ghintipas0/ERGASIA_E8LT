@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import NavBar from "../component/NavBar";
-
 function Home() {
     const [slideIndex, setSlideIndex] = useState(0);
 
