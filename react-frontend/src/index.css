@@ -236,5 +236,18 @@ li a:hover {
     background-color: #717171;
   }
 
+.tooltip {
+  display: none;
+  position: absolute;
+  background-color: #000;
+  color: #fff;
+  padding: 5px;
+  border-radius: 5px;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
 
-
+.rotate-on-hover:hover .tooltip {
+  display: block;
+}
