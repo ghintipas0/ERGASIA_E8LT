@@ -18,7 +18,7 @@ public class ProductService {
 
     public List<Product>  findAllProducts(){
 
-        return productDAO.findAll();
+        return productDAO.findProducts();
     }
 
 }

@@ -40,6 +40,12 @@ public class Product {
     public Product() {
     }
 
+    public Product(String name, Float price, String photo) {
+        this.name = name;
+        this.price = price;
+        this.photo = photo;
+    }
+
     public int getId() {
         return id;
     }
