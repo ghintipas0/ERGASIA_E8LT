@@ -43,6 +43,14 @@ import reportWebVitals from './reportWebVitals';
   showSlides();
 
 
+function showTooltip() {
+  document.getElementById("tooltip").style.display = "block";
+}
+
+function hideTooltip() {
+  document.getElementById("tooltip").style.display = "none";
+}
+
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

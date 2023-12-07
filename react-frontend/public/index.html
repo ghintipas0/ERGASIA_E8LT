@@ -23,7 +23,11 @@
 
 <div class="container">
   <button class="rotate-on-hover"><img src="Media/wishlist.png" alt="Wishlist Icon"></button>
-  <button class="rotate-on-hover special-button"><img src="Media/profile.png" alt="Profile Icon"></button>
+  <button class="rotate-on-hover special-button" onmouseover="showTooltip()" onmouseout="hideTooltip()">
+    <img src="Media/profile.png" alt="Profile Icon">
+    <div class="tooltip" id="tooltip">Συνδέσου τώρα</div>
+  </button>
+
   <button class="rotate-on-hover"><img src="Media/cart.png" alt="Cart Icon"></button>
 </div>
 <div class="button-container">
