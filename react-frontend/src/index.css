@@ -2,6 +2,7 @@ ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
+  height:auto;
   overflow: hidden;
   background-color: #333;
   width: 100%;
@@ -56,7 +57,7 @@ li a:hover {
     margin: 0;
     display: flex;
     align-items: center;
-    justify-content: top;
+    justify-content: normal;
     height: 10vh;
     flex-direction: column;
   }

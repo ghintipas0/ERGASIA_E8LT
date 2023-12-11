@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import SlideshowComponent from '../component/SlideshowComponent'
 function Home() {
     const [slideIndex, setSlideIndex] = useState(0);
 
@@ -73,28 +74,7 @@ function Home() {
                 </button>
             </div>
 
-            <div className="slideshow-container">
-                <div className="mySlides">
-                    <img src="Media/lenovoidea.png" alt="Περιγραφή φωτογραφίας" style={{ width: "300px", height: "300px", borderRadius: "15px", position: "absolute", left: "50px", zIndex: "1" }} />
-                    <div className="text" style={{ fontSize: "18px", top: "90px", left: "160px", fontWeight: "bold" }}>Lenovo IdeaPad Gaming 3 15IHU6 15.6" IPS FHD</div>
-                    <div className="text" style={{ fontSize: "28px", top: "130px", left: "160px", fontWeight: "bold" }}>648,99€</div>
-                    <div className="content" style={{ width: "800px", height: "300px", backgroundColor: "#f7f7f7", margin: "auto", borderRadius: "15px" }}></div>
-                </div>
-
-                <div className="mySlides">
-                    <div className="content" style={{ width: "800px", height: "300px", backgroundColor: "#f7f7f7", margin: "auto", borderRadius: "15px" }}></div>
-                </div>
-
-                <div className="mySlides">
-                    <div style={{ width: "800px", height: "300px", backgroundColor: "#f7f7f7", margin: "auto", borderRadius: "15px" }}></div>
-                </div>
-
-                <div style={{ textAlign: "center" }}>
-                    <span className="dot" onClick={() => currentSlide(1)}></span>
-                    <span className="dot" onClick={() => currentSlide(2)}></span>
-                    <span className="dot" onClick={() => currentSlide(3)}></span>
-                </div>
-            </div>
+            <SlideshowComponent />
 
             <div className="slideshow-container-second">
                 <div className="mySlides-second">
