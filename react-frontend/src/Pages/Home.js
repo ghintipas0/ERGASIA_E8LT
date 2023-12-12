@@ -1,7 +1,13 @@
 import React, { useEffect, useState } from "react";
 import SlideshowComponent from '../component/SlideshowComponent'
 function Home() {
+
+    const [tooltipVisible, setTooltipVisible] = useState(false);
+
+
+
     const [slideIndex, setSlideIndex] = useState(0);
+
 
     useEffect(() => {
         const intervalId = setInterval(() => {
@@ -10,6 +16,7 @@ function Home() {
 
         return () => clearInterval(intervalId);
     }, []);
+
 
     function showSlides() {
         setSlideIndex((prevIndex) => {
@@ -27,11 +34,14 @@ function Home() {
 
     function showTooltip() {
         // Use React state to handle tooltip visibility
+        setTooltipVisible(true);
     }
 
     function hideTooltip() {
         // Use React state to handle tooltip visibility
+        setTooltipVisible(false);
     }
+
 
     return (
         <div>
@@ -49,10 +59,47 @@ function Home() {
                     onMouseOut={hideTooltip}
                 >
                     <img src="Media/profile.png" alt="Profile Icon" />
-                    <div className="tooltip" id="tooltip">
-                        Συνδέσου τώρα
-                    </div>
                 </button>
+                {tooltipVisible && (
+                    <div
+                        className="tooltip-container"
+                        onMouseEnter={showTooltip}
+                        onMouseLeave={hideTooltip}
+                        style={{
+                            position: "relative",
+                            display: "inline-block",
+                            position: "absolute",
+                            top: "16%", // Εδώ θέτουμε τη θέση κάτω από το profile icon
+                            left: "95%",
+                            transform: "translateX(-80%)",
+                            backgroundColor: "#fff",
+                            border: "1px solid #ccc",
+                            borderRadius: "5px",
+                            backgroundColor: "#EEEEEE",
+                            width: "300px", // Αλλαγή στο width
+                            height: "220px", // Αλλαγή στο height
+                        }}
+                    >
+                        <p style={{ fontSize: "19px", display: "flex", justifyContent: "center", textAlign: "left", marginLeft: "20px"  }}>
+                            Συνδέσου με τα στοιχεία σου για γρήγορη αγορά
+                        </p>
+
+                       <div style={{ display: "flex", justifyContent: "center", marginBottom: "10px" }}>
+                           <button style={{ padding: "6px 110px", fontSize: "14px", backgroundColor: "white", color: "black"}}>Είσοδος</button>
+                       </div>
+
+
+                        <p style={{fontSize: "19px", display: "flex",textAlign: "left", marginLeft: "20px"  }}>
+                        Δεν έχεις λογαριασμό;
+                        </p>
+                        <div style={{ display: "flex", justifyContent: "center"}}>
+                             <button style={{ padding: "6px 50px", fontSize: "10px", backgroundColor: "white", color: "black", fontSize: "15px"}}>Δημιουργία λογαριασμού</button>
+                        </div>
+                    </div>
+                )}
+
+
+
 
                 <button className="rotate-on-hover">
                     <img src="Media/cart.png" alt="Cart Icon" />
@@ -91,7 +138,10 @@ function Home() {
 
                 <div className="text-second">Top Offers</div>
             </div>
+
         </div>
+
+
     );
 }
 
