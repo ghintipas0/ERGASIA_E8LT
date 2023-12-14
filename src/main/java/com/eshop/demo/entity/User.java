@@ -20,6 +20,10 @@ public class User {
     private String first_name;
     @Column(name = "last_name")
     private String last_name;
+    @Column(name = "phone_number")
+    private String phoneNumber;
+    @Column(name = "birth_date")
+    private String birthDate;
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)//one user can have many addresses. If a user remove from the db we want to erase his addresses.
     private List<Address> addresses = new ArrayList<>();//The fetch type by default is lazy
 
@@ -74,6 +78,22 @@ public class User {
         this.addresses = addresses;
     }
 
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(String birthDate) {
+        this.birthDate = birthDate;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -82,6 +102,8 @@ public class User {
                 ", email='" + email + '\'' +
                 ", first_name='" + first_name + '\'' +
                 ", last_name='" + last_name + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", birthDate='" + birthDate + '\'' +
                 ", addresses=" + addresses +
                 '}';
     }
