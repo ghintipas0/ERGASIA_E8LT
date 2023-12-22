@@ -1,5 +1,6 @@
 package com.eshop.demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -12,24 +13,34 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
+    @Column(name = "username")
+    private String username;
     @Column(name = "password")
     private String password;
     @Column(name = "email")
     private String email;
     @Column(name = "first_name")
-    private String first_name;
+    private String firstName;
     @Column(name = "last_name")
-    private String last_name;
+    private String lastName;
     @Column(name = "phone_number")
     private String phoneNumber;
     @Column(name = "birth_date")
     private String birthDate;
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)//one user can have many addresses. If a user remove from the db we want to erase his addresses.
+    @JsonIgnore
     private List<Address> addresses = new ArrayList<>();//The fetch type by default is lazy
 
     public User() {
     }
 
+    public void addAddress(Address address){
+        if(addresses==null){
+            addresses=new ArrayList<>();
+        }
+        address.setUser(this);
+        addresses.add(address);
+    }
     public int getId() {
         return id;
     }
@@ -54,20 +65,20 @@ public class User {
         this.email = email;
     }
 
-    public String getFirst_name() {
-        return first_name;
+    public String getfirstName() {
+        return firstName;
     }
 
-    public void setFirst_name(String first_name) {
-        this.first_name = first_name;
+    public void setfirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getLast_name() {
-        return last_name;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setLast_name(String last_name) {
-        this.last_name = last_name;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public List<Address> getAddresses() {
@@ -94,14 +105,22 @@ public class User {
         this.birthDate = birthDate;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
-                ", first_name='" + first_name + '\'' +
-                ", last_name='" + last_name + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", birthDate='" + birthDate + '\'' +
                 ", addresses=" + addresses +

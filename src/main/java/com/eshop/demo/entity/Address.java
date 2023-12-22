@@ -10,18 +10,26 @@ public class Address {
     @Column(name = "id")
     private int id;
     @Column(name = "address_line_1")
-    private String address_line_1;
+    private String addressLine1;
     @Column(name = "city")
     private String city;
     @Column(name = "country")
     private String country;
     @Column(name = "post_code")
-    private String post_code;
+    private String postCode;
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 
     public Address() {
+    }
+
+    public Address(String addressLine1, String city, String country, String postCode,User user) {
+        this.addressLine1 = addressLine1;
+        this.city = city;
+        this.country = country;
+        this.postCode = postCode;
+        this.user=user;
     }
 
     public int getId() {
@@ -32,12 +40,12 @@ public class Address {
         this.id = id;
     }
 
-    public String getAddress_line_1() {
-        return address_line_1;
+    public String getAddressLine1() {
+        return addressLine1;
     }
 
-    public void setAddress_line_1(String address_line_1) {
-        this.address_line_1 = address_line_1;
+    public void setAddressLine1(String addressLine1) {
+        this.addressLine1 = addressLine1;
     }
 
     public String getCity() {
@@ -56,12 +64,12 @@ public class Address {
         this.country = country;
     }
 
-    public String getPost_code() {
-        return post_code;
+    public String getPostCode() {
+        return postCode;
     }
 
-    public void setPost_code(String post_code) {
-        this.post_code = post_code;
+    public void setPostCode(String postCode) {
+        this.postCode = postCode;
     }
 
     public User getUser() {
@@ -76,10 +84,10 @@ public class Address {
     public String toString() {
         return "Address{" +
                 "id=" + id +
-                ", address_line_1='" + address_line_1 + '\'' +
+                ", addressLine1='" + addressLine1 + '\'' +
                 ", city='" + city + '\'' +
                 ", country='" + country + '\'' +
-                ", post_code='" + post_code + '\'' +
+                ", postCode='" + postCode + '\'' +
                 ", user=" + user +
                 '}';
     }
