@@ -108,7 +108,6 @@ function MyProfile () {
                                                                                                                                      <a class="dropdown-item" href="#">Cancel Order</a>
                                                                                                                                    </div>
                                                                                                                                  </div>
-
                                                             </td>
                                                         </tr>
                                                     </tbody>
