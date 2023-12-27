@@ -12,9 +12,11 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
+    @JsonIgnore
     private int id;
     @Column(name = "username")
     private String username;
+    @JsonIgnore
     @Column(name = "password")
     private String password;
     @Column(name = "email")
@@ -27,8 +29,8 @@ public class User {
     private String phoneNumber;
     @Column(name = "birth_date")
     private String birthDate;
-    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)//one user can have many addresses. If a user remove from the db we want to erase his addresses.
     @JsonIgnore
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)//one user can have many addresses. If a user remove from the db we want to erase his addresses.
     private List<Address> addresses = new ArrayList<>();//The fetch type by default is lazy
 
     public User() {
@@ -123,7 +125,6 @@ public class User {
                 ", lastName='" + lastName + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", birthDate='" + birthDate + '\'' +
-                ", addresses=" + addresses +
                 '}';
     }
 }
