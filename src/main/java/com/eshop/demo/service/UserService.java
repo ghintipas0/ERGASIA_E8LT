@@ -46,7 +46,7 @@ public class UserService {
         address.setCountry(registrationBody.getCountry());
         address.setCity(registrationBody.getCity());
         user.addAddress(address);
-        user = userDAO.save(user);
+        /*user =*/ userDAO.save(user);
         return user;
     }
 

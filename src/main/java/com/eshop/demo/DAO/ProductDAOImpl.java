@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.List;
 @Repository
 public class ProductDAOImpl implements ProductDAO{
@@ -16,19 +17,15 @@ public class ProductDAOImpl implements ProductDAO{
     public ProductDAOImpl(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
+    //return 3 random products from each category(phone,tv,laptop)
     @Override
     public List<Product> findProducts(){
-        List<Product> products = null ;
+        List<Product> products = new ArrayList<>();
         for(int i=1;i<=3;i++) {
             TypedQuery<Product> query = entityManager.createQuery("SELECT p.name,p.price,p.photo FROM Product p WHERE p.category.id=:data", Product.class);
             query.setParameter("data",i);
             query.setMaxResults(3);
-            if(i==1){
-                products = query.getResultList();
-            }else{
-                products.addAll(query.getResultList());
-            }
-
+            products.addAll(query.getResultList());
         }
         return products;
 

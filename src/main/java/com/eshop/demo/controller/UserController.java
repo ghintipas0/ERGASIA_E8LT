@@ -1,5 +1,4 @@
 package com.eshop.demo.controller;
-
 import com.eshop.demo.entity.User;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
