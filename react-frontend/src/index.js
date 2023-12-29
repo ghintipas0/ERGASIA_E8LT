@@ -9,42 +9,48 @@ import reportWebVitals from './reportWebVitals';
 
 //);
 
- var slideIndex = 1;
-  showSlides(slideIndex);
+ var slideIndex = 0;
 
-  function plusSlides(n) {
-    showSlides(slideIndex += n);
-  }
-
-  function showSlides(n) {
+  function showSlides() {
     var i;
     var slides = document.getElementsByClassName("mySlides");
-    if (n > slides.length) {slideIndex = 1}
-    if (n < 1) {slideIndex = slides.length}
+    var dots = document.getElementsByClassName("dot");
+
     for (i = 0; i < slides.length; i++) {
       slides[i].style.display = "none";
     }
-    slides[slideIndex-1].style.display = "block";
+
+    slideIndex++;
+
+    if (slideIndex > slides.length) {
+      slideIndex = 1;
+    }
+
+    for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+    }
+
+    slides[slideIndex - 1].style.display = "block";
+    dots[slideIndex - 1].className += " active";
+    setTimeout(showSlides, 3000); // Εμφάνιση του επόμενου slide κάθε 4 δευτερόλεπτα
   }
 
-
-var slideIndexSecond = 1;
-showSlidesSecond(slideIndexSecond);
-
-function plusSlidesSecond(n) {
-  showSlidesSecond(slideIndexSecond += n);
-}
-
-function showSlidesSecond(n) {
-  var i;
-  var slides = document.getElementsByClassName("mySlides-second");
-  if (n > slides.length) {slideIndexSecond = 1}
-  if (n < 1) {slideIndexSecond = slides.length}
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
+  function currentSlide(n) {
+    showSlides(slideIndex = n);
   }
-  slides[slideIndexSecond-1].style.display = "block";
+
+  // Έναρξη της παρουσίασης των slides
+  showSlides();
+
+
+function showTooltip() {
+  document.getElementById("tooltip").style.display = "block";
 }
+
+function hideTooltip() {
+  document.getElementById("tooltip").style.display = "none";
+}
+
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

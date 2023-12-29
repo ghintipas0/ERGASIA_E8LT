@@ -69,7 +69,7 @@ li a:hover {
 
   .search-input {
     padding-left: 10px; /* Προσαρμόζει το πλάτος του πεδίου εισαγωγής για να χωρέσει το εικονίδιο */
-    /*background-image: url('Media/search.png'); /* Ορίζει την εικόνα ως φόντο */
+    background-image: url('search.png'); /* Ορίζει την εικόνα ως φόντο */
     background-size: 20px; /* Προσαρμόζει το μέγεθος της εικόνας */
     background-repeat: no-repeat; /* Αποτρέπει την επανάληψη της εικόνας */
     background-position: 5px center; /* Ορίζει τη θέση της εικόνας (σε pixels) */
@@ -145,37 +145,7 @@ li a:hover {
 
 }
 
-.prev, .next {
-  position: absolute;
-  top: 50%;
-  width: auto;
-  padding: 16px;
-  margin-top: -22px;
-  color: black;
-  font-weight: bold;
-  font-size: 18px;
-  transition: 0.6s ease;
-  border-radius: 0 3px 3px 0;
-  cursor: pointer;
-}
 
-.next {
-  right: 0;
-  border-radius: 3px 0 0 3px;
-}
-
-.prev:hover, .next:hover {
-  background-color: rgba(0, 0, 0, 0.8);
-}
-
-.text {
-  color: #333;
-  font-size: 15px;
-  position: absolute;
-  bottom: 8px;
-  width: 100%;
-  text-align: center;
-}
 
 
 .slideshow-container-second {
@@ -250,4 +220,34 @@ li a:hover {
 
 .rotate-on-hover:hover {
   transform: rotate(360deg);
+}
+
+  .dot {
+    height: 15px;
+    width: 15px;
+    margin: 10px 5px 0 5px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+  }
+
+  .active {
+    background-color: #717171;
+  }
+
+.tooltip {
+  display: none;
+  position: absolute;
+  background-color: #000;
+  color: #fff;
+  padding: 5px;
+  border-radius: 5px;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.rotate-on-hover:hover .tooltip {
+  display: block;
 }
