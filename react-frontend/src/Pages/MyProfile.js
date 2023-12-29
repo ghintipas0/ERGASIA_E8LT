@@ -42,13 +42,13 @@ function MyProfile () {
                                                             <td>14$</td>
                                                             <td><span className="badge bg-label-info me-1">SHIPPED</span></td>
                                                             <td>
-                                                                 <div class="dropdown">
-                                                                   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                 <div className="dropdown">
+                                                                   <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                                      Edit Order
                                                                    </button>
-                                                                   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                                     <a class="dropdown-item" href="#">View All Products</a>
-                                                                     <a class="dropdown-item" href="#">Cancel Order</a>
+                                                                   <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                                     <a className="dropdown-item" href="#">View All Products</a>
+                                                                     <a className="dropdown-item" href="#">Cancel Order</a>
                                                                    </div>
                                                                  </div>
                                                             </td>
@@ -61,13 +61,13 @@ function MyProfile () {
                                                             </td>
                                                             <td><span className="badge bg-label-success me-1">Delivred</span></td>
                                                             <td>
-                                                                                                                             <div class="dropdown">
-                                                                                                                               <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                                                                             <div className="dropdown">
+                                                                                                                               <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                                                                                                  Edit Order
                                                                                                                                </button>
-                                                                                                                               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                                                                                                 <a class="dropdown-item" href="#">View All Products</a>
-                                                                                                                                 <a class="dropdown-item" href="#">Cancel Order</a>
+                                                                                                                               <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                                                                                                 <a className="dropdown-item" href="#">View All Products</a>
+                                                                                                                                 <a className="dropdown-item" href="#">Cancel Order</a>
                                                                                                                                </div>
                                                                                                                              </div>
                                                                                                                         </td>
@@ -79,13 +79,13 @@ function MyProfile () {
                                                             <td><span className="badge bg-label-info me-1">SHIPPED</span></td>
                                                             <td>
 
-                                                                                                                                <div class="dropdown">
-                                                                                                                                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                                                                                <div className="dropdown">
+                                                                                                                                  <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                                                                                                     Edit Order
                                                                                                                                   </button>
-                                                                                                                                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                                                                                                    <a class="dropdown-item" href="#">View All Products</a>
-                                                                                                                                    <a class="dropdown-item" href="#">Cancel Order</a>
+                                                                                                                                  <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                                                                                                    <a className="dropdown-item" href="#">View All Products</a>
+                                                                                                                                    <a className="dropdown-item" href="#">Cancel Order</a>
                                                                                                                                   </div>
                                                                                                                                 </div>
 
@@ -99,13 +99,13 @@ function MyProfile () {
                                                             <td>14$ </td>
                                                             <td><span className="badge bg-label-warning me-1">CANCELED</span></td>
                                                             <td>
-                                                                                                                                 <div class="dropdown">
-                                                                                                                                   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                                                                                 <div className="dropdown">
+                                                                                                                                   <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                                                                                                      Edit Order
                                                                                                                                    </button>
-                                                                                                                                   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                                                                                                     <a class="dropdown-item" href="#">View All Products</a>
-                                                                                                                                     <a class="dropdown-item" href="#">Cancel Order</a>
+                                                                                                                                   <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                                                                                                     <a className="dropdown-item" href="#">View All Products</a>
+                                                                                                                                     <a className="dropdown-item" href="#">Cancel Order</a>
                                                                                                                                    </div>
                                                                                                                                  </div>
                                                             </td>
