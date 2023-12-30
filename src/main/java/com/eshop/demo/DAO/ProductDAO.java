@@ -9,7 +9,8 @@ import java.util.List;
 
 
 public interface ProductDAO {
-    public List<Product> findProducts();
+     List<Product> findProducts();
+    List<Product> searchProducts(String keyword);
 
 
 }

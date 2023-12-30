@@ -32,4 +32,20 @@ public class ProductDAOImpl implements ProductDAO{
 
     }
 
+    @Override
+    public List<Product> searchProducts(String keyword) {
+        String nativeQ = "SELECT p.* FROM product p " +
+                "INNER JOIN category c " +
+                "ON p.category_id = c.id " +
+                "WHERE MATCH(name,long_desc,brand_name) " +
+                "AGAINST(:data IN NATURAL LANGUAGE MODE) " +
+                "OR category_name like (:data)";
+        List <Product> query = entityManager.createNativeQuery(nativeQ, Product.class)
+                        .setParameter("data",keyword)
+                .getResultList();
+
+        return query;
+    }
+
+
 }
