@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import UserRegistrationForm from "../component/UserRegistrationForm";
-
 function MyProfileInfo() {
     const [formData, setFormData] = useState({
         firstName: 'John',
@@ -14,25 +13,15 @@ function MyProfileInfo() {
     });
 
     return (
+
         <div className="layout-container">
-            <div className="layout-page">
+
+            <div className="layout-page" style={{ backgroundImage: "url(Media/regback.jpg)", backgroundSize: 'cover' }}>
                 <div className="content-wrapper">
                     <div className="container-xxl flex-grow-1 container-p-y">
                         <div className="row">
-                            <div className="col-md-12">
-                                <div className="card mb-4">
-                                    <div className="card-body">
-                                        {/* Empty card body */}
-                                    </div>
-                                    <hr className="my-0" />
-                                    <div className="card-body">
-                                        <div className="row">
-                                            <div className="mb-3 col-md-12">
-                                                <UserRegistrationForm></UserRegistrationForm>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div className="col-md-5 offset-md-9">
+                                <UserRegistrationForm></UserRegistrationForm>
                             </div>
                         </div>
                     </div>
