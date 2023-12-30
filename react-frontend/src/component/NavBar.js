@@ -1,16 +1,25 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
+import { Col, Row } from 'react-bootstrap';
 
-class NavBar extends Component {
-    render() {
-        return (
-            <ul>
-                <li><Link to="/">Home</Link></li>
-                <li><Link to="/MyProfileInfo">Profile</Link></li>
-                <li><Link to="/MyProfile">Orders</Link></li>
-            </ul>
-        );
-    }
-}
+const NavBar = () => {
+    return (
+        <nav className="navbar navbar-dark bg-dark">
+            <div className = "nav nav-pills nav-justified">
+                <Row>
+                    <Col>
+                        <Link to="/" className="text-light nav-item nav-link text-decoration-none"> Home </Link>
+                    </Col>
+                    <Col>
+                        <Link to="/MyProfileInfo" className="text-light nav-item nav-link text-decoration-none">Profile</Link>
+                    </Col>
+                    <Col>
+                        <Link to="/MyProfile" className="text-light nav-item nav-link text-decoration-none">Orders</Link>
+                    </Col>
+                </Row>
+            </div>
+        </nav>
+    );
+};
 
 export default NavBar;

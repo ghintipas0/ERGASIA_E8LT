@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import SlideshowComponent from '../component/SlideshowComponent'
+import axios from 'axios';
 function Home() {
 
     const [tooltipVisible, setTooltipVisible] = useState(false);
@@ -12,13 +13,17 @@ function Home() {
     useEffect(() => {
         const intervalId = setInterval(() => {
             showSlides();
+
         }, 3000);
 
         return () => clearInterval(intervalId);
     }, []);
+    const [data, setData] = useState(null);
+
 
 
     function showSlides() {
+
         setSlideIndex((prevIndex) => {
             let newIndex = prevIndex + 1;
             if (newIndex > 3) {
@@ -66,13 +71,11 @@ function Home() {
                         onMouseEnter={showTooltip}
                         onMouseLeave={hideTooltip}
                         style={{
-                            position: "relative",
                             display: "inline-block",
                             position: "absolute",
                             top: "16%", // Εδώ θέτουμε τη θέση κάτω από το profile icon
                             left: "95%",
                             transform: "translateX(-80%)",
-                            backgroundColor: "#fff",
                             border: "1px solid #ccc",
                             borderRadius: "5px",
                             backgroundColor: "#EEEEEE",
@@ -93,7 +96,7 @@ function Home() {
                         Δεν έχεις λογαριασμό;
                         </p>
                         <div style={{ display: "flex", justifyContent: "center"}}>
-                             <button style={{ padding: "6px 50px", fontSize: "10px", backgroundColor: "white", color: "black", fontSize: "15px"}}>Δημιουργία λογαριασμού</button>
+                             <button style={{ padding: "6px 50px", backgroundColor: "white", color: "black", fontSize: "15px"}}>Δημιουργία λογαριασμού</button>
                         </div>
                     </div>
                 )}

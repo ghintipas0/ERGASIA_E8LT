@@ -27,13 +27,8 @@ function MyProfileInfo() {
                                     <hr className="my-0" />
                                     <div className="card-body">
                                         <div className="row">
-                                            <div className="mb-3 col-md-6">
+                                            <div className="mb-3 col-md-12">
                                                 <UserRegistrationForm></UserRegistrationForm>
-                                            </div>
-                                            <div className="mt-2">
-                                                <button type="reset" className="btn btn-outline-secondary">
-                                                    Edit
-                                                </button>
                                             </div>
                                         </div>
                                     </div>

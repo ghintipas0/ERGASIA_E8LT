@@ -1,22 +1,17 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 
-class SlideshowComponent extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            slideIndex: 0
+const SlideshowComponent = () => {
+    const [slideIndex, setSlideIndex] = useState(0);
+
+    useEffect(() => {
+        const slideshowInterval = setInterval(showSlides, 3000);
+
+        return () => {
+            clearInterval(slideshowInterval);
         };
-    }
+    }, [slideIndex]);
 
-    componentDidMount() {
-        this.slideshowInterval = setInterval(this.showSlides, 3000);
-    }
-
-    componentWillUnmount() {
-        clearInterval(this.slideshowInterval);
-    }
-
-    showSlides = () => {
+    const showSlides = () => {
         const slides = document.getElementsByClassName("mySlides");
         const dots = document.getElementsByClassName("dot");
 
@@ -24,8 +19,8 @@ class SlideshowComponent extends Component {
             slides[i].style.display = "none";
         }
 
-        this.setState((prevState) => {
-            let newIndex = prevState.slideIndex + 1;
+        setSlideIndex((prevIndex) => {
+            let newIndex = prevIndex + 1;
 
             if (newIndex > slides.length) {
                 newIndex = 1;
@@ -38,39 +33,37 @@ class SlideshowComponent extends Component {
             slides[newIndex - 1].style.display = "block";
             dots[newIndex - 1].className += " active";
 
-            return { slideIndex: newIndex };
+            return newIndex;
         });
     };
 
-    currentSlide = (n) => {
-        this.setState({ slideIndex: n });
+    const currentSlide = (n) => {
+        setSlideIndex(n);
     };
 
-    showTooltip = () => {
+    const showTooltip = () => {
         document.getElementById("tooltip").style.display = "block";
     };
 
-    hideTooltip = () => {
+    const hideTooltip = () => {
         document.getElementById("tooltip").style.display = "none";
     };
 
-    render() {
-        return (
-            <div className="slideshow-container">
-                {/* Your slideshow content goes here */}
-                <div className="mySlides">Slide 1 Content</div>
-                <div className="mySlides">Slide 2 Content</div>
-                <div className="mySlides">Slide 3 Content</div>
+    return (
+        <div className="slideshow-container">
+            {/* Your slideshow content goes here */}
+            <div className="mySlides">Slide 1 Content</div>
+            <div className="mySlides">Slide 2 Content</div>
+            <div className="mySlides">Slide 3 Content</div>
 
-                {/* Dots for navigation */}
-                <div style={{ textAlign: 'center' }}>
-                    <span className="dot" onClick={() => this.currentSlide(1)}></span>
-                    <span className="dot" onClick={() => this.currentSlide(2)}></span>
-                    <span className="dot" onClick={() => this.currentSlide(3)}></span>
-                </div>
+            {/* Dots for navigation */}
+            <div style={{ textAlign: 'center' }}>
+                <span className="dot" onClick={() => currentSlide(1)}></span>
+                <span className="dot" onClick={() => currentSlide(2)}></span>
+                <span className="dot" onClick={() => currentSlide(3)}></span>
             </div>
-        );
-    }
-}
+        </div>
+    );
+};
 
 export default SlideshowComponent;

@@ -7,7 +7,7 @@ ul {
   background-color: #333;
   width: 100%;
   display: flex; /* Προσθήκη display: flex; */
-  justify-content: center; /* Προσθήκη justify-content: center; */
+  justify-content: left; /* Προσθήκη justify-content: center; */
 }
 
 li {
