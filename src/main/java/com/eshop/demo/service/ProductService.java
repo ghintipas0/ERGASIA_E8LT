@@ -2,6 +2,7 @@ package com.eshop.demo.service;
 
 import com.eshop.demo.DAO.ProductDAO;
 import com.eshop.demo.entity.Product;
+import com.eshop.demo.exception.ProductNotFound;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +20,11 @@ public class ProductService {
     public List<Product>  findAllProducts(){
 
         return productDAO.findProducts();
+    }
+
+    public List<Product>  searchProducts(String keyword)  {
+
+        return productDAO.searchProducts(keyword);
     }
 
 }

@@ -16,7 +16,7 @@ class ProductControllerTest {
 
     @Test
     public void testProductList() throws Exception {
-        mockMVC.perform(get("/products/")).andExpect(status().is(HttpStatus.OK.value()));
+        mockMVC.perform(get("/ShopNow")).andExpect(status().is(HttpStatus.OK.value()));
     }
 
 

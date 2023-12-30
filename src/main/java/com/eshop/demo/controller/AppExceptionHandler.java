@@ -1,5 +1,6 @@
 package com.eshop.demo.controller;
 
+import com.eshop.demo.exception.ProductNotFound;
 import com.eshop.demo.exception.UserNotVerifiedException;
 import com.eshop.demo.exception.UsersAlreadyExists;
 import org.springframework.http.HttpStatus;
@@ -18,5 +19,7 @@ public class AppExceptionHandler {
     public ResponseEntity<String> handleException(UserNotVerifiedException userNotVerifiedException){
         return new ResponseEntity<>(userNotVerifiedException.getMessage(), HttpStatus.NOT_FOUND);
     }
+
+
 
 }
