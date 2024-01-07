@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import UserRegistrationForm from "../component/UserRegistrationForm";
-function MyProfileInfo() {
+function Register() {
     const [formData, setFormData] = useState({
         firstName: 'John',
         lastName: 'Doe',
@@ -32,4 +32,4 @@ function MyProfileInfo() {
     );
 }
 
-export default MyProfileInfo;
+export default Register;

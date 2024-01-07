@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Col, Form, InputGroup, Row, Button } from 'react-bootstrap';
+import {Link} from "react-router-dom";
 
 const UserRegistrationForm = () => {
     const [formData, setFormData] = useState({
@@ -41,7 +42,6 @@ const UserRegistrationForm = () => {
 
             if (response.ok) {
                 console.log('Form submitted successfully');
-                // Optionally, you can reset the form data after a successful submission
                 setFormData({
                     username: '',
                     email: '',
@@ -212,6 +212,7 @@ const UserRegistrationForm = () => {
                                         <Button variant="primary" type="submit" className="btn btn-outline-info mb-6">
                                             SUBMIT
                                         </Button>
+                                        <Link to="/login" className="link-info">I already have an account</Link>
                                     </div>
                                 </Row>
                             </Form>
