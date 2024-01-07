@@ -63,11 +63,7 @@ const LoginForm = () => {
                                                 type="text"
                                                 placeholder="Enter your username"
                                                 onChange={(e) => handleChange('username', e.target.value)}
-                                                aria-describedby="usernamehelp"
                                             />
-                                            <Form.Text id="usernamehelp" muted>
-                                                8-32 Characters.
-                                            </Form.Text>
                                         </Form.Group>
                                     </Col>
                                 </Row>
@@ -79,11 +75,7 @@ const LoginForm = () => {
                                                 type="password"
                                                 placeholder="********"
                                                 onChange={(e) => handleChange('password', e.target.value)}
-                                                aria-describedby="passwordHelpBlock"
                                             />
-                                            <Form.Text id="passwordHelpBlock" muted>
-                                                Your password must be 6-32 characters long, contain at least one uppercase letter, a symbol and a number.
-                                            </Form.Text>
                                         </Form.Group>
                                     </Col>
                                 </Row>
