@@ -7,6 +7,7 @@ const UserRegistrationForm = () => {
         username: '',
         email: '',
         password: '',
+        passwordval: '',
         firstName: '',
         lastName: '',
         phoneNumber: '',
@@ -24,11 +25,24 @@ const UserRegistrationForm = () => {
         }));
     };
 
-
+    function validationcheck(){
+        if(formData.password.length < 8){return false;}
+        if(formData.password.length > 30){return false;}
+        if(formData.username.length < 6){return false;}
+        if(formData.username.length > 30){return false;}
+        if(formData.firstName.length < 2){return false;}
+        if(formData.lastName.length < 2){return false;}
+        if(formData.firstName.length > 36){return false;}
+        if(formData.lastName.length > 36){return false;}
+        if(formData.postCode.length !== 5){return false;}
+        if(formData.password !== formData.passwordval){return false;}
+        return true;
+    }
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         // Assuming you have an API endpoint to handle the form data.
+        if (!validationcheck()){return;}
         const apiUrl = 'http://localhost:8080/auth/register';
 
         try {
@@ -46,6 +60,7 @@ const UserRegistrationForm = () => {
                     username: '',
                     email: '',
                     password: '',
+                    passwordval: '',
                     firstName: '',
                     lastName: '',
                     phoneNumber: '',
@@ -140,7 +155,7 @@ const UserRegistrationForm = () => {
                                 </Row>
                                 <Row>
                                     <Col>
-                                        <Form.Group className="mb-3" controlId="passwdval">
+                                        <Form.Group className="mb-3" controlId="passwordval">
                                             <Form.Label>Confirm your Password</Form.Label>
                                             <Form.Control
                                                 type="password"

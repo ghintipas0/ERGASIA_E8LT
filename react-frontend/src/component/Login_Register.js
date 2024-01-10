@@ -1,6 +1,4 @@
 import React, { useEffect } from 'react';
-import { Col, Form, InputGroup, Row, Button } from 'react-bootstrap';
-import { Link } from "react-router-dom";
 import LoginForm from "./LoginForm.js";
 import UserRegistrationForm from "./UserRegistrationForm.js";
 import $ from "jquery";
