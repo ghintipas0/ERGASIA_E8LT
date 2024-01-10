@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import UserRegistrationForm from "../component/UserRegistrationForm";
-function Register() {
+import Login_Register from "../component/Login_Register";
+function UserAuth() {
     const [formData, setFormData] = useState({
         firstName: 'John',
         lastName: 'Doe',
@@ -16,12 +16,12 @@ function Register() {
 
         <div className="layout-container">
 
-            <div className="layout-page" style={{ backgroundImage: "url(Media/regback.jpg)", backgroundSize: 'cover' }}>
+            <div className="layout-page" style={{ backgroundImage: "url(Media/regback.jpg)", backgroundSize: 'thumbnail' }}>
                 <div className="content-wrapper">
                     <div className="container-xxl flex-grow-1 container-p-y">
-                        <div className="row">
-                            <div className="col-md-5 offset-md-9">
-                                <UserRegistrationForm></UserRegistrationForm>
+                        <div className="row d-flex justify-content-center">
+                            <div className="col-md-5 ">
+                                <Login_Register></Login_Register>
                             </div>
                         </div>
                     </div>
@@ -32,4 +32,4 @@ function Register() {
     );
 }
 
-export default Register;
+export default UserAuth;

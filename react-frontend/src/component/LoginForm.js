@@ -45,7 +45,7 @@ const LoginForm = () => {
         }
     };
     return (
-        <div>
+        <div id="loginform">
             <div className="card mb-4">
                 <div className="card-body">
                     <h3 className= "text-center font-weight-bold">LOGIN</h3>
@@ -84,7 +84,7 @@ const LoginForm = () => {
                                         <Button variant="primary" type="submit" className="btn btn-outline-info mb-6">
                                             SUBMIT
                                         </Button>
-                                        <Link to="/Register" className="link-info">I dont have an account</Link>
+                                        <Button variant="primary" id = "hideLoginFormBtn">I dont have an account</Button>
                                     </div>
                                 </Row>
                             </Form>

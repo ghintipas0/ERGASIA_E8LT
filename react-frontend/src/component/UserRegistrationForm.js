@@ -63,7 +63,7 @@ const UserRegistrationForm = () => {
         }
     };
     return (
-        <div>
+        <div id="registerform">
             <div className="card mb-4">
                 <div className="card-body">
                     <h3 className= "text-center font-weight-bold">REGISTRATION</h3>
@@ -212,7 +212,7 @@ const UserRegistrationForm = () => {
                                         <Button variant="primary" type="submit" className="btn btn-outline-info mb-6">
                                             SUBMIT
                                         </Button>
-                                        <Link to="/login" className="link-info">I already have an account</Link>
+                                        <Button variant="primary" id = "hideregforbutton">I already have an account</Button>
                                     </div>
                                 </Row>
                             </Form>
@@ -223,5 +223,6 @@ const UserRegistrationForm = () => {
         </div>
     );
 };
+
 
 export default UserRegistrationForm;

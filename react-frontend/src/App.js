@@ -2,8 +2,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './Pages/Home';
 import NavBar from './component/NavBar';
 import MyProfile from './Pages/MyProfile';
-import Register from './Pages/Register';
-import Login from './Pages/login';
+import UserAuth from './Pages/UserAuth';
 function App() {
     return (
             <div className="App">
@@ -11,8 +10,7 @@ function App() {
                 <Routes>
                     <Route exact path="/" element={<Home />} />
                      <Route exact path="/MyProfile" element={<MyProfile />} />
-                     <Route exact path="/Register" element={<Register />} />
-                    <Route exact path="/login" element={<Login />} />
+                     <Route exact path="/UserAuth" element={<UserAuth />} />
                 </Routes>
             </div>
     );
