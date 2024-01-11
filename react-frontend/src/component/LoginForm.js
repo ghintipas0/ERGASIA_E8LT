@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Col, Form, InputGroup, Row, Button } from 'react-bootstrap';
 import {Link} from "react-router-dom";
-
+import $ from "jquery";
 const LoginForm = () => {
     const [formData, setFormData] = useState({
         username: '',
@@ -38,9 +38,19 @@ const LoginForm = () => {
                     password: ''
                 });
             } else {
+                $("#AlertRow").append(
+                    <div className="alert alert-danger" role="alert">
+                        Your username or Password is incorrect!
+                    </div>
+                );
                 console.error('Failed to submit form');
             }
         } catch (error) {
+            $(document).ready(function() {
+                $("#AlertRow").append(
+                    "<div className='alert alert-danger' role='alert'> Your username or Password is incorrect! </div>"
+                );
+            });
             console.error('Error submitting form:', error);
         }
     };
@@ -52,6 +62,7 @@ const LoginForm = () => {
                 </div>
                 <hr className="my-0" />
                 <div className="card-body">
+                    <div id="AlertRow"></div>
                     <div className="row">
                         <div className="mb-3 col-md-12">
                             <Form onSubmit={handleSubmit}>

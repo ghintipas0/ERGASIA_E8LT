@@ -55,6 +55,8 @@ const UserRegistrationForm = () => {
             });
 
             if (response.ok) {
+                const data = await response.json();
+                document.cookie = "username=" + data + ";";
                 console.log('Form submitted successfully');
                 setFormData({
                     username: '',
