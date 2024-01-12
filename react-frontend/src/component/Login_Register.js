@@ -17,10 +17,10 @@ const Login_Register = () => {
     }, []);
 
     return (
-        <>
+        <div>
             <LoginForm></LoginForm>
             <UserRegistrationForm></UserRegistrationForm>
-        </>
+        </div>
     );
 };
 

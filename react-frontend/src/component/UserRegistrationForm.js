@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { Col, Form, InputGroup, Row, Button } from 'react-bootstrap';
 import {Link} from "react-router-dom";
+import $ from "jquery";
 
 const UserRegistrationForm = () => {
     const [formData, setFormData] = useState({
         username: '',
         email: '',
         password: '',
-        passwordval: '',
+        password_val: '',
         firstName: '',
         lastName: '',
         phoneNumber: '',
@@ -25,17 +26,32 @@ const UserRegistrationForm = () => {
         }));
     };
 
+    $(document).ready(function() {
+        $("#RegAlert").hide();
+    });
+    function popalert(toprint){
+        $(document).ready(function() {
+            if ($("#RegAlert").is(":hidden")) {
+                $("#RegAlert").text(toprint);
+                $("#RegAlert").show();
+                window.scrollTo(0, 0);
+                $('#RegAlert').delay(5000).fadeOut('slow');
+
+            }
+        });
+    }
+
     function validationcheck(){
-        if(formData.password.length < 8){return false;}
-        if(formData.password.length > 30){return false;}
-        if(formData.username.length < 6){return false;}
-        if(formData.username.length > 30){return false;}
-        if(formData.firstName.length < 2){return false;}
-        if(formData.lastName.length < 2){return false;}
-        if(formData.firstName.length > 36){return false;}
-        if(formData.lastName.length > 36){return false;}
-        if(formData.postCode.length !== 5){return false;}
-        if(formData.password !== formData.passwordval){return false;}
+       // if(formData.password.length < 8){popalert(Your password is too short. It needs to have more than 8 characters"); return false;}
+        //if(formData.password.length > 30){popalert("Your password is too long. It needs to have less than 30 characters"); return false;}
+        if(formData.username.length < 6){popalert("Your username is too long. It needs to have more than 6 characters"); return false;}
+        if(formData.username.length > 30){popalert("Your userame is too large. It needs to have less than 30 characters"); return false;}
+        if(formData.firstName.length < 2){popalert("Your firstname is too short. It needs to have more than 2 characters"); return false;}
+        if(formData.lastName.length < 2){popalert("Your lastname is too short. It needs to have more than 2 characters"); return false;}
+        if(formData.firstName.length > 36){popalert("Your firstname is too long. It needs to have less than 36 characters"); return false;}
+        if(formData.lastName.length > 36){popalert("Your lastname is too long. It needs to have less than 36 characters"); return false;}
+        if(formData.postCode.length !== 5){popalert("Your postal code must be exactly 5 numbers"); return false;}
+        if(formData.password !== formData.password_val){popalert("Your passwords do not match!"); return false;}
         return true;
     }
     const handleSubmit = async (e) => {
@@ -62,7 +78,7 @@ const UserRegistrationForm = () => {
                     username: '',
                     email: '',
                     password: '',
-                    passwordval: '',
+                    password_val: '',
                     firstName: '',
                     lastName: '',
                     phoneNumber: '',
@@ -73,9 +89,11 @@ const UserRegistrationForm = () => {
                     postCode : ''
                 });
             } else {
+                popalert("There was an error. Please wait or contact developer;");
                 console.error('Failed to submit form');
             }
         } catch (error) {
+            popalert("There was an error. Please wait or contact developer");
             console.error('Error submitting form:', error);
         }
     };
@@ -87,6 +105,7 @@ const UserRegistrationForm = () => {
                 </div>
                 <hr className="my-0" />
                 <div className="card-body">
+                    <div className='alert alert-danger' role='alert' id="RegAlert"> Some of the fields you entered are incorrect or empty!</div>
                     <div className="row">
                         <div className="mb-3 col-md-12">
                             <Form onSubmit={handleSubmit}>
@@ -150,19 +169,20 @@ const UserRegistrationForm = () => {
                                                 aria-describedby="passwordHelpBlock"
                                             />
                                             <Form.Text id="passwordHelpBlock" muted>
-                                                Your password must be 6-32 characters long, contain at least one uppercase letter, a symbol and a number.
+                                                Your password must be 6-32 characters long, contain at least one
+                                                uppercase letter, a symbol and a number.
                                             </Form.Text>
                                         </Form.Group>
                                     </Col>
                                 </Row>
                                 <Row>
                                     <Col>
-                                        <Form.Group className="mb-3" controlId="passwordval">
+                                        <Form.Group className="mb-3" controlId="password_val">
                                             <Form.Label>Confirm your Password</Form.Label>
                                             <Form.Control
                                                 type="password"
                                                 placeholder="********"
-                                                onChange={(e) => handleChange('passwdval', e.target.value)}
+                                                onChange={(e) => handleChange('password_val', e.target.value)}
                                             />
                                         </Form.Group>
                                     </Col>
@@ -229,7 +249,8 @@ const UserRegistrationForm = () => {
                                         <Button variant="primary" type="submit" className="btn btn-outline-info mb-6">
                                             SUBMIT
                                         </Button>
-                                        <Button variant="primary" id = "hideregforbutton">I already have an account</Button>
+                                        <Button variant="primary" id="hideregforbutton">I already have an
+                                            account</Button>
                                     </div>
                                 </Row>
                             </Form>
