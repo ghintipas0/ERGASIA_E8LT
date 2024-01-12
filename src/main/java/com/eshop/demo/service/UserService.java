@@ -1,7 +1,9 @@
 package com.eshop.demo.service;
 
+import com.eshop.demo.DAO.RoleDAO;
 import com.eshop.demo.DAO.UserDAO;
 import com.eshop.demo.entity.Address;
+import com.eshop.demo.entity.Role;
 import com.eshop.demo.entity.User;
 import com.eshop.demo.exception.UserNotVerifiedException;
 import com.eshop.demo.exception.UsersAlreadyExists;
@@ -14,13 +16,15 @@ import java.util.Optional;
 
 @Service
 public class UserService {
-    private UserDAO userDAO;
+     private UserDAO userDAO;
+     private RoleDAO roleDAO;
      private EncryptionService encryptionService;
      private JWTService jwtService;
 
     @Autowired
-    public UserService(UserDAO userDAO,EncryptionService encryptionService,JWTService jwtService) {
+    public UserService(UserDAO userDAO,RoleDAO roleDAO,EncryptionService encryptionService,JWTService jwtService) {
         this.userDAO = userDAO;
+        this.roleDAO=roleDAO;
         this.encryptionService=encryptionService;
         this.jwtService=jwtService;
     }
@@ -46,7 +50,13 @@ public class UserService {
         address.setCountry(registrationBody.getCountry());
         address.setCity(registrationBody.getCity());
         user.addAddress(address);
-        /*user =*/ userDAO.save(user);
+        userDAO.save(user);
+        Role role = new Role();
+        role.setUsername(user.getUsername());
+        role.setRoleName("ROLE_USER");
+        roleDAO.save(role);
+        /*user =*/
+
         return user;
     }
 

@@ -23,8 +23,9 @@ public class WebSecurityConfig {
         http.csrf(csrf->csrf.disable());
         http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
         http.authorizeRequests()
-                .requestMatchers("/auth/login","/auth/register","/products/").permitAll()
-                .anyRequest().permitAll();
+                .requestMatchers("/auth/login","/auth/register","/ShopNow").permitAll()
+                .requestMatchers("/profile").hasRole("ADMIN")
+                .requestMatchers("/Products").hasRole("USER");
         return http.build();
 
 

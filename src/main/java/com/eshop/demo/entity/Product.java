@@ -46,6 +46,7 @@ public class Product {
         this.photo = photo;
     }
 
+
     public int getId() {
         return id;
     }

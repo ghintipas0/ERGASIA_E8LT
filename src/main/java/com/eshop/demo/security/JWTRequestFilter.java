@@ -1,5 +1,7 @@
 package com.eshop.demo.security;
+import com.eshop.demo.DAO.RoleDAO;
 import com.eshop.demo.DAO.UserDAO;
+import com.eshop.demo.entity.Role;
 import com.eshop.demo.entity.User;
 import com.eshop.demo.service.JWTService;
 import io.jsonwebtoken.JwtException;
@@ -21,11 +23,13 @@ import java.util.Optional;
 public class JWTRequestFilter extends OncePerRequestFilter{
     private JWTService jwtService;
     private UserDAO userDAO;
+    private RoleDAO roleDAO;
 
     @Autowired
-    public JWTRequestFilter(JWTService jwtService,UserDAO userDAO) {
+    public JWTRequestFilter(JWTService jwtService,UserDAO userDAO,RoleDAO roleDAO) {
         this.jwtService = jwtService;
         this.userDAO=userDAO;
+        this.roleDAO=roleDAO;
     }
 
     @Override
@@ -38,10 +42,14 @@ public class JWTRequestFilter extends OncePerRequestFilter{
                 Optional<User> opUser = userDAO.findByUsernameIgnoreCase(username);
                 if (opUser.isPresent()) {
                     User user = opUser.get();
-                    //user.setAddresses(null);
-                    UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(user, null, new ArrayList<>());
-                    authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
-                    SecurityContextHolder.getContext().setAuthentication(authenticationToken);
+                    Optional<Role> roles = roleDAO.findByUsernameIgnoreCase(user.getUsername());
+                    if(roles.isPresent()) {
+                        Role role = roles.get();
+                        //user.setAddresses(null);
+                        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(user, null, new ArrayList<>(role.getAuthorities()));
+                        authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+                        SecurityContextHolder.getContext().setAuthentication(authenticationToken);
+                    }
                 }
             }catch (JwtException ex){
 
