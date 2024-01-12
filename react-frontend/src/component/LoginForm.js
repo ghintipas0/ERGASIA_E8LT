@@ -17,11 +17,21 @@ const LoginForm = () => {
     $(document).ready(function() {
         $("#LoginAlert").hide();
     });
-
+    function alert(to_display){
+        var obj = $("#LoginAlert");
+        obj.text(to_display);
+        obj.show();
+        window.scrollTo(0, 0);
+        obj.delay(5000).fadeOut('slow');
+    }
+    function validation(){
+        if(formData.username.length < 6){alert("Your Username and/or Password are/is incorrect!"); return false;}
+        if(formData.password.length < 8){alert("Your Username and/or Password are/is incorrect!"); return false;}
+        return true;
+    }
     const handleSubmit = async (e) => {
         e.preventDefault();
-
-        // Assuming you have an API endpoint to handle the form data.
+        if(!validation()){return;}
         const apiUrl = 'http://localhost:8080/auth/login';
 
         try {
@@ -40,20 +50,11 @@ const LoginForm = () => {
                     password: ''
                 });
             } else {
-                $("#AlertRow").append(
-                    <div className="alert alert-danger" role="alert">
-                        Your username or Password is incorrect!
-                    </div>
-                );
+                alert("Your Username and/or Password are/is incorrect!");
                 console.error('Failed to submit form');
             }
         } catch (error) {
-            $(document).ready(function() {
-                if ($("#LoginAlert").is(":hidden")) {
-                    $("#LoginAlert").show();
-                    $('#LoginAlert').delay(5000).fadeOut('slow');
-                }
-            });
+            alert("Your Username and/or Password are/is incorrect!");
             console.error('Error submitting form:', error);
         }
     };
