@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { Col, Form, InputGroup, Row, Button } from 'react-bootstrap';
-import {Link} from "react-router-dom";
+import { Col, Form, Row, Button } from 'react-bootstrap';
 import $ from "jquery";
 const LoginForm = () => {
     const [formData, setFormData] = useState({
@@ -18,7 +17,7 @@ const LoginForm = () => {
         $("#LoginAlert").hide();
     });
     function alert(to_display){
-        var obj = $("#LoginAlert");
+        let obj = $("#LoginAlert");
         obj.text(to_display);
         obj.show();
         window.scrollTo(0, 0);
@@ -43,9 +42,9 @@ const LoginForm = () => {
                 body: JSON.stringify(formData),
             });
 
+
             if (response.ok) {
                 console.log('Form submitted successfully');
-
                 setFormData({
                     username: '',
                     password: ''
@@ -73,7 +72,7 @@ const LoginForm = () => {
                             <Form onSubmit={handleSubmit}>
                                 <Row>
                                     <Col>
-                                        <Form.Group className="mb-6" controlId="username">
+                                        <Form.Group className="mb-6" controlId="username_login">
                                             <Form.Label>Username</Form.Label>
                                             <Form.Control
                                                 type="text"
@@ -85,7 +84,7 @@ const LoginForm = () => {
                                 </Row>
                                 <Row>
                                     <Col>
-                                        <Form.Group className="mb-3" controlId="password">
+                                        <Form.Group className="mb-3" controlId="password_login">
                                             <Form.Label>Password</Form.Label>
                                             <Form.Control
                                                 type="password"
