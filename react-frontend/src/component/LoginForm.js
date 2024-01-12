@@ -45,6 +45,7 @@ const LoginForm = () => {
 
             if (response.ok) {
                 console.log('Form submitted successfully');
+
                 setFormData({
                     username: '',
                     password: ''
