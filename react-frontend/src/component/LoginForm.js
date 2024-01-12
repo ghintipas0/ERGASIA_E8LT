@@ -14,7 +14,9 @@ const LoginForm = () => {
             [field]: value,
         }));
     };
-
+    $(document).ready(function() {
+        $("#LoginAlert").hide();
+    });
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -47,9 +49,10 @@ const LoginForm = () => {
             }
         } catch (error) {
             $(document).ready(function() {
-                $("#AlertRow").append(
-                   // "<div className='alert alert-danger' role='alert'> Your username or Password is incorrect! </div>"
-                );
+                if ($("#LoginAlert").is(":hidden")) {
+                    $("#LoginAlert").show();
+                    $('#LoginAlert').delay(5000).fadeOut('slow');
+                }
             });
             console.error('Error submitting form:', error);
         }
@@ -62,7 +65,7 @@ const LoginForm = () => {
                 </div>
                 <hr className="my-0" />
                 <div className="card-body">
-                    <div id="AlertRow"></div>
+                    <div className='alert alert-danger' role='alert' id="LoginAlert" > Your username or Password is incorrect!</div>
                     <div className="row">
                         <div className="mb-3 col-md-12">
                             <Form onSubmit={handleSubmit}>
