@@ -36,14 +36,13 @@ const UserRegistrationForm = () => {
                 $("#RegAlert").show();
                 window.scrollTo(0, 0);
                 $('#RegAlert').delay(5000).fadeOut('slow');
-
             }
         });
     }
 
     function validationcheck(){
-       // if(formData.password.length < 8){popalert(Your password is too short. It needs to have more than 8 characters"); return false;}
-        //if(formData.password.length > 30){popalert("Your password is too long. It needs to have less than 30 characters"); return false;}
+        if(formData.password.length < 8){popalert("Your password is too short. It needs to have more than 8 characters"); return false;}
+        if(formData.password.length > 30){popalert("Your password is too long. It needs to have less than 30 characters"); return false;}
         if(formData.username.length < 6){popalert("Your username is too long. It needs to have more than 6 characters"); return false;}
         if(formData.username.length > 30){popalert("Your userame is too large. It needs to have less than 30 characters"); return false;}
         if(formData.firstName.length < 2){popalert("Your firstname is too short. It needs to have more than 2 characters"); return false;}
@@ -56,7 +55,6 @@ const UserRegistrationForm = () => {
     }
     const handleSubmit = async (e) => {
         e.preventDefault();
-
         // Assuming you have an API endpoint to handle the form data.
         if (!validationcheck()){return;}
         const apiUrl = 'http://localhost:8080/auth/register';
@@ -73,6 +71,8 @@ const UserRegistrationForm = () => {
             if (response.ok) {
                 const data = await response.json();
                 document.cookie = "username=" + data + ";";
+                $("#registerform").hide();
+                $("#loginform").show();
                 console.log('Form submitted successfully');
                 setFormData({
                     username: '',
