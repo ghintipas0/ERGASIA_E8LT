@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import { Col, Form, Row, Button } from 'react-bootstrap';
+import  {useNavigate} from 'react-router-dom'
 import $ from "jquery";
+
 const LoginForm = () => {
     const [formData, setFormData] = useState({
         username: '',
         password: ''
     });
+    const navigate = useNavigate();
 
     const handleChange = (field, value) => {
         setFormData((prevFormData) => ({
@@ -33,6 +36,7 @@ const LoginForm = () => {
         if(!validation()){return;}
         const apiUrl = 'http://localhost:8080/auth/login';
 
+
         try {
             const response = await fetch(apiUrl, {
                 method: 'POST',
@@ -45,8 +49,9 @@ const LoginForm = () => {
 
             if (response.ok) {
 
-                //let data = await response.json();
-              //  document.cookie = "username=" + data + ";";
+                let token = await response.text();
+                document.cookie = "token=" + token + ";";
+                navigate('/');
                 setFormData({
                     username: '',
                     password: ''
