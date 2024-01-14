@@ -44,7 +44,9 @@ const LoginForm = () => {
 
 
             if (response.ok) {
-                console.log('Form submitted successfully');
+
+                //let data = await response.json();
+              //  document.cookie = "username=" + data + ";";
                 setFormData({
                     username: '',
                     password: ''
