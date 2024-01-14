@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Col, Form, InputGroup, Row, Button } from 'react-bootstrap';
-import {Link} from "react-router-dom";
 import $ from "jquery";
 
 const UserRegistrationForm = () => {
