@@ -32,8 +32,8 @@
 
 
 .container{
-      margin-top: 0px;
-      margin-left:525px;
+      margin-top: auto;
+      margin-left: auto;
       display: flex;
       align-items: center;
       height: 10vh;

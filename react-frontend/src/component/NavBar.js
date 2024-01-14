@@ -14,50 +14,31 @@ const NavBar = () => {
         <nav className="navbar navbar-dark bg-dark">
             <div className="nav nav-pills nav-justified">
                 <Row>
-                    <Col>
+                    <div className="col col-md-3">
                         <Link to="/" className="text-light nav-item nav-link text-decoration-none"> Home </Link>
-                    </Col>
-                    <Col>
-                        <Link to="/Register" className="text-light nav-item nav-link text-decoration-none">Profile</Link>
-                        {isPopupOpen && (
-                            <div className="popup">
-                                Already Registered?
-                                <button> Login </button>
-                                New User?
-                                <button> Register </button>
-                            </div>
-                        )}
-                    </Col>
-                    <Col>
+                    </div>
+                    <div className="col col-md-3">
                         <Link to="/MyProfile" className="text-light nav-item nav-link text-decoration-none">Orders</Link>
-                    </Col>
-                    <Col>
-                        <div className="search-container">
+                    </div>
+                    <div className="col col-md-3">
+                        <div>
                             <input type="text" placeholder="Ψάχνεις για..." className="search-input" />
                         </div>
-                    </Col>
-                    <Col>
+                    </div>
+                    <div className="col col-md-3 text-right">
                         <div className="container">
                             <button className="rotate-on-hover">
                                 <img src="Media/wishlist.png" alt="Wishlist Icon" />
                             </button>
-                            <button className="rotate-on-hover" onClick={togglePopup}>
-                                <img src="Media/profile.png" alt="Profile Icon" />
+                            <button className="rotate-on-hover">
+                                <Link to="/UserAuth" className="text-dark text-decoration-none"> <img src="Media/profile.png" alt="Profile Icon" /></Link>
                             </button>
                             <button className="rotate-on-hover">
                                 <img src="Media/Cart.png" alt="Cart Icon" />
                             </button>
                         </div>
-                    </Col>
+                    </div>
                 </Row>
-                {isPopupOpen && (
-<div className="popup">
-    <p>Already Registered?</p>
-    <button className="login-button"> Login </button>
-    <p>New User?</p>
-    <button className="register-button"> Register </button>
-</div>
-                )}
             </div>
         </nav>
     );
