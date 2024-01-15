@@ -51,9 +51,6 @@ function Home() {
     return (
         <div>
 
-
-
-
             <div className="button-container">
                 <button className="button">
                     <img src="Media/laptop.png" alt="Image" />
@@ -69,7 +66,7 @@ function Home() {
                 </button>
             </div>
 
-            <SlideshowComponent />
+<SlideshowComponent />
 
             <div className="slideshow-container-second">
                 <div className="mySlides-second">
@@ -84,8 +81,8 @@ function Home() {
                     <div style={{ width: "800px", height: "300px", backgroundColor: "#f7f7f7", margin: "auto", borderRadius: "15px" }}></div>
                 </div>
 
-                <div className="text-second">Top Offers</div>
-            </div>
+
+         </div>
 
         </div>
 

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Col, Row } from 'react-bootstrap';
 import './NavBar.css';
 
+
 const NavBar = () => {
     const [isPopupOpen, setPopupOpen] = useState(false);
 
@@ -16,12 +17,10 @@ const NavBar = () => {
                 <Row>
                     <div className="col col-md-3">
                         <Link to="/" className="text-light nav-item nav-link text-decoration-none"> Home </Link>
-                    </div>
-                    <div className="col col-md-3">
                         <Link to="/MyProfile" className="text-light nav-item nav-link text-decoration-none">Orders</Link>
                     </div>
                     <div className="col col-md-3">
-                        <div>
+                        <div className="search-container">
                             <input type="text" placeholder="Ψάχνεις για..." className="search-input" />
                         </div>
                     </div>
@@ -30,8 +29,8 @@ const NavBar = () => {
                             <button className="rotate-on-hover">
                                 <img src="Media/wishlist.png" alt="Wishlist Icon" />
                             </button>
-                            <button className="rotate-on-hover">
-                                <Link to="/UserAuth" className="text-dark text-decoration-none"> <img src="Media/profile.png" alt="Profile Icon" /></Link>
+                            <button className="rotate-on-hover" onClick={togglePopup}>
+                                <img src="Media/profile.png" alt="Profile Icon" />
                             </button>
                             <button className="rotate-on-hover">
                                 <img src="Media/Cart.png" alt="Cart Icon" />
@@ -39,6 +38,14 @@ const NavBar = () => {
                         </div>
                     </div>
                 </Row>
+                               {isPopupOpen && (
+                <div className="popup">
+                    <p>Already Registered?</p>
+                    <button className="login-button"> Login </button>
+                    <p>New User?</p>
+                    <button className="register-button"> Register </button>
+                </div>
+                                )}
             </div>
         </nav>
     );
