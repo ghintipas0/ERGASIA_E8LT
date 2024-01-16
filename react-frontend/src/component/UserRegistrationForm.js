@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { Col, Form, InputGroup, Row, Button } from 'react-bootstrap';
 import $ from "jquery";
+import {useNavigate} from "react-router-dom";
+
+
 
 const UserRegistrationForm = () => {
     const [formData, setFormData] = useState({
@@ -17,7 +20,7 @@ const UserRegistrationForm = () => {
         addressLine : '',
         postCode : ''
     });
-
+    const navigate = useNavigate();
     const handleChange = (field, value) => {
         setFormData((prevFormData) => ({
             ...prevFormData,
@@ -68,8 +71,7 @@ const UserRegistrationForm = () => {
             });
 
             if (response.ok) {
-                $("#registerform").hide();
-                $("#loginform").show();
+                navigate('/Login');
                 setFormData({
                     username: '',
                     email: '',
@@ -93,6 +95,10 @@ const UserRegistrationForm = () => {
             console.error('Error submitting form:', error);
         }
     };
+
+    function redirect_to_Register(){
+        navigate('/Register');
+    }
     return (
         <div id="registerform">
             <div className="card mb-4">
@@ -245,7 +251,7 @@ const UserRegistrationForm = () => {
                                         <Button variant="primary" type="submit" className="btn btn-outline-info mb-6">
                                             SUBMIT
                                         </Button>
-                                        <Button variant="primary" id="hideregforbutton">I already have an
+                                        <Button variant="primary" onClick={redirect_to_Register}>I already have an
                                             account</Button>
                                     </div>
                                 </Row>

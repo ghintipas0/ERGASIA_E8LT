@@ -41,9 +41,9 @@ const NavBar = () => {
                                {isPopupOpen && (
                 <div className="popup">
                     <p>Already Registered?</p>
-                    <button className="login-button"> Login </button>
+                    <button className="login-button"> <Link to="/Login" className="text-light nav-item nav-link text-decoration-none">Login</Link> </button>
                     <p>New User?</p>
-                    <button className="register-button"> Register </button>
+                    <button className="register-button"> <Link to="/Register" className="text-light nav-item nav-link text-decoration-none">Register</Link> </button>
                 </div>
                                 )}
             </div>

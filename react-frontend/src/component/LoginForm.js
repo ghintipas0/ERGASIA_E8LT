@@ -65,6 +65,10 @@ const LoginForm = () => {
             console.error('Error submitting form:', error);
         }
     };
+
+    function redirect_to_Login(){
+        navigate('/Login');
+    }
     return (
         <div id="loginform">
             <div className="card mb-4">
@@ -106,7 +110,7 @@ const LoginForm = () => {
                                         <Button variant="primary" type="submit" className="btn btn-outline-info mb-6">
                                             SUBMIT
                                         </Button>
-                                        <Button variant="primary" id = "hideLoginFormBtn">I dont have an account</Button>
+                                        <Button variant="primary" onClick={redirect_to_Login}>I dont have an account</Button>
                                     </div>
                                 </Row>
                             </Form>
