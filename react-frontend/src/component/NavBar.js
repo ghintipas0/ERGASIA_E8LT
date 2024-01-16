@@ -57,7 +57,7 @@ const NavBar = () => {
                 </Row>
                 <div id="isshow">
                 {isPopupOpen &&
-                <div class = "popup" id="regpopup">
+                <div className = "popup" id="regpopup">
                      <LogRegPopup />
                 </div>
                 }
