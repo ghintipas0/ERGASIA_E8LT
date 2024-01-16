@@ -68,7 +68,7 @@ function Home() {
 
 <SlideshowComponent />
 
-            <div className="slideshow-container-second">
+            <div className="slideshow-container">
                 <div className="mySlides-second">
                     <div style={{ width: "800px", height: "300px", backgroundColor: "#f7f7f7", margin: "auto", borderRadius: "15px" }}></div>
                 </div>
@@ -80,9 +80,22 @@ function Home() {
                 <div className="mySlides-second">
                     <div style={{ width: "800px", height: "300px", backgroundColor: "#f7f7f7", margin: "auto", borderRadius: "15px" }}></div>
                 </div>
+            </div>
 
 
-         </div>
+                        <div className="button-container-second">
+                            <button className="button2">
+                                <img src="Media/iphone15.png" alt="Image" />
+                                <p>Iphone 15 Pro Max</p>
+                                <p>1.480,92 €</p>
+                            </button>
+                            <button className="button2">
+                                <img src="Media/iphone14.png" alt="Image" />
+                                <p>Iphone 14 Pro Max</p>
+                                <p>1.269,94 €</p>
+                            </button>
+                        </div>
+
 
         </div>
 
