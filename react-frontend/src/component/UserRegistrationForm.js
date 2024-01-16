@@ -29,6 +29,9 @@ const UserRegistrationForm = () => {
     };
 
     $(document).ready(function() {
+        if ( document.cookie.indexOf('token=') !== -1){
+            navigate('/');
+        }
         $("#RegAlert").hide();
     });
     function popalert(toprint){

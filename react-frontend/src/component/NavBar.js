@@ -1,15 +1,31 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { Col, Row } from 'react-bootstrap';
+import LogRegPopup from './LogRegPopup';
 import './NavBar.css';
-
+import $ from 'jquery';
 
 const NavBar = () => {
+    const navigate = useNavigate();
     const [isPopupOpen, setPopupOpen] = useState(false);
+    useEffect(() => {
+        if(document.cookie.indexOf('token=') !== -1){
+            $('#isshow').hide();
+        }
+    }, []);
 
-    const togglePopup = () => {
-        setPopupOpen(!isPopupOpen);
-    };
+    function togglepopup(){
+        if(document.cookie.indexOf('token=') !== -1) {
+                $('#isshow').hide();
+        }else{
+                $('#isshow').show();
+        }
+        if(!$('#isshow').length){
+            navigate('/MyProfile');
+        }else {
+            setPopupOpen(!isPopupOpen);
+        }
+    }
 
     return (
         <nav className="navbar navbar-dark bg-dark">
@@ -24,12 +40,13 @@ const NavBar = () => {
                             <input type="text" placeholder="Ψάχνεις για..." className="search-input" />
                         </div>
                     </div>
+
                     <div className="col col-md-3 text-right">
                         <div className="container">
                             <button className="rotate-on-hover">
                                 <img src="Media/wishlist.png" alt="Wishlist Icon" />
                             </button>
-                            <button className="rotate-on-hover" onClick={togglePopup}>
+                            <button className="rotate-on-hover" onClick={togglepopup}>
                                 <img src="Media/profile.png" alt="Profile Icon" />
                             </button>
                             <button className="rotate-on-hover">
@@ -38,14 +55,13 @@ const NavBar = () => {
                         </div>
                     </div>
                 </Row>
-                               {isPopupOpen && (
-                <div className="popup">
-                    <p>Already Registered?</p>
-                    <button className="login-button"> <Link to="/Login" className="text-light nav-item nav-link text-decoration-none">Login</Link> </button>
-                    <p>New User?</p>
-                    <button className="register-button"> <Link to="/Register" className="text-light nav-item nav-link text-decoration-none">Register</Link> </button>
+                <div id="isshow">
+                {isPopupOpen &&
+                <div class = "popup" id="regpopup">
+                     <LogRegPopup />
                 </div>
-                                )}
+                }
+                </div>
             </div>
         </nav>
     );

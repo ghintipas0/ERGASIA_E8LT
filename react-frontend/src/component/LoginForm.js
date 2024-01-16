@@ -17,6 +17,9 @@ const LoginForm = () => {
         }));
     };
     $(document).ready(function() {
+        if ( document.cookie.indexOf('token=') !== -1){
+            navigate('/');
+        }
         $("#LoginAlert").hide();
     });
     function alert(to_display){
