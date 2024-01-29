@@ -34,5 +34,5 @@ public class AuthenticationController {
     public ResponseEntity<?> login(@RequestBody LoginBody loginBody)  throws UserNotVerifiedException {
         String message = userService.loginUser(loginBody);
         return new ResponseEntity<>(message, HttpStatus.OK);
-    }
+    }   
 }
