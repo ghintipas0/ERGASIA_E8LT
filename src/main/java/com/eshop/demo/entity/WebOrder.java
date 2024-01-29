@@ -22,7 +22,7 @@ public class WebOrder {
     private List<WebOrderQuantities> quantities = new ArrayList<>();
     @OneToOne
     @JoinColumn(name = "payment_id")
-    private Payment payment_id;
+    private Payment payment;
 
     public WebOrder() {
     }
@@ -59,12 +59,12 @@ public class WebOrder {
         this.quantities = quantities;
     }
 
-    public Payment getPayment_id() {
-        return payment_id;
+    public Payment getPaymentId() {
+        return payment;
     }
 
-    public void setPayment_id(Payment payment_id) {
-        this.payment_id = payment_id;
+    public void setPaymentId(Payment payment) {
+        this.payment = payment;
     }
 
     @Override
@@ -74,7 +74,7 @@ public class WebOrder {
                 ", user=" + user +
                 ", address=" + address +
                 ", quantities=" + quantities +
-                ", payment_id=" + payment_id +
+                ", payment=" + payment +
                 '}';
     }
 }

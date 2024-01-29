@@ -21,7 +21,7 @@ public class Product {
     @JoinColumn(name = "category_id")
     private Category category;
     @Column(name = "brand_name")
-    private String brand_name;
+    private String brandName;
     @Column(name = "photo")
     private String photo;
     @JsonIgnore
@@ -87,12 +87,12 @@ public class Product {
         this.category = category;
     }
 
-    public String getBrand_name() {
-        return brand_name;
+    public String getBrandName() {
+        return brandName;
     }
 
-    public void setBrand_name(String brand_name) {
-        this.brand_name = brand_name;
+    public void setBrand_name(String brandName) {
+        this.brandName = brandName;
     }
 
     public String getPhoto() {
@@ -143,7 +143,7 @@ public class Product {
                 ", longDesc='" + longDesc + '\'' +
                 ", price=" + price +
                 ", category=" + category +
-                ", brand_name='" + brand_name + '\'' +
+                ", brandName='" + brandName + '\'' +
                 ", photo='" + photo + '\'' +
                 ", inventory=" + inventory +
                 ", phoneDetails=" + phoneDetails +

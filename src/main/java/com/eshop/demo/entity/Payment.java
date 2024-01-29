@@ -10,11 +10,11 @@ public class Payment {
     @Column(name = "id")
     private int id;
     @Column(name = "card_number")
-    private String card_number;
+    private String cardNumber;
     @Column(name = "holder_name")
-    private String holder_name;
+    private String holderName;
     @Column(name = "expire_date")
-    private String expire_date;
+    private String expireDate;
 
     public Payment() {
     }
@@ -27,37 +27,37 @@ public class Payment {
         this.id = id;
     }
 
-    public String getCard_number() {
-        return card_number;
+    public String getCardNumber() {
+        return cardNumber;
     }
 
-    public void setCard_number(String card_number) {
-        this.card_number = card_number;
+    public void setCardNumber(String cardNumber) {
+        this.cardNumber = cardNumber;
     }
 
-    public String getHolder_name() {
-        return holder_name;
+    public String getHolderName() {
+        return holderName;
     }
 
-    public void setHolder_name(String holder_name) {
-        this.holder_name = holder_name;
+    public void setHolderName(String holderName) {
+        this.holderName = holderName;
     }
 
-    public String getExpire_date() {
-        return expire_date;
+    public String getExpireDate() {
+        return expireDate;
     }
 
-    public void setExpire_date(String expire_date) {
-        this.expire_date = expire_date;
+    public void setExpire_date(String expireDate) {
+        this.expireDate = expireDate;
     }
 
     @Override
     public String toString() {
         return "Payment{" +
                 "id=" + id +
-                ", card_number='" + card_number + '\'' +
-                ", holder_name='" + holder_name + '\'' +
-                ", expire_date='" + expire_date + '\'' +
+                ", cardNumber='" + cardNumber + '\'' +
+                ", holderName='" + holderName + '\'' +
+                ", expireDate='" + expireDate + '\'' +
                 '}';
     }
 }
