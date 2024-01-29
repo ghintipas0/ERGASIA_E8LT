@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import { Col, Form, Row, Button } from 'react-bootstrap';
+import  {useNavigate} from 'react-router-dom'
 import $ from "jquery";
+
 const LoginForm = () => {
     const [formData, setFormData] = useState({
         username: '',
         password: ''
     });
+    const navigate = useNavigate();
 
     const handleChange = (field, value) => {
         setFormData((prevFormData) => ({
@@ -14,6 +17,9 @@ const LoginForm = () => {
         }));
     };
     $(document).ready(function() {
+        if ( document.cookie.indexOf('token=') !== -1){
+            navigate('/');
+        }
         $("#LoginAlert").hide();
     });
     function alert(to_display){
@@ -33,6 +39,7 @@ const LoginForm = () => {
         if(!validation()){return;}
         const apiUrl = 'http://localhost:8080/auth/login';
 
+
         try {
             const response = await fetch(apiUrl, {
                 method: 'POST',
@@ -44,7 +51,10 @@ const LoginForm = () => {
 
 
             if (response.ok) {
-                console.log('Form submitted successfully');
+
+                let token = await response.text();
+                document.cookie = "token=" + token + ";";
+                navigate('/');
                 setFormData({
                     username: '',
                     password: ''
@@ -58,6 +68,10 @@ const LoginForm = () => {
             console.error('Error submitting form:', error);
         }
     };
+
+    function redirect_to_Login(){
+        navigate('/Login');
+    }
     return (
         <div id="loginform">
             <div className="card mb-4">
@@ -99,7 +113,7 @@ const LoginForm = () => {
                                         <Button variant="primary" type="submit" className="btn btn-outline-info mb-6">
                                             SUBMIT
                                         </Button>
-                                        <Button variant="primary" id = "hideLoginFormBtn">I dont have an account</Button>
+                                        <Button variant="primary" onClick={redirect_to_Login}>I dont have an account</Button>
                                     </div>
                                 </Row>
                             </Form>

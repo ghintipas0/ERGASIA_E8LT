@@ -1,52 +1,3 @@
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  height:auto;
-  overflow: hidden;
-  background-color: #333;
-  width: 100%;
-  display: flex; /* Προσθήκη display: flex; */
-  justify-content: left; /* Προσθήκη justify-content: center; */
-}
-
-li {
-    float: left;
-}
-
-li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
-
-li a:hover {
-    background-color: #111;
-}
-
-    /* Προσθήκη υποκατηγοριών */
-    li:hover .subcategories {
-      display: block;
-    }
-
-    /* Κρυφή αρχικά των υποκατηγοριών */
-    .subcategories {
-      display: none;
-      position: absolute;
-      background-color: #333;
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-    }
-
-    .subcategory {
-      padding: 12px;
-      text-align: center;
-      color: white;
-      text-decoration: none;
-      display: block;
-    }
-
 
 
   .search-container {
@@ -62,11 +13,6 @@ li a:hover {
     flex-direction: column;
   }
 
-  .search-icon {
-    width: 30px; /* Adjust the size as needed */
-    height: 30px; /* Adjust the size as needed */
-    margin-right: 10px;
-  }
 
   .search-input {
     padding-left: 10px; /* Προσαρμόζει το πλάτος του πεδίου εισαγωγής για να χωρέσει το εικονίδιο */
@@ -101,6 +47,51 @@ li a:hover {
     margin: 140px;
     flex-direction: row; /* Αλλαγή του κατευθυντήριου άξονα σε οριζόντιο */
   }
+
+  .button-container-second{
+    display: flex;
+    align-items: center; /* Κεντράρει τα αντικείμενα κατά κατακόρυφο άξονα */
+    justify-content: center; /* Κεντράρει τα αντικείμενα κατά οριζόντιο άξονα */
+    font-family: Arial, sans-serif;
+    margin: 200px;
+    flex-direction: row; /* Αλλαγή του κατευθυντήριου άξονα σε οριζόντιο */
+  }
+
+  .button2 {
+      width: 350px;
+      height: 450px;
+      margin-right: 10px; /* Adjust the margin as needed */
+      background-color: #fff; /* Set background color to white */
+      color: #000; /* Set text color to black */
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: box-shadow 0.3s; /* Add transition for smooth shadow effect */
+      flex-direction: column;
+      margin-top: 50px;
+  }
+
+  .button2 img {
+      max-width: 100%; /* Ensure the image doesn't exceed the button size */
+
+  }
+
+  .button2:hover {
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* Add shadow on hover */
+  }
+
+.button2 p:nth-child(2) {
+    font-size: 20px; /* Μέγεθος για το δεύτερο <p> (τιμή) */
+    font-weight: bold;
+    color:black;
+}
+
+.button2 p:nth-child(3) {
+    font-size: 25px; /* Μέγεθος για το τρίτο <p> (τιμή) */
+    color: red;
+    font-weight: bold;
+}
+
 
 
 .button {
@@ -249,9 +240,7 @@ li a:hover {
   transform: translateX(-50%);
 }
 
-.rotate-on-hover:hover .tooltip {
-  display: block;
-}
+
 
 
 @charset "UTF-8";

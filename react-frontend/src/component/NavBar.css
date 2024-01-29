@@ -1,0 +1,132 @@
+.search-container {
+      margin-top: -7px;
+      margin-left:20px;
+      display: flex;
+      align-items: center;
+      height: 10vh;
+}
+
+.search-input {
+  width: 450px;
+}
+.col-md-3 {
+    display: flex;
+    align-items: center;
+
+}
+
+
+.col-md-3 .nav-item.nav-link.text-decoration-none {
+  width: 2px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+/* Το παρακάτω κανόνας εξασφαλίζει ότι το τελευταίο στοιχείο δεν θα έχει δεξιά απόσταση */
+.col-md-3 .nav-item.nav-link.text-decoration-none:last-child {
+    margin-right: 0;
+}
+
+
+
+
+
+/* Στυλ όταν το ποντίκι περνά πάνω από τα στοιχεία "Home" και "Orders" */
+.nav-item.nav-link.text-decoration-none:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Τρανσπαρέντ χρώμα φόντου κατά το hover */
+}
+
+/* Προσαρμογή στυλ για τα εικονίδια Wishlist, Profile και Cart */
+.rotate-on-hover {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+
+.container{
+      display: flex;
+      align-items: center;
+      height: 10vh;
+}
+
+.popup {
+    display: block;
+    position: absolute;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 1;
+    top: 85%; /* Απόσταση από το "Profile" icon */
+    left: 89%;
+    transform: translateX(-50%);
+     max-width: 300px; /* Μέγιστο πλάτος του popup */
+     width: 100%;
+     height: 245%;
+}
+
+.popup p {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+.popup .login-button {
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+    padding: 8px;
+    background-color: #4fe76e; /* Χρώμα για το Login button */
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+
+
+.popup .login-button:hover {
+    background-color: #49d065;
+}
+
+.popup .register-button {
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+    padding: 8px;
+    background-color: white; /* Χρώμα για το Register button */
+    border: 1px solid black;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+
+.popup .register-button:hover {
+    background-color: #f1f1f1;
+}
+
+.popup .login-button a {
+    color: white; /* Χρώμα για το κείμενο του "Login" button */
+}
+
+.popup .register-button a {
+    color: black; /* Χρώμα για το κείμενο του "Register" button */
+}
+
+
+.container{
+      margin-top: 0px;
+      margin-left: 550px;
+      height: 10vh;
+}
+
+.search-container{
+      display: flex;
+      align-items: center;
+      height: 11vh;
+      margin-left: 100px;
+}
