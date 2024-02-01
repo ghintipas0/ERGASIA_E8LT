@@ -14,7 +14,7 @@ public class WebOrderQuantities {
     private WebOrder webOrder;
     @ManyToOne //Multiple orders can have the same product
     @JoinColumn(name = "product_id")
-    private Product product_id;
+    private Product product;
     @Column(name = "quantity")
     private int quantity;
 
@@ -37,12 +37,12 @@ public class WebOrderQuantities {
         this.webOrder = webOrder;
     }
 
-    public Product getProduct_id() {
-        return product_id;
+    public Product getProductId() {
+        return product;
     }
 
-    public void setProduct_id(Product product_id) {
-        this.product_id = product_id;
+    public void setProduct_id(Product productId) {
+        this.product = productId;
     }
 
     public int getQuantity() {
@@ -58,7 +58,7 @@ public class WebOrderQuantities {
         return "WebOrderQuantities{" +
                 "id=" + id +
                 ", webOrder=" + webOrder +
-                ", product_id=" + product_id +
+                ", product=" + product +
                 ", quantity=" + quantity +
                 '}';
     }

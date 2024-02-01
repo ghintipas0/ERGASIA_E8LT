@@ -24,8 +24,8 @@ public class WebSecurityConfig {
         http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
         http.authorizeRequests()
                 .requestMatchers("/auth/login","/auth/register","/ShopNow").permitAll()
-                .requestMatchers("/profile").hasRole("ADMIN")
-                .requestMatchers("/Products").hasRole("USER");
+                .requestMatchers("/profile").authenticated()
+                .requestMatchers("/Products").hasRole("ADMIN");
         return http.build();
 
 
