@@ -32,7 +32,7 @@ const NavBar = () => {
         <nav className="navbar navbar-dark bg-dark">
             <div className="nav nav-pills nav-justified">
                 <Row>
-                    <div className="col col-md-3">
+                    <div className="col col-md-4">
                         <Link to="/" className="text-light nav-item nav-link text-decoration-none"> Home </Link>
                         <Link to="/MyProfile" className="text-light nav-item nav-link text-decoration-none">Orders</Link>
                         <Dropdown>
@@ -48,13 +48,13 @@ const NavBar = () => {
                         </Dropdown>
 
                     </div>
-                    <div className="col col-md-3">
+                    <div className="col col-md-4">
                         <div className="search-container">
                             <input type="text" placeholder="Ψάχνεις για..." className="search-input" />
                         </div>
                     </div>
 
-                    <div className="col col-md-3 text-right">
+                    <div className="col col-md-4 text-right">
                         <div className="container">
                             <button className="rotate-on-hover">
                                 <img src="Media/wishlist.png" alt="Wishlist Icon" />
