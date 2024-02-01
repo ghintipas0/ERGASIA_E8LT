@@ -15,6 +15,9 @@
 
 }
 
+.navbar {
+    height:8em;
+}
 
 .col-md-4 .nav-item.nav-link.text-decoration-none {
   display: flex;
