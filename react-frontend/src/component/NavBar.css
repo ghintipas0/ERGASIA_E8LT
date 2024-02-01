@@ -9,21 +9,24 @@
 .search-input {
   width: 450px;
 }
-.col-md-3 {
+.col-md-4 {
     display: flex;
     align-items: center;
 
 }
 
+.navbar {
+    height:8em;
+}
 
-.col-md-3 .nav-item.nav-link.text-decoration-none {
+.col-md-4 .nav-item.nav-link.text-decoration-none {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 /* Το παρακάτω κανόνας εξασφαλίζει ότι το τελευταίο στοιχείο δεν θα έχει δεξιά απόσταση */
-.col-md-3 .nav-item.nav-link.text-decoration-none:last-child {
+.col-md-4 .nav-item.nav-link.text-decoration-none:last-child {
     margin-right: 0;
 }
 
