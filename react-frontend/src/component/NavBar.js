@@ -30,44 +30,38 @@ const NavBar = () => {
 
     return (
         <nav className="navbar navbar-dark bg-dark">
-            <div className="nav nav-pills nav-justified">
-                <Row>
-                    <div className="col col-md-4">
-                        <Link to="/" className="text-light nav-item nav-link text-decoration-none"> Home </Link>
-                        <Link to="/MyProfile" className="text-light nav-item nav-link text-decoration-none">Orders</Link>
+            <div className="nav nav-pills nav-justified" style={{width:"100%"}}>
+                <div style={{display:"grid",gridTemplateColumns:"auto auto auto",gridTemplateRows:"auto",width:"100%"}}>
+                    <div style={{display:"grid",gridTemplateColumns:"auto auto auto",gridTemplateRows:"auto",width:"100%"}}>
+                        <Link to="/" className="text-light nav-item nav-link text-decoration-none" style={{height:"100%",display:"flex",alignItems:"center",justifyContent: "center"}}> Home </Link>
+                        <Link to="/MyProfile" className="text-light nav-item nav-link text-decoration-none" style={{height:"100%",display:"flex",alignItems:"center",justifyContent: "center"}}>Orders</Link>
                         <Dropdown>
-                            <Dropdown.Toggle variant="dark" id="dropdown-basic">
+                            <Dropdown.Toggle variant="dark" className="text-light nav-item nav-link text-decoration-none" id="dropdown-basic" style={{height:"100%"}}>
                                 Products
                             </Dropdown.Toggle>
-
                             <Dropdown.Menu>
                                 <Link to="/PC & Laptops" className="text-light nav-item nav-link text-decoration-none"> PC & Laptops </Link>
                                 <Dropdown.Item href="#category2">Smartphones</Dropdown.Item>
                                 <Dropdown.Item href="#category3">Τηλεοράσεις</Dropdown.Item>
                             </Dropdown.Menu>
                         </Dropdown>
-
                     </div>
-                    <div className="col col-md-4">
-                        <div className="search-container">
-                            <input type="text" placeholder="Ψάχνεις για..." className="search-input" />
-                        </div>
+                    <div className="search-container">
+                        <input type="text" placeholder="Ψάχνεις για..." className="search-input" />
                     </div>
 
-                    <div className="col col-md-4 text-right">
-                        <div className="container">
-                            <button className="rotate-on-hover">
-                                <img src="Media/wishlist.png" alt="Wishlist Icon" />
-                            </button>
-                            <button className="rotate-on-hover" onClick={togglepopup}>
-                                <img src="Media/profile.png" alt="Profile Icon" />
-                            </button>
-                            <button className="rotate-on-hover">
-                                <img src="Media/Cart.png" alt="Cart Icon" />
-                            </button>
-                        </div>
+                    <div className="container" style={{justifyContent: "flex-end"}}>
+                        <button className="rotate-on-hover">
+                            <img src="Media/wishlist.png" alt="Wishlist Icon" />
+                        </button>
+                        <button className="rotate-on-hover" onClick={togglepopup}>
+                            <img src="Media/profile.png" alt="Profile Icon" />
+                        </button>
+                        <button className="rotate-on-hover">
+                            <img src="Media/Cart.png" alt="Cart Icon" />
+                        </button>
                     </div>
-                </Row>
+                </div>
                 <div id="isshow">
                     {isPopupOpen &&
                         <div className="popup" id="regpopup">
