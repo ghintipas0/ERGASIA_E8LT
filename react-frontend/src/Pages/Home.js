@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import SlideshowComponent from '../component/SlideshowComponent'
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 function Home() {
 
@@ -52,9 +53,11 @@ function Home() {
         <div>
 
             <div className="button-container">
+
                 <button className="button">
+
                     <img src="Media/laptop.png" alt="Image" />
-                    PC & Laptops
+                    <Link to="/PC & Laptops" className="text-light nav-item nav-link text-decoration-none"> PC & Laptops </Link>
                 </button>
                 <button className="button">
                     <img src="Media/phones.png" alt="Image" />

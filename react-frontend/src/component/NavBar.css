@@ -1,6 +1,6 @@
 .search-container {
       margin-top: -7px;
-      margin-left:20px;
+      margin-left:10px;
       display: flex;
       align-items: center;
       height: 10vh;
@@ -17,21 +17,15 @@
 
 
 .col-md-3 .nav-item.nav-link.text-decoration-none {
-  width: 2px;
-  height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
-
 }
 
 /* Το παρακάτω κανόνας εξασφαλίζει ότι το τελευταίο στοιχείο δεν θα έχει δεξιά απόσταση */
 .col-md-3 .nav-item.nav-link.text-decoration-none:last-child {
     margin-right: 0;
 }
-
-
-
 
 
 /* Στυλ όταν το ποντίκι περνά πάνω από τα στοιχεία "Home" και "Orders" */
@@ -103,6 +97,7 @@
     border-radius: 3px;
     cursor: pointer;
 }
+
 
 
 .popup .register-button:hover {
