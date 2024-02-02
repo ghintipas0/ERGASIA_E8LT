@@ -18,19 +18,6 @@ function Admin() {
               </div>
 
           </div>
-          test<br/>test<br/>test<br/>test<br/>test<br/>test<br/>
-          test<br/>test<br/>test<br/>test<br/>test<br/>test<br/>
-          test<br/>test<br/>test<br/>test<br/>test<br/>test<br/>
-          test<br/>test<br/>test<br/>test<br/>test<br/>test<br/>
-          test<br/>test<br/>test<br/>test<br/>test<br/>test<br/>
-          test<br/>test<br/>test<br/>test<br/>test<br/>test<br/>
-          test<br/>test<br/>test<br/>test<br/>test<br/>test<br/>
-          test<br/>test<br/>test<br/>test<br/>test<br/>test<br/>
-          test<br/>test<br/>test<br/>test<br/>test<br/>test<br/>
-          test<br/>test<br/>test<br/>test<br/>test<br/>test<br/>
-          test<br/>test<br/>test<br/>test<br/>test<br/>test<br/>
-          test<br/>test<br/>test<br/>test<br/>test<br/>test<br/>
-          test<br/>test<br/>test<br/>test<br/>test<br/>test<br/>
 
       </div>
     );
