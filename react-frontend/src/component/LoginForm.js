@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-import { Col, Form, InputGroup, Row, Button } from 'react-bootstrap';
-import {Link} from "react-router-dom";
+import { Col, Form, Row, Button } from 'react-bootstrap';
+import  {useNavigate} from 'react-router-dom'
 import $ from "jquery";
+
 const LoginForm = () => {
     const [formData, setFormData] = useState({
         username: '',
         password: ''
     });
+    const navigate = useNavigate();
 
     const handleChange = (field, value) => {
         setFormData((prevFormData) => ({
@@ -15,14 +17,28 @@ const LoginForm = () => {
         }));
     };
     $(document).ready(function() {
+        if ( document.cookie.indexOf('token=') !== -1){
+            navigate('/');
+        }
         $("#LoginAlert").hide();
     });
-
+    function alert(to_display){
+        let obj = $("#LoginAlert");
+        obj.text(to_display);
+        obj.show();
+        window.scrollTo(0, 0);
+        obj.delay(5000).fadeOut('slow');
+    }
+    function validation(){
+        if(formData.username.length < 6){alert("Your Username and/or Password are/is incorrect!"); return false;}
+        if(formData.password.length < 8){alert("Your Username and/or Password are/is incorrect!"); return false;}
+        return true;
+    }
     const handleSubmit = async (e) => {
         e.preventDefault();
-
-        // Assuming you have an API endpoint to handle the form data.
+        if(!validation()){return;}
         const apiUrl = 'http://localhost:8080/auth/login';
+
 
         try {
             const response = await fetch(apiUrl, {
@@ -33,30 +49,29 @@ const LoginForm = () => {
                 body: JSON.stringify(formData),
             });
 
+
             if (response.ok) {
-                console.log('Form submitted successfully');
+
+                let token = await response.text();
+                document.cookie = "token=" + token + ";";
+                navigate('/');
                 setFormData({
                     username: '',
                     password: ''
                 });
             } else {
-                $("#AlertRow").append(
-                    <div className="alert alert-danger" role="alert">
-                        Your username or Password is incorrect!
-                    </div>
-                );
+                alert("Your Username and/or Password are/is incorrect!");
                 console.error('Failed to submit form');
             }
         } catch (error) {
-            $(document).ready(function() {
-                if ($("#LoginAlert").is(":hidden")) {
-                    $("#LoginAlert").show();
-                    $('#LoginAlert').delay(5000).fadeOut('slow');
-                }
-            });
+            alert("Your Username and/or Password are/is incorrect!");
             console.error('Error submitting form:', error);
         }
     };
+
+    function redirect_to_Login(){
+        navigate('/Login');
+    }
     return (
         <div id="loginform">
             <div className="card mb-4">
@@ -71,7 +86,7 @@ const LoginForm = () => {
                             <Form onSubmit={handleSubmit}>
                                 <Row>
                                     <Col>
-                                        <Form.Group className="mb-6" controlId="username">
+                                        <Form.Group className="mb-6" controlId="username_login">
                                             <Form.Label>Username</Form.Label>
                                             <Form.Control
                                                 type="text"
@@ -83,7 +98,7 @@ const LoginForm = () => {
                                 </Row>
                                 <Row>
                                     <Col>
-                                        <Form.Group className="mb-3" controlId="password">
+                                        <Form.Group className="mb-3" controlId="password_login">
                                             <Form.Label>Password</Form.Label>
                                             <Form.Control
                                                 type="password"
@@ -98,7 +113,7 @@ const LoginForm = () => {
                                         <Button variant="primary" type="submit" className="btn btn-outline-info mb-6">
                                             SUBMIT
                                         </Button>
-                                        <Button variant="primary" id = "hideLoginFormBtn">I dont have an account</Button>
+                                        <Button variant="primary" onClick={redirect_to_Login}>I dont have an account</Button>
                                     </div>
                                 </Row>
                             </Form>

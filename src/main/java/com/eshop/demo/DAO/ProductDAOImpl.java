@@ -4,6 +4,7 @@ import com.eshop.demo.entity.Product;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.RestController;
@@ -45,6 +46,13 @@ public class ProductDAOImpl implements ProductDAO{
                 .getResultList();
 
         return query;
+    }
+
+
+    @Override
+    @Transactional
+    public Product addProduct(Product product){
+        return entityManager.merge(product);
     }
 
 

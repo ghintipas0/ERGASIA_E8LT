@@ -13,7 +13,7 @@ public class Inventory {
     @JoinColumn(name = "product_id")
     private Product product;
     @Column(name = "in_stock_quantity")
-    private int in_stock_quantity;
+    private int inStockQuantity;
 
     public Inventory() {
     }
@@ -34,12 +34,12 @@ public class Inventory {
         this.product = product;
     }
 
-    public int getIn_stock_quantity() {
-        return in_stock_quantity;
+    public int getInStockQuantity() {
+        return inStockQuantity;
     }
 
-    public void setIn_stock_quantity(int in_stock_quantity) {
-        this.in_stock_quantity = in_stock_quantity;
+    public void setInStockQuantity(int inStockQuantity) {
+        this.inStockQuantity = inStockQuantity;
     }
 
     @Override
@@ -47,7 +47,7 @@ public class Inventory {
         return "Inventory{" +
                 "id=" + id +
                 ", product=" + product +
-                ", in_stock_quantity=" + in_stock_quantity +
+                ", inStockQuantity=" + inStockQuantity +
                 '}';
     }
 }

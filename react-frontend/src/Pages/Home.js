@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import SlideshowComponent from '../component/SlideshowComponent'
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 function Home() {
 
@@ -50,83 +51,27 @@ function Home() {
 
     return (
         <div>
-            <div className="search-container">
-                <input type="text" placeholder="Ψάχνεις για..." className="search-input" />
-            </div>
-
-            <div className="container">
-                <button className="rotate-on-hover">
-                    <img src="Media/wishlist.png" alt="Wishlist Icon" />
-                </button>
-                <button
-                    className="rotate-on-hover special-button"
-                    onMouseOver={showTooltip}
-                    onMouseOut={hideTooltip}
-                >
-                    <img src="Media/profile.png" alt="Profile Icon" />
-                </button>
-                {tooltipVisible && (
-                    <div
-                        className="tooltip-container"
-                        onMouseEnter={showTooltip}
-                        onMouseLeave={hideTooltip}
-                        style={{
-                            display: "inline-block",
-                            position: "absolute",
-                            top: "16%", // Εδώ θέτουμε τη θέση κάτω από το profile icon
-                            left: "95%",
-                            transform: "translateX(-80%)",
-                            border: "1px solid #ccc",
-                            borderRadius: "5px",
-                            backgroundColor: "#EEEEEE",
-                            width: "300px", // Αλλαγή στο width
-                            height: "220px", // Αλλαγή στο height
-                        }}
-                    >
-                        <p style={{ fontSize: "19px", display: "flex", justifyContent: "center", textAlign: "left", marginLeft: "20px"  }}>
-                            Συνδέσου με τα στοιχεία σου για γρήγορη αγορά
-                        </p>
-
-                       <div style={{ display: "flex", justifyContent: "center", marginBottom: "10px" }}>
-                           <button style={{ padding: "6px 110px", fontSize: "14px", backgroundColor: "white", color: "black"}}>Είσοδος</button>
-                       </div>
-
-
-                        <p style={{fontSize: "19px", display: "flex",textAlign: "left", marginLeft: "20px"  }}>
-                        Δεν έχεις λογαριασμό;
-                        </p>
-                        <div style={{ display: "flex", justifyContent: "center"}}>
-                             <button style={{ padding: "6px 50px", backgroundColor: "white", color: "black", fontSize: "15px"}}>Δημιουργία λογαριασμού</button>
-                        </div>
-                    </div>
-                )}
-
-
-
-
-                <button className="rotate-on-hover">
-                    <img src="Media/cart.png" alt="Cart Icon" />
-                </button>
-            </div>
 
             <div className="button-container">
+
                 <button className="button">
+
                     <img src="Media/laptop.png" alt="Image" />
-                    PC & Laptops
+                    <Link to="/PC_Laptops" className="text-dark nav-item nav-link text-decoration-none"> PC & Laptops </Link>
                 </button>
                 <button className="button">
                     <img src="Media/phones.png" alt="Image" />
-                    Smartphones
+                    <Link to="/Smartphones" className="text-dark nav-item nav-link text-decoration-none"> Smartphones </Link>
                 </button>
                 <button className="button">
                     <img src="Media/tv.png" alt="Image" />
-                    Τηλεοράσεις
+                    <Link to="/TVs" className="text-dark nav-item nav-link text-decoration-none"> Τηλεοράσεις </Link>
                 </button>
             </div>
 
-            <SlideshowComponent />
+<SlideshowComponent />
 
-            <div className="slideshow-container-second">
+            <div className="slideshow-container">
                 <div className="mySlides-second">
                     <div style={{ width: "800px", height: "300px", backgroundColor: "#f7f7f7", margin: "auto", borderRadius: "15px" }}></div>
                 </div>
@@ -138,9 +83,22 @@ function Home() {
                 <div className="mySlides-second">
                     <div style={{ width: "800px", height: "300px", backgroundColor: "#f7f7f7", margin: "auto", borderRadius: "15px" }}></div>
                 </div>
-
-                <div className="text-second">Top Offers</div>
             </div>
+
+
+                        <div className="button-container-second">
+                            <button className="button2">
+                                <img src="Media/iphone15.png" alt="Image" />
+                                <p>Iphone 15 Pro Max</p>
+                                <p>1.480,92 €</p>
+                            </button>
+                            <button className="button2">
+                                <img src="Media/iphone14.png" alt="Image" />
+                                <p>Iphone 14 Pro Max</p>
+                                <p>1.269,94 €</p>
+                            </button>
+                        </div>
+
 
         </div>
 

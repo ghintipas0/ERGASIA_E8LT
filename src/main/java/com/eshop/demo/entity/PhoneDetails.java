@@ -13,27 +13,27 @@ public class PhoneDetails {
     @JoinColumn(name = "product_id")
     private Product product;
     @Column(name = "processor_brand")
-    private String processor_brand;
+    private String processorBrand;
     @Column(name = "processor_cores")
-    private String processor_cores;
+    private String processorCores;
     @Column(name = "ram")
     private String ram;
     @Column(name = "storage")
     private String storage;
     @Column(name = "back_camera")
-    private String back_camera;
+    private String backCamera;
     @Column(name = "front_camera")
-    private String front_camera;
+    private String frontCamera;
     @Column(name = "display_size")
-    private String display_size;
+    private String displaySize;
     @Column(name = "resolution")
     private String resolution;
     @Column(name = "operating_system")
-    private String operating_system;
+    private String operatingSystem;
     @Column(name = "battery_capacity")
-    private String battery_capacity;
+    private String batteryCapacity;
     @Column(name = "connection_network")
-    private String connection_network;
+    private String connectionNetwork;
 
     public PhoneDetails() {
     }
@@ -54,20 +54,20 @@ public class PhoneDetails {
         this.product = product;
     }
 
-    public String getProcessor_brand() {
-        return processor_brand;
+    public String getProcessorBrand() {
+        return processorBrand;
     }
 
-    public void setProcessor_brand(String processor_brand) {
-        this.processor_brand = processor_brand;
+    public void setProcessorBrand(String processorBrand) {
+        this.processorBrand = processorBrand;
     }
 
-    public String getProcessor_cores() {
-        return processor_cores;
+    public String getProcessorCores() {
+        return processorCores;
     }
 
-    public void setProcessor_cores(String processor_cores) {
-        this.processor_cores = processor_cores;
+    public void setProcessorCores(String processorCores) {
+        this.processorCores = processorCores;
     }
 
     public String getRam() {
@@ -86,28 +86,28 @@ public class PhoneDetails {
         this.storage = storage;
     }
 
-    public String getBack_camera() {
-        return back_camera;
+    public String getBackCamera() {
+        return backCamera;
     }
 
-    public void setBack_camera(String back_camera) {
-        this.back_camera = back_camera;
+    public void setBackCamera(String backCamera) {
+        this.backCamera = backCamera;
     }
 
-    public String getFront_camera() {
-        return front_camera;
+    public String getFrontCamera() {
+        return frontCamera;
     }
 
-    public void setFront_camera(String front_camera) {
-        this.front_camera = front_camera;
+    public void setFrontCamera(String frontCamera) {
+        this.frontCamera = frontCamera;
     }
 
-    public String getDisplay_size() {
-        return display_size;
+    public String getDisplaySize() {
+        return displaySize;
     }
 
-    public void setDisplay_size(String display_size) {
-        this.display_size = display_size;
+    public void setDisplaySize(String displaySize) {
+        this.displaySize = displaySize;
     }
 
     public String getResolution() {
@@ -119,27 +119,27 @@ public class PhoneDetails {
     }
 
     public String getOperating_system() {
-        return operating_system;
+        return operatingSystem;
     }
 
-    public void setOperating_system(String operating_system) {
-        this.operating_system = operating_system;
+    public void setOperatingSystem(String operatingSystem) {
+        this.operatingSystem = operatingSystem;
     }
 
-    public String getBattery_capacity() {
-        return battery_capacity;
+    public String getBatteryCapacity() {
+        return batteryCapacity;
     }
 
-    public void setBattery_capacity(String battery_capacity) {
-        this.battery_capacity = battery_capacity;
+    public void setBatteryCapacity(String batteryCapacity) {
+        this.batteryCapacity = batteryCapacity;
     }
 
-    public String getConnection_network() {
-        return connection_network;
+    public String getConnectionNetwork() {
+        return connectionNetwork;
     }
 
-    public void setConnection_network(String connection_network) {
-        this.connection_network = connection_network;
+    public void setConnectionNetwork(String connection_network) {
+        this.connectionNetwork = connectionNetwork;
     }
 
     @Override
@@ -147,17 +147,17 @@ public class PhoneDetails {
         return "PhoneDetails{" +
                 "id=" + id +
                 ", product=" + product +
-                ", processor_brand='" + processor_brand + '\'' +
-                ", processor_cores='" + processor_cores + '\'' +
+                ", processorBrand='" + processorBrand + '\'' +
+                ", processorCores='" + processorCores + '\'' +
                 ", ram='" + ram + '\'' +
                 ", storage='" + storage + '\'' +
-                ", back_camera='" + back_camera + '\'' +
-                ", front_camera='" + front_camera + '\'' +
-                ", display_size='" + display_size + '\'' +
+                ", backCamera='" + backCamera + '\'' +
+                ", frontCamera='" + frontCamera + '\'' +
+                ", displaySize='" + displaySize + '\'' +
                 ", resolution='" + resolution + '\'' +
-                ", operating_system='" + operating_system + '\'' +
-                ", battery_capacity='" + battery_capacity + '\'' +
-                ", connection_network='" + connection_network + '\'' +
+                ", operatingSystem='" + operatingSystem + '\'' +
+                ", battery_capacity='" + batteryCapacity + '\'' +
+                ", connection_network='" + connectionNetwork + '\'' +
                 '}';
     }
 }

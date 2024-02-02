@@ -13,17 +13,17 @@ public class TelevisionDetails {
     @JoinColumn(name = "product_id")
     private Product product;
     @Column(name = "screen_size")
-    private String screen_size;
+    private String screenSize;
     @Column(name = "screen_resolution")
-    private String screen_resolution;
+    private String screenResolution;
     @Column(name = "renewal_rate")
-    private String renewal_rate;
+    private String renewalRate;
     @Column(name = "sound_standards")
-    private String sound_standards;
+    private String soundStandards;
     @Column(name = "power")
     private String power;
     @Column(name = "supported_applications")
-    private String supported_applications;
+    private String supportedApplications;
     @Column(name = "connector_type")
     private String connectorType;
 
@@ -49,36 +49,36 @@ public class TelevisionDetails {
         this.product = product;
     }
 
-    public String getScreen_size() {
-        return screen_size;
+    public String getScreenSize() {
+        return screenSize;
     }
 
-    public void setScreen_size(String screen_size) {
-        this.screen_size = screen_size;
+    public void setScreenSize(String screenSize) {
+        this.screenSize = screenSize;
     }
 
-    public String getScreen_resolution() {
-        return screen_resolution;
+    public String getScreenResolution() {
+        return screenResolution;
     }
 
-    public void setScreen_resolution(String screen_resolution) {
-        this.screen_resolution = screen_resolution;
+    public void setScreenResolution(String screenResolution) {
+        this.screenResolution = screenResolution;
     }
 
-    public String getRenewal_rate() {
-        return renewal_rate;
+    public String getRenewalRate() {
+        return renewalRate;
     }
 
-    public void setRenewal_rate(String renewal_rate) {
-        this.renewal_rate = renewal_rate;
+    public void setRenewalRate(String renewalRate) {
+        this.renewalRate = renewalRate;
     }
 
-    public String getSound_standards() {
-        return sound_standards;
+    public String getSoundStandards() {
+        return soundStandards;
     }
 
-    public void setSound_standards(String sound_standards) {
-        this.sound_standards = sound_standards;
+    public void setSoundStandards(String soundStandards) {
+        this.soundStandards = soundStandards;
     }
 
     public String getPower() {
@@ -90,11 +90,11 @@ public class TelevisionDetails {
     }
 
     public String getSupported_applications() {
-        return supported_applications;
+        return supportedApplications;
     }
 
-    public void setSupported_applications(String supported_applications) {
-        this.supported_applications = supported_applications;
+    public void setSupportedApplications(String supportedApplications) {
+        this.supportedApplications = supportedApplications;
     }
 
     public String getConnectorType() {
@@ -118,12 +118,12 @@ public class TelevisionDetails {
         return "TelevisionDetails{" +
                 "id=" + id +
                 ", product=" + product +
-                ", screen_size='" + screen_size + '\'' +
-                ", screen_resolution='" + screen_resolution + '\'' +
-                ", renewal_rate='" + renewal_rate + '\'' +
-                ", sound_standards='" + sound_standards + '\'' +
+                ", screenSize='" + screenSize + '\'' +
+                ", screenResolution='" + screenResolution + '\'' +
+                ", renewalRate='" + renewalRate + '\'' +
+                ", soundStandards='" + soundStandards + '\'' +
                 ", power='" + power + '\'' +
-                ", supported_applications='" + supported_applications + '\'' +
+                ", supportedApplications='" + supportedApplications + '\'' +
                 ", connectorType='" + connectorType + '\'' +
                 ", weight='" + weight + '\'' +
                 '}';

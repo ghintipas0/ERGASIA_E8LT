@@ -12,5 +12,5 @@ public interface ProductDAO {
      List<Product> findProducts();
     List<Product> searchProducts(String keyword);
 
-
+    Product addProduct(Product product);
 }

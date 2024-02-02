@@ -1,0 +1,64 @@
+/* Slideshow container */
+.slideshow-container {
+  max-width: 900px;
+
+}
+
+/* Slides */
+.mySlides {
+  display: none;
+  border-radius: 20px;
+}
+
+/* Slide content */
+.mySlides img {
+  width: 50%;
+  height: 50%;
+    display: block;
+    margin: auto;
+}
+
+/* Dots for navigation */
+.dot {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+  cursor: pointer;
+}
+
+/* Active dot */
+.active {
+  background-color: #717171;
+}
+
+/* Center the dots */
+.slideshow-container div.text-center {
+  text-align: center;
+}
+
+/* Κοινό στυλ για όλα τα <p> εντός .mySlides */
+.mySlides p {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+/* Στυλ για το πρώτο <p> (τίτλος προϊόντος) */
+.mySlides p:first-child {
+  font-size:19px;
+  font-weight: bold;
+  color: #0066cc; /* Μπορείτε να προσαρμόσετε το χρώμα κατάλληλα */
+}
+
+/* Στυλ για το τελευταίο <p> (τιμή προϊόντος) */
+.mySlides p:last-child {
+  font-size: 25px;
+  font-weight: bold;
+  color: #cc0000; /* Μπορείτε να προσαρμόσετε το χρώμα κατάλληλα */
+}

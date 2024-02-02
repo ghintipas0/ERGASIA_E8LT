@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { Col, Form, InputGroup, Row, Button } from 'react-bootstrap';
-import {Link} from "react-router-dom";
 import $ from "jquery";
+import {useNavigate} from "react-router-dom";
+
+
 
 const UserRegistrationForm = () => {
     const [formData, setFormData] = useState({
@@ -18,7 +20,7 @@ const UserRegistrationForm = () => {
         addressLine : '',
         postCode : ''
     });
-
+    const navigate = useNavigate();
     const handleChange = (field, value) => {
         setFormData((prevFormData) => ({
             ...prevFormData,
@@ -27,6 +29,9 @@ const UserRegistrationForm = () => {
     };
 
     $(document).ready(function() {
+        if ( document.cookie.indexOf('token=') !== -1){
+            navigate('/');
+        }
         $("#RegAlert").hide();
     });
     function popalert(toprint){
@@ -36,14 +41,13 @@ const UserRegistrationForm = () => {
                 $("#RegAlert").show();
                 window.scrollTo(0, 0);
                 $('#RegAlert').delay(5000).fadeOut('slow');
-
             }
         });
     }
 
     function validationcheck(){
-       // if(formData.password.length < 8){popalert(Your password is too short. It needs to have more than 8 characters"); return false;}
-        //if(formData.password.length > 30){popalert("Your password is too long. It needs to have less than 30 characters"); return false;}
+        if(formData.password.length < 8){popalert("Your password is too short. It needs to have more than 8 characters"); return false;}
+        if(formData.password.length > 30){popalert("Your password is too long. It needs to have less than 30 characters"); return false;}
         if(formData.username.length < 6){popalert("Your username is too long. It needs to have more than 6 characters"); return false;}
         if(formData.username.length > 30){popalert("Your userame is too large. It needs to have less than 30 characters"); return false;}
         if(formData.firstName.length < 2){popalert("Your firstname is too short. It needs to have more than 2 characters"); return false;}
@@ -56,7 +60,6 @@ const UserRegistrationForm = () => {
     }
     const handleSubmit = async (e) => {
         e.preventDefault();
-
         // Assuming you have an API endpoint to handle the form data.
         if (!validationcheck()){return;}
         const apiUrl = 'http://localhost:8080/auth/register';
@@ -71,9 +74,7 @@ const UserRegistrationForm = () => {
             });
 
             if (response.ok) {
-                const data = await response.json();
-                document.cookie = "username=" + data + ";";
-                console.log('Form submitted successfully');
+                navigate('/Login');
                 setFormData({
                     username: '',
                     email: '',
@@ -97,6 +98,10 @@ const UserRegistrationForm = () => {
             console.error('Error submitting form:', error);
         }
     };
+
+    function redirect_to_Register(){
+        navigate('/Register');
+    }
     return (
         <div id="registerform">
             <div className="card mb-4">
@@ -249,7 +254,7 @@ const UserRegistrationForm = () => {
                                         <Button variant="primary" type="submit" className="btn btn-outline-info mb-6">
                                             SUBMIT
                                         </Button>
-                                        <Button variant="primary" id="hideregforbutton">I already have an
+                                        <Button variant="primary" onClick={redirect_to_Register}>I already have an
                                             account</Button>
                                     </div>
                                 </Row>

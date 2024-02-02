@@ -17,21 +17,21 @@ public class LaptopDetails {
     @Column(name = "frequency")
     private String frequency;
     @Column(name = "screen_size")
-    private String screen_size;
+    private String screenSize;
     @Column(name = "screen_resolution")
-    private String screen_resolution;
+    private String screenResolution;
     @Column(name = "capabilities")
     private String capabilities;
     @Column(name = "renewal_rate")
-    private String renewal_rate;
+    private String renewalRate;
     @Column(name = "ram")
     private String ram;
     @Column(name = "type_of_hard_disc")
-    private String type_of_hard_disc;
+    private String typeOfHardDisc;
     @Column(name = "hard_disc_capacity")
-    private String hard_disc_capacity;
+    private String hardDiscCapacity;
     @Column(name = "operating_system")
-    private String operating_system;
+    private String operatingSystem;
     @Column(name = "weight")
     private String weight;
 
@@ -71,20 +71,20 @@ public class LaptopDetails {
         this.frequency = frequency;
     }
 
-    public String getScreen_size() {
-        return screen_size;
+    public String getScreenSize() {
+        return screenSize;
     }
 
-    public void setScreen_size(String screen_size) {
-        this.screen_size = screen_size;
+    public void setScreenSize(String screenSize) {
+        this.screenSize = screenSize;
     }
 
-    public String getScreen_resolution() {
-        return screen_resolution;
+    public String getScreenResolution() {
+        return screenResolution;
     }
 
-    public void setScreen_resolution(String screen_resolution) {
-        this.screen_resolution = screen_resolution;
+    public void setScreenResolution(String screenResolution) {
+        this.screenResolution = screenResolution;
     }
 
     public String getCapabilities() {
@@ -95,12 +95,12 @@ public class LaptopDetails {
         this.capabilities = capabilities;
     }
 
-    public String getRenewal_rate() {
-        return renewal_rate;
+    public String getRenewalRate() {
+        return renewalRate;
     }
 
-    public void setRenewal_rate(String renewal_rate) {
-        this.renewal_rate = renewal_rate;
+    public void setRenewalRate(String renewalRate) {
+        this.renewalRate = renewalRate;
     }
 
     public String getRam() {
@@ -111,28 +111,28 @@ public class LaptopDetails {
         this.ram = ram;
     }
 
-    public String getType_of_hard_disc() {
-        return type_of_hard_disc;
+    public String getTypeOfHardDisc() {
+        return typeOfHardDisc;
     }
 
-    public void setType_of_hard_disc(String type_of_hard_disc) {
-        this.type_of_hard_disc = type_of_hard_disc;
+    public void setTypeOfHardDisc(String typeOfHardDisc) {
+        this.typeOfHardDisc = typeOfHardDisc;
     }
 
-    public String getHard_disc_capacity() {
-        return hard_disc_capacity;
+    public String getHardDiscCapacity() {
+        return hardDiscCapacity;
     }
 
-    public void setHard_disc_capacity(String hard_disc_capacity) {
-        this.hard_disc_capacity = hard_disc_capacity;
+    public void setHardDiscCapacity(String hardDiscCapacity) {
+        this.hardDiscCapacity = hardDiscCapacity;
     }
 
-    public String getOperating_system() {
-        return operating_system;
+    public String getOperatingSystem() {
+        return operatingSystem;
     }
 
-    public void setOperating_system(String operating_system) {
-        this.operating_system = operating_system;
+    public void setOperatingSystem(String operatingSystem) {
+        this.operatingSystem = operatingSystem;
     }
 
     public String getWeight() {
@@ -150,14 +150,14 @@ public class LaptopDetails {
                 ", product=" + product +
                 ", cpu='" + cpu + '\'' +
                 ", frequency='" + frequency + '\'' +
-                ", screen_size='" + screen_size + '\'' +
-                ", screen_resolution='" + screen_resolution + '\'' +
+                ", screenSize='" + screenSize + '\'' +
+                ", screen_resolution='" + screenResolution + '\'' +
                 ", capabilities='" + capabilities + '\'' +
-                ", renewal_rate='" + renewal_rate + '\'' +
+                ", renewalRate='" + renewalRate + '\'' +
                 ", ram='" + ram + '\'' +
-                ", type_of_hard_disc='" + type_of_hard_disc + '\'' +
-                ", hard_disc_capacity='" + hard_disc_capacity + '\'' +
-                ", operating_system='" + operating_system + '\'' +
+                ", type_of_hard_disc='" + typeOfHardDisc + '\'' +
+                ", hardDiscCapacity='" + hardDiscCapacity + '\'' +
+                ", operating_system='" + operatingSystem + '\'' +
                 ", weight='" + weight + '\'' +
                 '}';
     }
