@@ -6,10 +6,10 @@ import './NavBar.css';
 const LogRegPopup = () => {
     return (
                     <div id="regpopup">
-                        <p>Already Registered?</p>
-                        <button className="login-button"> <Link to="/Login" className="text-light nav-item nav-link text-decoration-none">Login</Link> </button>
-                        <p>New User?</p>
-                        <button className="register-button"> <Link to="/Register" className="text-light nav-item nav-link text-decoration-none">Register</Link> </button>
+                        <span style={{color:"black"}}>Already Registered?</span>
+                        <button className="login-button"> <Link to="/Login" className="nav-item nav-link text-decoration-none" style={{color:"white"}}>Login</Link> </button>
+                        <span style={{color:"black"}}>New User?</span>
+                        <button className="register-button"> <Link to="/Register" className="nav-item nav-link text-decoration-none" style={{color:"black"}}>Register</Link> </button>
                     </div>
 
     );

@@ -29,8 +29,8 @@ const NavBar = () => {
     }
 
     return (
-        <nav className="navbar navbar-dark bg-dark">
-            <div className="nav nav-pills nav-justified" style={{width:"100%"}}>
+        <nav className="navbar navbar-dark bg-dark" style={{position: "sticky", top:"0"}}>
+            <div className="nav nav-pills nav-justified" style={{width:"100%",}}>
                 <div style={{display:"grid",gridTemplateColumns:"auto auto auto",gridTemplateRows:"auto",width:"100%"}}>
                     <div style={{display:"grid",gridTemplateColumns:"auto auto auto",gridTemplateRows:"auto",width:"100%"}}>
                         <Link to="/" className="text-light nav-item nav-link text-decoration-none" style={{height:"100%",display:"flex",alignItems:"center",justifyContent: "center"}}> Home </Link>
@@ -40,14 +40,14 @@ const NavBar = () => {
                                 Products
                             </Dropdown.Toggle>
                             <Dropdown.Menu>
-                                <Link to="/PC & Laptops" className="text-light nav-item nav-link text-decoration-none"> PC & Laptops </Link>
-                                <Dropdown.Item href="#category2">Smartphones</Dropdown.Item>
-                                <Dropdown.Item href="#category3">Τηλεοράσεις</Dropdown.Item>
+                                <Link to="/PC_Laptops" className="text-light nav-item nav-link text-decoration-none"> PC & Laptops </Link>
+                                <Dropdown.Item className="text-light nav-item nav-link text-decoration-none" href="category2">Smartphones</Dropdown.Item>
+                                <Dropdown.Item className="text-light nav-item nav-link text-decoration-none" href="category3">Τηλεοράσεις</Dropdown.Item>
                             </Dropdown.Menu>
                         </Dropdown>
                     </div>
                     <div className="search-container">
-                        <input type="text" placeholder="Ψάχνεις για..." className="search-input" />
+                        <input type="text" placeholder="Ψάχνεις για..." className="search-input"/>
                     </div>
 
                     <div className="container" style={{justifyContent: "flex-end"}}>
