@@ -23,9 +23,9 @@ public class WebSecurityConfig {
         http.csrf(csrf->csrf.disable());
         http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
         http.authorizeRequests()
-                .requestMatchers("/auth/login","/auth/register","/ShopNow").permitAll()
-                .requestMatchers("/profile").authenticated()
-                .requestMatchers("/Products").hasRole("ADMIN");
+                .requestMatchers("/auth/login","/auth/register","/ShopNow","/Products","/Products/{productId}").permitAll()
+                .requestMatchers("/profile").authenticated();
+                //.requestMatchers("/Products").hasRole("ADMIN");
         return http.build();
 
 

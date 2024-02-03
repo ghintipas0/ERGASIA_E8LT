@@ -19,6 +19,11 @@ public class AppExceptionHandler {
     public ResponseEntity<String> handleException(UserNotVerifiedException userNotVerifiedException){
         return new ResponseEntity<>(userNotVerifiedException.getMessage(), HttpStatus.NOT_FOUND);
     }
+    @ExceptionHandler
+    public ResponseEntity<String> handleException(ProductNotFound productNotFound){
+        return new ResponseEntity<>(productNotFound.getMessage(), HttpStatus.NOT_FOUND);
+    }
+
 
 
 
