@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 
 public interface ProductDAO {
@@ -13,4 +14,6 @@ public interface ProductDAO {
     List<Product> searchProducts(String keyword);
 
     Product addProduct(Product product);
+    void deleteProduct(Product product);
+    Product findProductById(int id);
 }

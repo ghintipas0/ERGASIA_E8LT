@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
 @Repository
 public class ProductDAOImpl implements ProductDAO{
     private EntityManager entityManager;
@@ -53,6 +55,18 @@ public class ProductDAOImpl implements ProductDAO{
     @Transactional
     public Product addProduct(Product product){
         return entityManager.merge(product);
+    }
+
+    @Override
+    public Product findProductById(int id) {
+        return entityManager.find(Product.class, id);
+
+    }
+
+    @Override
+    @Transactional
+    public void deleteProduct(Product product) {
+        entityManager.remove(product);
     }
 
 

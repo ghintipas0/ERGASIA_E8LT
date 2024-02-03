@@ -6,6 +6,8 @@ import com.eshop.demo.model.ProductBody;
 import com.eshop.demo.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -34,6 +36,10 @@ public class ProductController{
         return productService.addProduct(productBody);
     }
 
+    @DeleteMapping("/Products/{productId}")
+    public ResponseEntity<?> deleteProduct(@PathVariable int productId) throws ProductNotFound {
+        return new ResponseEntity<>(productService.removeProduct(productId), HttpStatus.OK);
+    }
 
 
 }

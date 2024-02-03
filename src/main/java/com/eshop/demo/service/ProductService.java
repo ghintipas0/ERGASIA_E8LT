@@ -43,7 +43,16 @@ public class ProductService {
         if(category.isPresent()){
             product.setCategory(category.get());
         }
-
         return productDAO.addProduct(product);
+    }
+
+    public String removeProduct(int id ) throws ProductNotFound{
+        Product product;
+        if((product=productDAO.findProductById(id))!=null){
+            productDAO.deleteProduct(product);
+            return "The product delete successfully with id "+product.getId();
+        }else{
+            throw new ProductNotFound("The product was not found with id "+id);
+        }
     }
 }
