@@ -70,4 +70,10 @@ public class ProductDAOImpl implements ProductDAO{
     }
 
 
+    @Override
+    public List<Product> getProductByCategory(int id) {
+        TypedQuery<Product> query = entityManager.createQuery("FROM Product p WHERE p.category.id=:data", Product.class);
+        query.setParameter("data",id);
+        return query.getResultList();
+    }
 }

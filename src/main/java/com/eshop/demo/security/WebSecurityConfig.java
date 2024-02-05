@@ -23,8 +23,8 @@ public class WebSecurityConfig {
         http.csrf(csrf->csrf.disable());
         http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
         http.authorizeRequests()
-                .requestMatchers("/auth/login","/auth/register","/ShopNow","/Products","/Products/{productId}").permitAll()
-                .requestMatchers("/profile").authenticated();
+                .requestMatchers("/auth/login","/auth/register","/ShopNow","/Products","/Products/{productId}","/ShopNow/{categoryId}","/ShopNow/search").permitAll()
+                .requestMatchers("/ShopNow/profile").authenticated();
                 //.requestMatchers("/Products").hasRole("ADMIN");
         return http.build();
 

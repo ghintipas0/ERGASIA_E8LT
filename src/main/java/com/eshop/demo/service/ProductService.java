@@ -4,6 +4,7 @@ import com.eshop.demo.DAO.CategoryDAO;
 import com.eshop.demo.DAO.ProductDAO;
 import com.eshop.demo.entity.Category;
 import com.eshop.demo.entity.Product;
+import com.eshop.demo.exception.CategoryNotFound;
 import com.eshop.demo.exception.ProductNotFound;
 import com.eshop.demo.model.ProductBody;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,5 +55,14 @@ public class ProductService {
         }else{
             throw new ProductNotFound("The product was not found with id "+id);
         }
+    }
+
+    public List<Product> getProductsByCategoryId(int id) throws CategoryNotFound {
+        List<Product> products = productDAO.getProductByCategory(id);
+        if(products.isEmpty()){
+            throw new CategoryNotFound("The category not found ");
+        }
+        return products;
+
     }
 }

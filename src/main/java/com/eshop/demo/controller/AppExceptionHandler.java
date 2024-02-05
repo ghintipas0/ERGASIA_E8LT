@@ -1,5 +1,6 @@
 package com.eshop.demo.controller;
 
+import com.eshop.demo.exception.CategoryNotFound;
 import com.eshop.demo.exception.ProductNotFound;
 import com.eshop.demo.exception.UserNotVerifiedException;
 import com.eshop.demo.exception.UsersAlreadyExists;
@@ -22,6 +23,10 @@ public class AppExceptionHandler {
     @ExceptionHandler
     public ResponseEntity<String> handleException(ProductNotFound productNotFound){
         return new ResponseEntity<>(productNotFound.getMessage(), HttpStatus.NOT_FOUND);
+    }
+    @ExceptionHandler
+    public ResponseEntity<String> handleException(CategoryNotFound categoryNotFound){
+        return new ResponseEntity<>(categoryNotFound.getMessage(), HttpStatus.NOT_FOUND);
     }
 
 
