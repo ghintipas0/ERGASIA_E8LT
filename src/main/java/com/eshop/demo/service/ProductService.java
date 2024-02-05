@@ -65,4 +65,8 @@ public class ProductService {
         return products;
 
     }
+
+    public List<Product> cart(List<Integer> ids ){
+        return productDAO.cart(ids);
+    }
 }

@@ -17,4 +17,7 @@ public interface ProductDAO {
     void deleteProduct(Product product);
     Product findProductById(int id);
     List<Product> getProductByCategory(int id);
+    List<Product> cart(List<Integer> ids);
+
+
 }
