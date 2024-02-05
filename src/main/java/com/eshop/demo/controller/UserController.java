@@ -14,10 +14,12 @@ public class UserController{
 
     public ResponseEntity<?> profile(@AuthenticationPrincipal User user){//this will run before profile method as a result will inject the user instance even if is not authorize
         if(user==null){
-            return new ResponseEntity<>("The user is not authorize", HttpStatus.UNAUTHORIZED);
+            return new ResponseEntity<>("The user is not authorized", HttpStatus.UNAUTHORIZED);
         }
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
+
+
 
 
 
