@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class UserController{
+
     @GetMapping("/ShopNow/profile")
+
     public ResponseEntity<?> profile(@AuthenticationPrincipal User user){
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
