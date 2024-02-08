@@ -7,6 +7,12 @@ import {useNavigate} from "react-router-dom";
 
 const Admin_Add_Product = () => {
     const [formData, setFormData] = useState({
+        name: '',
+        longDesc: '',
+        price: '',
+        category_id: '',
+        brandName: '',
+        photo: ''
     });
     const navigate = useNavigate();
     const handleChange = (field, value) => {
@@ -16,16 +22,48 @@ const Admin_Add_Product = () => {
         }));
     };
 
+    $(document).ready(function() {
+        // if ( document.cookie.indexOf('token=') !== -1){
+        //     navigate('/');
+        // }
+        $("#RegAlert").hide();
+        $("#SuccAlert").hide();
+    });
+    function popalert(toprint){
+        $(document).ready(function() {
+            if ($("#RegAlert").is(":hidden")) {
+                $("#RegAlert").text(toprint);
+                $("#RegAlert").show();
+                window.scrollTo(0, 0);
+                $('#RegAlert').delay(5000).fadeOut('slow');
+            }
+        });
+    }
 
+    function succAlert(toprint){
+        $(document).ready(function() {
+            if ($("#SuccAlert").is(":hidden")) {
+                $("#SuccAlert").text(toprint);
+                $("#SuccAlert").show();
+                window.scrollTo(0, 0);
+                $('#SuccAlert').delay(5000).fadeOut('slow');
+            }
+        });
+    }
 
     function validationcheck(){
-        return true;
+        if(formData.name.length < 8){popalert("The name is empty"); return false;}
+        if(formData.longDesc.length <1){popalert("The desc is empty"); return false;}
+        if(formData.price.length < 1){popalert("The price is empty"); return false;}
+        if(formData.category_id.length < 1){popalert("The category i s empty"); return false;}
+        if(formData.brandName.length < 1){popalert("The Brand empty."); return false;}
+        if(formData.photo.length < 1){popalert("The photo is empty"); return false;}
     }
     const handleSubmit = async (e) => {
         e.preventDefault();
         // Assuming you have an API endpoint to handle the form data.
         if (!validationcheck()){return;}
-        const apiUrl = 'http://localhost:8080/auth/register';
+        const apiUrl = 'http://localhost:8080/Products';
 
         try {
             const response = await fetch(apiUrl, {
@@ -37,7 +75,14 @@ const Admin_Add_Product = () => {
             });
 
             if (response.ok) {
+                succAlert("Successful product Creation");
                 setFormData({
+                    name: '',
+                    longDesc: '',
+                    price: '',
+                    category_id: '',
+                    brandName: '',
+                    photo: ''
                 });
             } else {
                 popalert("There was an error. Please wait or contact developer;");
@@ -48,10 +93,103 @@ const Admin_Add_Product = () => {
             console.error('Error submitting form:', error);
         }
     };
-
     return (
-       <>
-       </>
+        <div id="registerform">
+            <div className="card mb-4">
+                <div className="card-body">
+                    <h3 className= "text-center font-weight-bold">ADD PRODUCT</h3>
+                </div>
+                <hr className="my-0" />
+                <div className="card-body">
+                    <div className='alert alert-danger' role='alert' id="RegAlert">
+                    </div>
+                    <div className='alert alert-success' role='alert' id="SuccAlert">
+                    </div>
+                    <div className="row">
+                        <div className="mb-3 col-md-12">
+                            <Form onSubmit={handleSubmit}>
+                                <Row>
+                                    <Col>
+                                        <Form.Group className="mb-6" controlId="name">
+                                            <Form.Label>Product Name</Form.Label>
+                                            <Form.Control
+                                                type="text"
+                                                placeholder="Variable product"
+                                                onChange={(e) => handleChange('name', e.target.value)}
+                                            />
+                                        </Form.Group>
+                                    </Col>
+                                    <Col>
+                                        <Form.Group className="mb-6" controlId="longDesc">
+                                            <Form.Label>Long description</Form.Label>
+                                            <Form.Control
+                                                type="text"
+                                                placeholder=""
+                                                onChange={(e) => handleChange('longDesc', e.target.value)}
+                                            />
+                                        </Form.Group>
+                                    </Col>
+                                    <Col>
+                                        <Form.Group className="mb-3" controlId="price">
+                                            <Form.Label>Price</Form.Label>
+                                            <Form.Control
+                                                type="number"
+                                                placeholder="0$"
+                                                onChange={(e) => handleChange('price', e.target.value)}
+                                            />
+                                        </Form.Group>
+                                    </Col>
+
+                                </Row>
+                                <Row>
+                                    <Col>
+                                        <Form.Group className="mb-6" controlId="category_id">
+                                            <Form.Label>Category</Form.Label>
+                                            <Form.Control
+                                                type="text"
+                                                placeholder="Category ID"
+                                                onChange={(e) => handleChange('category_id', e.target.value)}
+                                            />
+                                        </Form.Group>
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Col>
+                                        <Form.Group className="mb-3" controlId="brandName">
+                                            <Form.Label>Brand</Form.Label>
+                                            <Form.Control
+                                                type="text"
+                                                placeholder="iPhone"
+                                                onChange={(e) => handleChange('brandName', e.target.value)}
+                                            />
+                                        </Form.Group>
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Col>
+                                        <Form.Group className="mb-3" controlId="photo">
+                                            <Form.Label>Photo URL</Form.Label>
+                                            <Form.Control
+                                                type="text"
+                                                placeholder="Photo URL"
+                                                onChange={(e) => handleChange('photo', e.target.value)}
+                                            />
+                                        </Form.Group>
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <div className="d-grid gap-2">
+                                        <Button variant="primary" type="submit" className="btn btn-outline-info mb-6">
+                                            SUBMIT
+                                        </Button>
+                                    </div>
+                                </Row>
+                            </Form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     );
 };
 
