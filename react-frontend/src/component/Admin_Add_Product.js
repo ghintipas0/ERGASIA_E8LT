@@ -149,11 +149,7 @@ const Admin_Add_Product = () => {
                                                 type="text"
                                                 placeholder="Category ID"
                                                 onChange={(e) => handleChange('category_id', e.target.value)}
-                                                aria-describedby="usernamehelp"
                                             />
-                                            <Form.Text id="usernamehelp" muted>
-                                                8-32 Characters.
-                                            </Form.Text>
                                         </Form.Group>
                                     </Col>
                                 </Row>
