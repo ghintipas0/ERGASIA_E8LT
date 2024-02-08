@@ -28,14 +28,14 @@ function Admin() {
                      display: "flex",
                      height: "5vh",
                      width: "100%",
-                     zIndex: "2"
+                     zIndex: "1"
                  }}>
                 <div style={{
                     display: "grid",
                     gridTemplateColumns: "auto auto auto auto",
                     gridTemplateRows: "auto",
                     width: "100%",
-                    zIndex: "2"
+                    zIndex: "1"
                 }}>
                     <button onClick={() => toggleField("add_user")}>Add user</button>
                     <button onClick={() => toggleField("remove_user")}>Remove User</button>
