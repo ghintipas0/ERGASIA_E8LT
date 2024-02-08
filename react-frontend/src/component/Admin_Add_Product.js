@@ -14,6 +14,8 @@ const Admin_Add_Product = () => {
         brandName: '',
         photo: ''
     });
+    const [regAlert, setRegAlert] = useState('');
+    const [sucAlert, setSucAlert] = useState('');
     const navigate = useNavigate();
     const handleChange = (field, value) => {
         setFormData((prevFormData) => ({
@@ -23,48 +25,36 @@ const Admin_Add_Product = () => {
     };
 
     $(document).ready(function() {
-        // if ( document.cookie.indexOf('token=') !== -1){
-        //     navigate('/');
-        // }
         $("#RegAlert").hide();
-        $("#SuccAlert").hide();
+        $("#SucAlert").hide();
     });
-    function popalert(toprint){
-        $(document).ready(function() {
-            if ($("#RegAlert").is(":hidden")) {
-                $("#RegAlert").text(toprint);
-                $("#RegAlert").show();
-                window.scrollTo(0, 0);
-                $('#RegAlert').delay(5000).fadeOut('slow');
-            }
-        });
-    }
-
-    function succAlert(toprint){
-        $(document).ready(function() {
-            if ($("#SuccAlert").is(":hidden")) {
-                $("#SuccAlert").text(toprint);
-                $("#SuccAlert").show();
-                window.scrollTo(0, 0);
-                $('#SuccAlert').delay(5000).fadeOut('slow');
-            }
-        });
-    }
-
+    const popalert = (toprint) => {
+        setRegAlert(toprint);
+        setTimeout(() => {
+            setRegAlert('');
+        }, 5000);
+    };
+    const SucAlert = (toprint) => {
+        setSucAlert(toprint);
+        setTimeout(() => {
+            setSucAlert('');
+        }, 5000);
+    };
     function validationcheck(){
-        if(formData.name.length < 8){popalert("The name is empty"); return false;}
+        if(formData.name.length < 1){popalert("The name is empty"); return false;}
         if(formData.longDesc.length <1){popalert("The desc is empty"); return false;}
         if(formData.price.length < 1){popalert("The price is empty"); return false;}
-        if(formData.category_id.length < 1){popalert("The category i s empty"); return false;}
+        if(formData.category_id.length < 1){popalert("The category is empty"); return false;}
+        if(parseInt(formData.category_id) > 3 ){popalert("The category does not exist"); return false;}
         if(formData.brandName.length < 1){popalert("The Brand empty."); return false;}
         if(formData.photo.length < 1){popalert("The photo is empty"); return false;}
+        return true;
     }
     const handleSubmit = async (e) => {
         e.preventDefault();
         // Assuming you have an API endpoint to handle the form data.
         if (!validationcheck()){return;}
         const apiUrl = 'http://localhost:8080/Products';
-
         try {
             const response = await fetch(apiUrl, {
                 method: 'POST',
@@ -75,7 +65,6 @@ const Admin_Add_Product = () => {
             });
 
             if (response.ok) {
-                succAlert("Successful product Creation");
                 setFormData({
                     name: '',
                     longDesc: '',
@@ -84,6 +73,8 @@ const Admin_Add_Product = () => {
                     brandName: '',
                     photo: ''
                 });
+                SucAlert("Product added successfully!");
+                e.target.reset();
             } else {
                 popalert("There was an error. Please wait or contact developer;");
                 console.error('Failed to submit form');
@@ -101,10 +92,8 @@ const Admin_Add_Product = () => {
                 </div>
                 <hr className="my-0" />
                 <div className="card-body">
-                    <div className='alert alert-danger' role='alert' id="RegAlert">
-                    </div>
-                    <div className='alert alert-success' role='alert' id="SuccAlert">
-                    </div>
+                    {regAlert && <div className='alert alert-danger' role='alert'>{regAlert}</div>}
+                    {sucAlert && <div className='alert alert-success' role='alert'>{sucAlert}</div>}
                     <div className="row">
                         <div className="mb-3 col-md-12">
                             <Form onSubmit={handleSubmit}>
