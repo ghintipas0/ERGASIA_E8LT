@@ -39,7 +39,7 @@ public class ProductController{
 
     @DeleteMapping("/Products/{productId}")
     public ResponseEntity<?> deleteProduct(@PathVariable int productId) throws ProductNotFound {
-        return new ResponseEntity<>(productService.removeProduct(productId), HttpStatus.OK);
+            return new ResponseEntity<>(productService.removeProduct(productId), HttpStatus.OK);
     }
 
     @GetMapping("/ShopNow/{categoryId}")

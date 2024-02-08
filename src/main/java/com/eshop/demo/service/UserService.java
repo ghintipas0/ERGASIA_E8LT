@@ -5,6 +5,7 @@ import com.eshop.demo.DAO.UserDAO;
 import com.eshop.demo.entity.Address;
 import com.eshop.demo.entity.Role;
 import com.eshop.demo.entity.User;
+import com.eshop.demo.exception.UserNotFound;
 import com.eshop.demo.exception.UserNotVerifiedException;
 import com.eshop.demo.exception.UsersAlreadyExists;
 import com.eshop.demo.model.LoginBody;
@@ -45,6 +46,7 @@ public class UserService {
         //TODO:ENCRYPT PASSWORD
         user.setPassword(encryptionService.encryptPassword(registrationBody.getPassword()));
         Address address = new Address();
+        //TODO: NOT ALLOWED TO PASS 2 SAME ADDRESSES
         address.setAddressLine1(registrationBody.getAddressLine());
         address.setPostCode(registrationBody.getPostCode());
         address.setCountry(registrationBody.getCountry());
@@ -72,6 +74,17 @@ public class UserService {
             }
         }else{
              throw new UserNotVerifiedException("Wrong username");
+        }
+    }
+
+    public String deleteUser(int id) throws UserNotFound{
+        Optional<User> user = userDAO.findById(id);
+
+        if(user.isPresent()){
+            userDAO.delete(user.get());
+            return "The user deleted successfully with id "+id;
+        }else{
+            throw new UserNotFound("The user is not found ");
         }
     }
 

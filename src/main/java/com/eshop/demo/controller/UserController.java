@@ -1,23 +1,38 @@
 package com.eshop.demo.controller;
 import com.eshop.demo.entity.User;
+import com.eshop.demo.exception.ProductNotFound;
+import com.eshop.demo.exception.UserNotFound;
+import com.eshop.demo.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class UserController{
+    private UserService userService;
+
+    @Autowired
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
 
     @GetMapping("/ShopNow/profile")
-
     public ResponseEntity<?> profile(@AuthenticationPrincipal User user){//this will run before profile method as a result will inject the user instance even if is not authorize
         if(user==null){
             return new ResponseEntity<>("The user is not authorized", HttpStatus.UNAUTHORIZED);
         }
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
+    @DeleteMapping("/Users/{userId}")
+    public ResponseEntity<?> deleteProduct(@PathVariable int userId) throws UserNotFound {
+        return new ResponseEntity<>(userService.deleteUser(userId),HttpStatus.OK);
+    }
+
 
 
 

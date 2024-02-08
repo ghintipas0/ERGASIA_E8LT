@@ -20,6 +20,9 @@ const Admin_Add_User = () => {
         addressLine : '',
         postCode : ''
     });
+
+    const [regAlert, setRegAlert] = useState('');
+    const [sucAlert, setSucAlert] = useState('');
     const navigate = useNavigate();
     const handleChange = (field, value) => {
         setFormData((prevFormData) => ({
@@ -29,33 +32,21 @@ const Admin_Add_User = () => {
     };
 
     $(document).ready(function() {
-        // if ( document.cookie.indexOf('token=') !== -1){
-        //     navigate('/');
-        // }
         $("#RegAlert").hide();
-        $("#SuccAlert").hide();
+        $("#SucAlert").hide();
     });
-    function popalert(toprint){
-        $(document).ready(function() {
-            if ($("#RegAlert").is(":hidden")) {
-                $("#RegAlert").text(toprint);
-                $("#RegAlert").show();
-                window.scrollTo(0, 0);
-                $('#RegAlert').delay(5000).fadeOut('slow');
-            }
-        });
-    }
-
-    function succAlert(toprint){
-        $(document).ready(function() {
-            if ($("#SuccAlert").is(":hidden")) {
-                $("#SuccAlert").text(toprint);
-                $("#SuccAlert").show();
-                window.scrollTo(0, 0);
-                $('#SuccAlert').delay(5000).fadeOut('slow');
-            }
-        });
-    }
+    const popalert = (toprint) => {
+        setRegAlert(toprint);
+        setTimeout(() => {
+            setRegAlert('');
+        }, 5000);
+    };
+    const SucAlert = (toprint) => {
+        setSucAlert(toprint);
+        setTimeout(() => {
+            setSucAlert('');
+        }, 5000);
+    };
 
     function validationcheck(){
         if(formData.password.length < 8){popalert("The password is too short. It needs to have more than 8 characters"); return false;}
@@ -86,7 +77,7 @@ const Admin_Add_User = () => {
             });
 
             if (response.ok) {
-                succAlert("Successful user Creation");
+                SucAlert("Successful user Creation");
                 setFormData({
                     username: '',
                     email: '',
@@ -121,8 +112,8 @@ const Admin_Add_User = () => {
                     <div className='alert alert-danger' role='alert' id="RegAlert"> Some of the fields you entered are
                         incorrect or empty!
                     </div>
-                    <div className='alert alert-success' role='alert' id="SuccAlert">
-                    </div>
+                    {regAlert && <div className='alert alert-danger' role='alert'>{regAlert}</div>}
+                    {sucAlert && <div className='alert alert-success' role='alert'>{sucAlert}</div>}
                     <div className="row">
                         <div className="mb-3 col-md-12">
                             <Form onSubmit={handleSubmit}>

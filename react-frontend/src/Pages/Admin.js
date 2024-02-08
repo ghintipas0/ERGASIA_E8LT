@@ -3,6 +3,8 @@ import './Admin.css';
 import Admin_Add_User from "../component/Admin_Add_User";
 import $ from "jquery";
 import Admin_Add_Product from "../component/Admin_Add_Product";
+import Admin_Remove_Product from "../component/Admin_Remove_Product";
+import Admin_Remove_User from "../component/Admin_Remove_User";
 function Admin() {
     const [showFields, setShowFields] = useState({
         add_user: true,
@@ -44,9 +46,18 @@ function Admin() {
 
                 </div>
             </div>
-            <div style={{marginTop:"2vh"}}>
+            <div style={{
+                marginTop: "2vh",
+                width: "100vw",
+                alignSelf: "center",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+            }}>
                 {showFields.add_user && <Admin_Add_User />}
                 {showFields.add_product && <Admin_Add_Product />}
+                {showFields.remove_product && <Admin_Remove_Product />}
+                {showFields.remove_user && <Admin_Remove_User />}
             </div>
 
         </div>

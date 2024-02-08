@@ -1,9 +1,6 @@
 package com.eshop.demo.controller;
 
-import com.eshop.demo.exception.CategoryNotFound;
-import com.eshop.demo.exception.ProductNotFound;
-import com.eshop.demo.exception.UserNotVerifiedException;
-import com.eshop.demo.exception.UsersAlreadyExists;
+import com.eshop.demo.exception.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -27,6 +24,11 @@ public class AppExceptionHandler {
     @ExceptionHandler
     public ResponseEntity<String> handleException(CategoryNotFound categoryNotFound){
         return new ResponseEntity<>(categoryNotFound.getMessage(), HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler
+    public ResponseEntity<String> handleException(UserNotFound userNotFound){
+        return new ResponseEntity<>(userNotFound.getMessage(), HttpStatus.NOT_FOUND);
     }
 
 
