@@ -39,6 +39,22 @@ const Admin_Remove_User = () => {
         if(formData.userId.length < 1){popalert("The id is invalid"); return false;}
         return true;
     }
+    function getCookieValue(cname) {
+        // cname is the cookie name (foo) which value you are after
+        var name = cname + "=";
+        var decodedCookie = decodeURIComponent(document.cookie);
+        var ca = decodedCookie.split(';');
+        for(var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) === ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) === 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
     const handleSubmit = async (e) => {
         e.preventDefault();
         // Assuming you have an API endpoint to handle the form data.
@@ -49,6 +65,7 @@ const Admin_Remove_User = () => {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + getCookieValue("token")
                 },
                 body: JSON.stringify(formData),
             });

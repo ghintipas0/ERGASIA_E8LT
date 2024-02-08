@@ -23,12 +23,10 @@ public class WebSecurityConfig {
         http.csrf(csrf->csrf.disable());
         http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
         http.authorizeRequests()
-                .requestMatchers("/auth/login","/auth/register","/ShopNow","/Products","/Products/{productId}","/ShopNow/{categoryId}","/ShopNow/search","/ShopNow/profile","/order","/Users/{userId}").permitAll()
-                .requestMatchers("/cart").authenticated();
-                //.requestMatchers("/Products").hasRole("ADMIN");
+                .requestMatchers("/auth/login","/auth/register","/ShopNow","/ShopNow/{categoryId}","/ShopNow/search","/ShopNow/profile","/order","/Users/{userId}").permitAll()
+                .requestMatchers("/cart").authenticated()
+                .requestMatchers("/Products","/Products/{productId}").hasRole("ADMIN");
         return http.build();
-
-
     }
 }
 
