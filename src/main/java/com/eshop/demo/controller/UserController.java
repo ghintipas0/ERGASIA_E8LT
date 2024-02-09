@@ -1,4 +1,5 @@
 package com.eshop.demo.controller;
+import com.eshop.demo.entity.Role;
 import com.eshop.demo.entity.User;
 import com.eshop.demo.exception.ProductNotFound;
 import com.eshop.demo.exception.UserNotFound;
@@ -31,6 +32,15 @@ public class UserController{
     @DeleteMapping("/Users/{userId}")
     public ResponseEntity<?> deleteProduct(@PathVariable int userId) throws UserNotFound {
         return new ResponseEntity<>(userService.deleteUser(userId),HttpStatus.OK);
+    }
+
+    @GetMapping("/admin")
+    public ResponseEntity<?> defineRole(@AuthenticationPrincipal User user){
+        if(user==null){
+            return new ResponseEntity<>(false,HttpStatus.OK);
+        }else{
+            return  new ResponseEntity<>(userService.defineUser(user.getUsername()),HttpStatus.OK);
+        }
     }
 
 

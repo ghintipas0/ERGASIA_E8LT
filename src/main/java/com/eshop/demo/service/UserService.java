@@ -88,6 +88,12 @@ public class UserService {
         }
     }
 
+    public boolean defineUser(String username){
+        Optional<Role> role = roleDAO.findByUsernameIgnoreCase(username);
+        //TODO: TO LEARN THE BELOW
+        return role.map(value -> value.getRoleName().equals("ROLE_ADMIN")).orElse(false);
+    }
+
 
 
 
