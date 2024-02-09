@@ -5,6 +5,8 @@ import com.eshop.demo.entity.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class RoleService {
     private RoleDAO roleDAO;
@@ -18,4 +20,6 @@ public class RoleService {
         return roleDAO.save(role);
 
     }
+
+
 }
