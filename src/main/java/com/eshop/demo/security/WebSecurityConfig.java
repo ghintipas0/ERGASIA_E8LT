@@ -23,9 +23,9 @@ public class WebSecurityConfig {
         http.csrf(csrf->csrf.disable());
         http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
         http.authorizeRequests()
-                .requestMatchers("/auth/login","/auth/register","/ShopNow","/ShopNow/{categoryId}","/ShopNow/search","/ShopNow/profile","/order","/Users/{userId}").permitAll()
+                .requestMatchers("/auth/login","/auth/register","/ShopNow","/ShopNow/{categoryId}","/ShopNow/search","/ShopNow/profile","/order","/admin").permitAll()
                 .requestMatchers("/cart").authenticated()
-                .requestMatchers("/Products","/Products/{productId}").hasRole("ADMIN");
+                .requestMatchers("/Products","/Products/{productId}","/Users/{userId}").hasRole("ADMIN");
         return http.build();
     }
 }
