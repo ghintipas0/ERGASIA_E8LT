@@ -5,16 +5,22 @@ import MyProfile from './Pages/MyProfile';
 import Login from './Pages/Login';
 import Register from './Pages/Register';
 import Admin from './Pages/Admin';
+import PC from './Pages/PC';
+import Phone from './Pages/Phone';
+import TV from './Pages/TV';
 function App() {
     return (
             <div className="App">
                 <NavBar/>
                 <Routes>
                     <Route exact path="/" element={<Home/>} />
-                     <Route exact path="/MyProfile" element={<MyProfile/>} />
+                    <Route exact path="/MyProfile" element={<MyProfile/>} />
                     <Route exact path="/Login" element={<Login/>} />
                     <Route exact path="/Register" element={<Register/>} />
                     <Route exact path="/Admin" element={<Admin/>} />
+                    <Route exact path="/PC" element={<PC/>} />
+                    {/*<Route exact path="/Phone" element={<Phone/>} />*/}
+                    {/*<Route exact path="/TV" element={<TV/>} />*/}
                 </Routes>
             </div>
     );

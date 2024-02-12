@@ -5,6 +5,7 @@ import $ from "jquery";
 import Admin_Add_Product from "../component/Admin_Add_Product";
 import Admin_Remove_Product from "../component/Admin_Remove_Product";
 import Admin_Remove_User from "../component/Admin_Remove_User";
+import {useNavigate} from "react-router-dom";
 function Admin() {
     const [showFields, setShowFields] = useState({
         add_user: true,
@@ -20,7 +21,53 @@ function Admin() {
             }, {})
         }));
     };
+    function getCookieValue(cname) {
+        // cname is the cookie name (foo) which value you are after
+        var name = cname + "=";
+        var decodedCookie = decodeURIComponent(document.cookie);
+        var ca = decodedCookie.split(';');
+        for(var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) === ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) === 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
+    const GetAdminStatus = async (e) => {
+        const apiUrl = 'http://localhost:8080/admin';
+        try {
+            const response = await fetch(apiUrl, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + getCookieValue("token")
+                }
+            });
 
+            if (response.ok) {
+                let isAdmin = await response.text();
+                if(isAdmin === "false"){
+                    navigate('/');
+                }
+            }else{
+                navigate('/');
+            }
+        } catch (error) {
+            console.error('Error submitting form:', error);
+        }
+    };
+    const navigate = useNavigate();
+    $(document).ready(function() {
+        if ( document.cookie.indexOf('token=') === -1){
+            navigate('/');
+        }
+        GetAdminStatus();
+        $("#LoginAlert").hide();
+    });
     return (
         <div>
             <div className="sticky_top"
