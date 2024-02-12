@@ -19,8 +19,8 @@ function App() {
                     <Route exact path="/Register" element={<Register/>} />
                     <Route exact path="/Admin" element={<Admin/>} />
                     <Route exact path="/PC" element={<PC/>} />
-                    <Route exact path="/Phone" element={<Phone/>} />
-                    <Route exact path="/TV" element={<TV/>} />
+                    {/*<Route exact path="/Phone" element={<Phone/>} />*/}
+                    {/*<Route exact path="/TV" element={<TV/>} />*/}
                 </Routes>
             </div>
     );
