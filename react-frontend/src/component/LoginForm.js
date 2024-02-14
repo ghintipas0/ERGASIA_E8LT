@@ -17,7 +17,7 @@ const LoginForm = () => {
         }));
     };
     $(document).ready(function() {
-        if ( document.cookie.indexOf('token=') !== -1){
+        if ( sessionStorage.getItem('token')){
             navigate('/');
         }
         $("#LoginAlert").hide();
@@ -53,12 +53,13 @@ const LoginForm = () => {
             if (response.ok) {
 
                 let token = await response.text();
-                document.cookie = "token=" + token + ";";
+                sessionStorage.setItem('token', token);
                 navigate('/');
                 setFormData({
                     username: '',
                     password: ''
                 });
+                window.location.reload();
             } else {
                 alert("Your Username and/or Password are/is incorrect!");
                 console.error('Failed to submit form');

@@ -21,30 +21,15 @@ function Admin() {
             }, {})
         }));
     };
-    function getCookieValue(cname) {
-        // cname is the cookie name (foo) which value you are after
-        var name = cname + "=";
-        var decodedCookie = decodeURIComponent(document.cookie);
-        var ca = decodedCookie.split(';');
-        for(var i = 0; i < ca.length; i++) {
-            var c = ca[i];
-            while (c.charAt(0) === ' ') {
-                c = c.substring(1);
-            }
-            if (c.indexOf(name) === 0) {
-                return c.substring(name.length, c.length);
-            }
-        }
-        return "";
-    }
     const GetAdminStatus = async (e) => {
         const apiUrl = 'http://localhost:8080/admin';
         try {
+            console.log('Bearer ' + sessionStorage.getItem('token'));
             const response = await fetch(apiUrl, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': 'Bearer ' + getCookieValue("token")
+                    'Authorization': 'Bearer ' + sessionStorage.getItem('token')
                 }
             });
 
@@ -54,6 +39,7 @@ function Admin() {
                     navigate('/');
                 }
             }else{
+                console.log("There was an error, please contact developer")
                 navigate('/');
             }
         } catch (error) {
@@ -62,7 +48,7 @@ function Admin() {
     };
     const navigate = useNavigate();
     $(document).ready(function() {
-        if ( document.cookie.indexOf('token=') === -1){
+        if (!sessionStorage.getItem('token')){
             navigate('/');
         }
         GetAdminStatus();

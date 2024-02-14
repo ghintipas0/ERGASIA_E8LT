@@ -29,6 +29,9 @@ const UserRegistrationForm = () => {
     };
 
     $(document).ready(function() {
+        if ( sessionStorage.getItem('token')){
+            navigate('/');
+        }
         $("#RegAlert").hide();
     });
     function popalert(toprint){

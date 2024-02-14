@@ -7,9 +7,9 @@ const LogRegPopup = () => {
     return (
                     <div id="regpopup">
                         <div style={{color:"black", marginTop:"1em"}}>Already Registered?</div>
-                        <button className="login-button"> <Link to="/Login" className="nav-item nav-link text-decoration-none" style={{color:"white"}}>Login</Link> </button>
+                        <button className="login-button" > <Link to="/Login" className="nav-item nav-link text-decoration-none" style={{color:"white"}}>Login</Link> </button>
                         <div style={{color:"black", marginTop:"1em"}}>New User?</div>
-                        <button className="register-button"> <Link to="/Register" className="nav-item nav-link text-decoration-none" style={{color:"black"}}>Register</Link> </button>
+                        <button className="register-button" > <Link to="/Register" className="nav-item nav-link text-decoration-none" style={{color:"black"}}>Register</Link> </button>
                     </div>
 
     );
