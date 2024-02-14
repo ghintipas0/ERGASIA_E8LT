@@ -38,7 +38,7 @@ const NavBar = () => {
                 <div style={{display:"grid",gridTemplateColumns:"auto auto auto",gridTemplateRows:"auto",width:"100%"}}>
                     <div style={{display:"grid",gridTemplateColumns:"auto auto auto",gridTemplateRows:"auto",width:"100%"}}>
                         <Link to="/" className="text-light nav-item nav-link text-decoration-none" style={{height:"100%",display:"flex",alignItems:"center",justifyContent: "center"}}> Home </Link>
-                        <Link to="/MyProfile" className="text-light nav-item nav-link text-decoration-none" style={{height:"100%",display:"flex",alignItems:"center",justifyContent: "center"}}>Orders</Link>
+                        {isLoggedin && (<Link to="/MyProfile" className="text-light nav-item nav-link text-decoration-none" style={{height:"100%",display:"flex",alignItems:"center",justifyContent: "center"}}>Orders</Link>)}
                         <Dropdown>
                             <Dropdown.Toggle variant="dark" className="text-light nav-item nav-link text-decoration-none" id="dropdown-basic" style={{height:"100%"}}>
                                 Products
@@ -69,7 +69,7 @@ const NavBar = () => {
                 <div id="isshow">
                     {isPopupOpen ? (
                         <div className="popup" id="regpopup">
-                            {isLoggedin ? <Logout/> :
+                            {isLoggedin ? <Logout/> : (
                                 <div id="regpopup">
                                     <div style={{color: "black", marginTop: "1em"}}>Already Registered?</div>
                                     <button className="login-button" onClick={togglepopup}><Link to="/Login"
@@ -81,7 +81,7 @@ const NavBar = () => {
                                                                                                     className="nav-item nav-link text-decoration-none"
                                                                                                     style={{color: "black"}}>Register</Link>
                                     </button>
-                                </div>}
+                                </div>)}
                         </div>
                     ) : null}
                 </div>
