@@ -70,8 +70,9 @@ const LoginForm = () => {
         }
     };
 
-    function redirect_to_Login(){
-        navigate('/Login');
+    function redirect_to_Reg(){
+        navigate('/Register');
+        window.scrollTo(0, 0);
     }
     return (
         <div id="loginform">
@@ -114,7 +115,7 @@ const LoginForm = () => {
                                         <Button variant="primary" type="submit" className="btn btn-outline-info mb-6">
                                             SUBMIT
                                         </Button>
-                                        <Button variant="primary" onClick={redirect_to_Login}>I dont have an account</Button>
+                                        <Button variant="primary" onClick={redirect_to_Reg}>I dont have an account</Button>
                                     </div>
                                 </Row>
                             </Form>

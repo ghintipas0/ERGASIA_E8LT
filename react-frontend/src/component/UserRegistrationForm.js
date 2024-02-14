@@ -99,8 +99,9 @@ const UserRegistrationForm = () => {
         }
     };
 
-    function redirect_to_Register(){
-        navigate('/Register');
+    function redirect_to_Login(){
+        navigate('/Login');
+        window.scrollTo(0, 0);
     }
     return (
         <div id="registerform">
@@ -254,7 +255,7 @@ const UserRegistrationForm = () => {
                                         <Button variant="primary" type="submit" className="btn btn-outline-info mb-6">
                                             SUBMIT
                                         </Button>
-                                        <Button variant="primary" onClick={redirect_to_Register}>I already have an
+                                        <Button variant="primary" onClick={redirect_to_Login}>I already have an
                                             account</Button>
                                     </div>
                                 </Row>
