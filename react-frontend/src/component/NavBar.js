@@ -44,9 +44,9 @@ const NavBar = () => {
                                 Products
                             </Dropdown.Toggle>
                             <Dropdown.Menu>
-                                <Link className="text-light nav-item nav-link text-decoration-none" to="Products/1">PC & Laptops</Link>
-                                <Link className="text-light nav-item nav-link text-decoration-none" to="Products/2">Smartphones</Link>
-                                <Link className="text-light nav-item nav-link text-decoration-none" to="Products/3">Τηλεοράσεις</Link>
+                                <Link className="text-light nav-item nav-link text-decoration-none" to="/Products/1">PC & Laptops</Link>
+                                <Link className="text-light nav-item nav-link text-decoration-none" to="/Products/2">Smartphones</Link>
+                                <Link className="text-light nav-item nav-link text-decoration-none" to="/Products/3">Τηλεοράσεις</Link>
                             </Dropdown.Menu>
                         </Dropdown>
                     </div>
