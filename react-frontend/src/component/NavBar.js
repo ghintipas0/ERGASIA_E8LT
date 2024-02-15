@@ -8,8 +8,12 @@ import Logout from "./Logout";
 
 const NavBar = () => {
     const navigate = useNavigate();
-    const [isPopupOpen, setPopupOpen] = useState(false);
+    const [isProfilePopupOpen, setProfilePopupOpen] = useState(false);
+    const [isCartPopupOpen, setCartPopupOpen] = useState(false);
     const [isLoggedin, setLoggedin] = useState(false);
+      const [products, setProducts] = useState([]);
+      const [cart, setCart] = useState([]);
+      const [totalCost, setTotalCost] = useState(0);
     useEffect(() => {
         if (sessionStorage.getItem('token')) {
             $('#isshow').hide();
@@ -19,7 +23,7 @@ const NavBar = () => {
         }
     }, []);
 
-    function togglepopup() {
+    function toggleProfilePopup() {
         if (document.cookie.indexOf('token=') !== -1) {
             $('#isshow').hide();
         } else {
@@ -28,8 +32,20 @@ const NavBar = () => {
         if (!$('#isshow').length) {
             navigate('/MyProfile');
         } else {
-            setPopupOpen(!isPopupOpen);
+            setProfilePopupOpen(!isProfilePopupOpen);
         }
+    }
+
+    function toggleCartPopup() {
+        // Logic to toggle cart popup
+        setCartPopupOpen(!isCartPopupOpen);
+    }
+
+    function addToCart(product) {
+        const newCart = [...cart, product];
+        const newTotalCost = totalCost + product.price;
+        setCart(newCart);
+        setTotalCost(newTotalCost);
     }
 
     return (
@@ -44,9 +60,9 @@ const NavBar = () => {
                                 Products
                             </Dropdown.Toggle>
                             <Dropdown.Menu>
-                                <Link className="text-light nav-item nav-link text-decoration-none" to="/Products/1">PC & Laptops</Link>
-                                <Link className="text-light nav-item nav-link text-decoration-none" to="/Products/2">Smartphones</Link>
-                                <Link className="text-light nav-item nav-link text-decoration-none" to="/Products/3">Τηλεοράσεις</Link>
+                                <Link className="text-light nav-item nav-link text-decoration-none" to="Products/3">PC & Laptops</Link>
+                                <Link className="text-light nav-item nav-link text-decoration-none" to="Products/1">Smartphones</Link>
+                                <Link className="text-light nav-item nav-link text-decoration-none" to="Products/2">Τηλεοράσεις</Link>
                             </Dropdown.Menu>
                         </Dropdown>
                     </div>
@@ -56,32 +72,46 @@ const NavBar = () => {
 
                     <div className="container" style={{justifyContent: "flex-end"}}>
                         <button className="rotate-on-hover">
-                            <img src="../Media/wishlist.png" alt="Wishlist Icon" />
+                            <img src="/Media/wishlist.png" alt="Wishlist Icon" />
                         </button>
-                        <button className="rotate-on-hover" onClick={togglepopup}>
-                            <img src="../Media/profile.png" alt="Profile Icon" />
+                        <button className="rotate-on-hover" onClick={toggleProfilePopup}>
+                            <img src="/Media/profile.png" alt="Profile Icon" />
                         </button>
-                        <button className="rotate-on-hover">
-                            <img src="../Media/Cart.png" alt="Cart Icon" />
+                        <button className="rotate-on-hover" onClick={toggleCartPopup}>
+                            <img src="/Media/Cart.png" alt="Cart Icon" />
                         </button>
                     </div>
                 </div>
                 <div id="isshow">
-                    {isPopupOpen ? (
+                    {isProfilePopupOpen ? (
                         <div className="popup" id="regpopup">
                             {isLoggedin ? <Logout/> : (
                                 <div id="regpopup">
                                     <div style={{color: "black", marginTop: "1em"}}>Already Registered?</div>
-                                    <button className="login-button" onClick={togglepopup}><Link to="/Login"
+                                    <button className="login-button" onClick={toggleProfilePopup}><Link to="/Login"
                                                                                                  className="nav-item nav-link text-decoration-none"
                                                                                                  style={{color: "white"}}>Login</Link>
                                     </button>
                                     <div style={{color: "black", marginTop: "1em"}}>New User?</div>
-                                    <button className="register-button" onClick={togglepopup}><Link to="/Register"
+                                    <button className="register-button" onClick={toggleProfilePopup}><Link to="/Register"
                                                                                                     className="nav-item nav-link text-decoration-none"
                                                                                                     style={{color: "black"}}>Register</Link>
                                     </button>
                                 </div>)}
+                        </div>
+                    ) : null}
+                    {isCartPopupOpen ? (
+                      <div className="popup" id="cartpopup">
+                        {/* Contents of the cart popup */}
+                        <div className="cart-summary">
+                            <h2>Shopping Cart</h2>
+                            <ul>
+                              {cart.map((item, index) => (
+                                <li key={index}>{item.name} - {item.price}€</li>
+                              ))}
+                            </ul>
+                            <p>Total: {totalCost}€</p>
+                          </div>
                         </div>
                     ) : null}
                 </div>

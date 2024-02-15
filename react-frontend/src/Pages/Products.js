@@ -1,45 +1,58 @@
 import React, { useState, useEffect } from 'react';
-import {Link, useParams} from 'react-router-dom';
-// import './PC.css';
+import { Link, useParams } from 'react-router-dom';
+import './Products.css';
 const Products = () => {
   const [products, setProducts] = useState([]);
+  const [cart, setCart] = useState([]);
+  const [totalCost, setTotalCost] = useState(0);
   let { id } = useParams();
   useEffect(() => {
     fetchProducts();
   }, []);
+
   const fetchProducts = async () => {
     try {
-      // Κάνετε fetch τα δεδομένα από τον server
       const response = await fetch('http://localhost:8080/ShopNow/' + id);
       if (!response.ok) {
         throw new Error('Failed to fetch products');
       }
       const data = await response.json();
-      // Θέτετε τα προϊόντα στο state
-
       setProducts(data);
     } catch (error) {
       console.error('Error fetching products:', error);
     }
   };
 
+  const addToCart = (product) => {
+    const newCart = [...cart, product];
+    const newTotalCost = totalCost + product.price;
+    setCart(newCart);
+    setTotalCost(newTotalCost);
+  };
+
   return (
-      <div className="products-container">
-        {products.map(product => (
-            <div key={product.id} className="product-box">
-              <div className="b-container">
-                <button className="small-square-button">
-                  <img src={product.image} alt="Product" />
-                </button>
-                <div className="product-details">
-                  <h3>{product.name}</h3>
-                  <p>{product.price}</p>
-                </div>
+    <div className="products-container">
+      {products.map(product => (
+        <div key={product.id} className="product-container">
+          <div className="product-box">
+            <div className="b-container">
+              <img src={product.photo} alt="Product" />
+              <div className="product-details">
+                <h3>{product.name}</h3>
               </div>
             </div>
-        ))}
-      </div>
+          </div>
+          <div className="price-box">
+            <p>{product.price}€</p>
+            <button onClick={() => addToCart(product)}>
+               <img src="/Media/Cart.png" alt="Cart Icon" />
+            </button>
+          </div>
+        </div>
+      ))}
+    </div>
   );
 };
 
 export default Products;
+
