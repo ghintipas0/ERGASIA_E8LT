@@ -17,9 +17,6 @@ const LoginForm = () => {
         }));
     };
     $(document).ready(function() {
-        if ( sessionStorage.getItem('token')){
-            navigate('/');
-        }
         $("#LoginAlert").hide();
     });
     function alert(to_display){

@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import './PC.css';
-const PC = () => {
+import {Link, useParams} from 'react-router-dom';
+// import './PC.css';
+const Products = () => {
   const [products, setProducts] = useState([]);
-
+  let { id } = useParams();
   useEffect(() => {
     fetchProducts();
   }, []);
   const fetchProducts = async () => {
     try {
       // Κάνετε fetch τα δεδομένα από τον server
-      const response = await fetch('http://localhost:8080/ShopNow/1');
+      console.log(id);
+      const response = await fetch('http://localhost:8080/ShopNow/' + id);
       if (!response.ok) {
         throw new Error('Failed to fetch products');
       }
@@ -42,4 +43,4 @@ const PC = () => {
   );
 };
 
-export default PC;
+export default Products;
