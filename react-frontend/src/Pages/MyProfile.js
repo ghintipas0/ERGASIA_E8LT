@@ -6,14 +6,10 @@ function MyProfile () {
             <div className="layout-container">
                 <div className="layout-page">
                     <div className="content-wrapper">
-
                         <div className="container-xxl flex-grow-1 container-p-y">
                             <div className="row">
-
                                 <div className="row">
                                     <div className="col-md-12">
-
-
                                         <div className="card mb-4">
                                             <div className="card-body">
                                             </div>

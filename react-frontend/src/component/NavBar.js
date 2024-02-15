@@ -4,14 +4,18 @@ import { Col, Row, Dropdown } from 'react-bootstrap';
 import LogRegPopup from './LogRegPopup';
 import './NavBar.css';
 import $ from 'jquery';
+import Logout from "./Logout";
 
 const NavBar = () => {
     const navigate = useNavigate();
     const [isPopupOpen, setPopupOpen] = useState(false);
-
+    const [isLoggedin, setLoggedin] = useState(false);
     useEffect(() => {
-        if (document.cookie.indexOf('token=') !== -1) {
+        if (sessionStorage.getItem('token')) {
             $('#isshow').hide();
+            setLoggedin(true);
+        }else{
+            setLoggedin(false);
         }
     }, []);
 
@@ -34,7 +38,7 @@ const NavBar = () => {
                 <div style={{display:"grid",gridTemplateColumns:"auto auto auto",gridTemplateRows:"auto",width:"100%"}}>
                     <div style={{display:"grid",gridTemplateColumns:"auto auto auto",gridTemplateRows:"auto",width:"100%"}}>
                         <Link to="/" className="text-light nav-item nav-link text-decoration-none" style={{height:"100%",display:"flex",alignItems:"center",justifyContent: "center"}}> Home </Link>
-                        <Link to="/MyProfile" className="text-light nav-item nav-link text-decoration-none" style={{height:"100%",display:"flex",alignItems:"center",justifyContent: "center"}}>Orders</Link>
+                        {isLoggedin && (<Link to="/MyProfile" className="text-light nav-item nav-link text-decoration-none" style={{height:"100%",display:"flex",alignItems:"center",justifyContent: "center"}}>Orders</Link>)}
                         <Dropdown>
                             <Dropdown.Toggle variant="dark" className="text-light nav-item nav-link text-decoration-none" id="dropdown-basic" style={{height:"100%"}}>
                                 Products
@@ -63,11 +67,23 @@ const NavBar = () => {
                     </div>
                 </div>
                 <div id="isshow">
-                    {isPopupOpen &&
+                    {isPopupOpen ? (
                         <div className="popup" id="regpopup">
-                            <LogRegPopup />
+                            {isLoggedin ? <Logout/> : (
+                                <div id="regpopup">
+                                    <div style={{color: "black", marginTop: "1em"}}>Already Registered?</div>
+                                    <button className="login-button" onClick={togglepopup}><Link to="/Login"
+                                                                                                 className="nav-item nav-link text-decoration-none"
+                                                                                                 style={{color: "white"}}>Login</Link>
+                                    </button>
+                                    <div style={{color: "black", marginTop: "1em"}}>New User?</div>
+                                    <button className="register-button" onClick={togglepopup}><Link to="/Register"
+                                                                                                    className="nav-item nav-link text-decoration-none"
+                                                                                                    style={{color: "black"}}>Register</Link>
+                                    </button>
+                                </div>)}
                         </div>
-                    }
+                    ) : null}
                 </div>
             </div>
         </nav>

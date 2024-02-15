@@ -2,9 +2,6 @@ import React, { useState } from 'react';
 import { Col, Form, InputGroup, Row, Button } from 'react-bootstrap';
 import $ from "jquery";
 import {useNavigate} from "react-router-dom";
-
-
-
 const Admin_Add_Product = () => {
     const [formData, setFormData] = useState({
         name: '',

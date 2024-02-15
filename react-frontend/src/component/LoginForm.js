@@ -17,7 +17,7 @@ const LoginForm = () => {
         }));
     };
     $(document).ready(function() {
-        if ( document.cookie.indexOf('token=') !== -1){
+        if ( sessionStorage.getItem('token')){
             navigate('/');
         }
         $("#LoginAlert").hide();
@@ -53,12 +53,13 @@ const LoginForm = () => {
             if (response.ok) {
 
                 let token = await response.text();
-                document.cookie = "token=" + token + ";";
+                sessionStorage.setItem('token', token);
                 navigate('/');
                 setFormData({
                     username: '',
                     password: ''
                 });
+                window.location.reload();
             } else {
                 alert("Your Username and/or Password are/is incorrect!");
                 console.error('Failed to submit form');
@@ -69,9 +70,11 @@ const LoginForm = () => {
         }
     };
 
-    function redirect_to_Login(){
-        navigate('/Login');
+    function redirect_to_Reg(){
+        navigate('/Register');
+        window.scrollTo(0, 0);
     }
+
     return (
         <div id="loginform">
             <div className="card mb-4">
@@ -113,7 +116,7 @@ const LoginForm = () => {
                                         <Button variant="primary" type="submit" className="btn btn-outline-info mb-6">
                                             SUBMIT
                                         </Button>
-                                        <Button variant="primary" onClick={redirect_to_Login}>I dont have an account</Button>
+                                        <Button variant="primary" onClick={redirect_to_Reg}>I dont have an account</Button>
                                     </div>
                                 </Row>
                             </Form>
