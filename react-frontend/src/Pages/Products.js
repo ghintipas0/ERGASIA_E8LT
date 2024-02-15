@@ -10,7 +10,6 @@ const Products = () => {
   const fetchProducts = async () => {
     try {
       // Κάνετε fetch τα δεδομένα από τον server
-      console.log(id);
       const response = await fetch('http://localhost:8080/ShopNow/' + id);
       if (!response.ok) {
         throw new Error('Failed to fetch products');
