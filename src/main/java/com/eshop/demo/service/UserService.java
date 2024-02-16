@@ -57,8 +57,6 @@ public class UserService {
         role.setUsername(user.getUsername());
         role.setRoleName("ROLE_USER");
         roleDAO.save(role);
-        /*user =*/
-
         return user;
     }
 
