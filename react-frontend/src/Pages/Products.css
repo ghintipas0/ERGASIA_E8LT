@@ -6,6 +6,12 @@
   grid-gap: 20px;
 }
 
+@media only screen and (max-width: 600px) {
+  .products-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 .product-box {
   border-radius: 10px;
   border: 1px solid #ccc;
