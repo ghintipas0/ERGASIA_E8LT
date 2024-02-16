@@ -33,6 +33,10 @@ public class UserController{
     public ResponseEntity<?> deleteUser(@PathVariable int userId) throws UserNotFound {
         return new ResponseEntity<>(userService.deleteUser(userId),HttpStatus.OK);
     }
+    @PutMapping("/Users")
+    public ResponseEntity<?> updateUser(@RequestBody User user){
+        return new ResponseEntity<>(user,HttpStatus.OK);
+    }
 
 
 

@@ -29,7 +29,6 @@ public class User {
     private String phoneNumber;
     @Column(name = "birth_date")
     private String birthDate;
-    //@JsonIgnore
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL,fetch = FetchType.EAGER)//one user can have many addresses. If a user remove from the db we want to erase his addresses.
     private List<Address> addresses = new ArrayList<>();//The fetch type by default is lazy
 
