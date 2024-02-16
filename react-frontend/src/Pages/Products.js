@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import {Link, useLocation, useParams} from 'react-router-dom';
 import './Products.css';
 const Products = () => {
+  const location = useLocation();
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
   const [totalCost, setTotalCost] = useState(0);
   let { id } = useParams();
   useEffect(() => {
     fetchProducts();
-  }, []);
+  },[location]);
 
   const fetchProducts = async () => {
     try {
