@@ -30,9 +30,11 @@ public class UserController{
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
     @DeleteMapping("/Users/{userId}")
-    public ResponseEntity<?> deleteProduct(@PathVariable int userId) throws UserNotFound {
+    public ResponseEntity<?> deleteUser(@PathVariable int userId) throws UserNotFound {
         return new ResponseEntity<>(userService.deleteUser(userId),HttpStatus.OK);
     }
+
+
 
     @GetMapping("/admin")
     public ResponseEntity<?> defineRole(@AuthenticationPrincipal User user){
