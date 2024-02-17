@@ -3,6 +3,7 @@ import com.eshop.demo.entity.Role;
 import com.eshop.demo.entity.User;
 import com.eshop.demo.exception.ProductNotFound;
 import com.eshop.demo.exception.UserNotFound;
+import com.eshop.demo.exception.UsernameOrEmailAlreadyExists;
 import com.eshop.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -34,8 +35,11 @@ public class UserController{
         return new ResponseEntity<>(userService.deleteUser(userId),HttpStatus.OK);
     }
     @PutMapping("/Users")
-    public ResponseEntity<?> updateUser(@RequestBody User user){
-        return new ResponseEntity<>(user,HttpStatus.OK);
+    public ResponseEntity<?> updateUser(@AuthenticationPrincipal User user,@RequestBody User newUser) throws UsernameOrEmailAlreadyExists {
+        if(user==null){
+            return new ResponseEntity<>("The user is not authorized", HttpStatus.UNAUTHORIZED);
+        }
+        return new ResponseEntity<>(userService.updateUser(user,newUser),HttpStatus.OK);
     }
 
 
