@@ -20,7 +20,7 @@ function UserAuth() {
                     <div className="layout-overlay layout-menu-toggle"></div>
                 </div>
             )}
-    });
+    }, []);
 
     function return_error_403() {
         setLoginContent(<div style={{ height: "100%", width: "100%", color: "black", fontSize:"25vw",textAlign:"center",fontFamily:"sans-serif"}}>403</div>);
