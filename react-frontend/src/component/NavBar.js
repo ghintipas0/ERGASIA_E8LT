@@ -48,6 +48,7 @@ const NavBar = () => {
         setTotalCost(newTotalCost);
     }
 
+
     return (
         <nav className="navbar navbar-dark bg-dark" style={{position: "sticky", top:"0"}}>
             <div className="nav nav-pills nav-justified" style={{width:"100%",}}>
@@ -124,7 +125,7 @@ const NavBar = () => {
                                     <p>Total: {totalCost}€</p>
                                 </div>
                                 <div className="cart-buttons">
-                                    <button className="checkout-button">Checkout</button>
+                                    <Link to="/CartPage" className="checkout-button">Checkout</Link>
                                     <button className="continue-shopping-button" onClick={toggleCartPopup}>Continue Shopping</button>
                                 </div>
                             </div>

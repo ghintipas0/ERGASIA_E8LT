@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {Link, useLocation, useParams} from 'react-router-dom';
 import './Products.css';
+
 const Products = () => {
   const location = useLocation();
   const [products, setProducts] = useState([]);
