@@ -176,3 +176,11 @@ input[type="number"]::-webkit-outer-spin-button:before {
     text-align: right;
     margin-top: 20px;
 }
+
+
+.action-buttons .delete-icon {
+    width: 18px; /* Προσδιορίζει το πλάτος του εικονιδίου */
+    height: 18px; /* Προσδιορίζει το ύψος του εικονιδίου */
+}
+
+

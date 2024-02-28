@@ -37,8 +37,10 @@ const CartPage = () => {
                                 <p className="item-price">{item.price}€</p>
                             </div>
                         </div>
-                        <div className="action-buttons">
-                            <button onClick={() => removeItem(item.id)}>Αφαίρεση</button>
+                        <div className="action-buttons" >
+                            <button className="delete-button" onClick={() => removeItem(item.id)}>
+                              <img src="Media/delete.png" alt="Διαγραφή" className="delete-icon" />
+                            </button>
                             <div className="input-container">
                                 <input
                                     type="number"
