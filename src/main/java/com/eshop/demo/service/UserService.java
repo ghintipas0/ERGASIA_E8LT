@@ -98,13 +98,16 @@ public class UserService {
         Optional<User> op = userDAO.findByUsernameIgnoreCase(user.getUsername());
         if(op.isPresent()){
             user = op.get();
-            //get the id
-            newUser.setId(user.getId());
-            //Encrypt the password
-            newUser.setPassword(encryptionService.encryptPassword(newUser.getPassword()));
+            newUser.setId(user.getId());//get the id
+            if(newUser.getPassword().isEmpty()) {
+                newUser.setPassword(user.getPassword());
+            }
+            else {
+                newUser.setPassword(encryptionService.encryptPassword(newUser.getPassword()));//Encrypt the password
+            }
             List<Address> add = user.getAddresses();
             List<Address> add1 = newUser.getAddresses();
-            //we add the id's and user id of old addresses to the new addresses
+            //we add the ids and user id of old addresses to the new addresses
             for(int i=0;i<add1.size();i++){
                 add1.get(i).setId(add.get(i).getId());
                 add1.get(i).setUser(add.get(i).getUser());
