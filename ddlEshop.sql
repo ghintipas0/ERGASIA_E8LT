@@ -167,6 +167,15 @@ BEGIN
     DELETE FROM role WHERE username = OLD.username;
 END$$
 
+DELIMITER //
+CREATE TRIGGER update_role_after_user_update
+AFTER UPDATE ON users
+FOR EACH ROW
+BEGIN
+    UPDATE role SET username = NEW.username where username=OLD.username ;
+END//
+DELIMITER ;
+
 INSERT INTO `category` (`category_name`) VALUES
 ('Smartphones'),
 ('Televisions'),
