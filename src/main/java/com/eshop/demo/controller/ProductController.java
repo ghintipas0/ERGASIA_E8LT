@@ -23,18 +23,17 @@ public class ProductController{
     }
 
     @GetMapping("/ShopNow")
-    public List<Product> getAllProducts() {
-        return productService.findAllProducts();
+    public ResponseEntity<?> getAllProducts() {
+        return new ResponseEntity<>(productService.findAllProducts(),HttpStatus.OK);
     }
 
     @GetMapping("/ShopNow/search")
-    public List<Product> searchProduct(@Param("keyword") String keyword)  {
-        return productService.searchProducts(keyword);
-
+    public ResponseEntity<?> searchProduct(@Param("keyword") String keyword)  {
+        return new ResponseEntity<>(productService.searchProducts(keyword),HttpStatus.OK);
     }
     @PostMapping("/Products")
-    public Product addProduct(@RequestBody ProductBody productBody){
-        return productService.addProduct(productBody);
+    public ResponseEntity<?> addProduct(@RequestBody ProductBody productBody){
+        return new ResponseEntity<>(productService.addProduct(productBody),HttpStatus.OK) ;
     }
 
     @DeleteMapping("/Products/{productId}")

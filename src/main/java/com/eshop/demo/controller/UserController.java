@@ -41,9 +41,6 @@ public class UserController{
         }
         return new ResponseEntity<>(userService.updateUser(user,newUser),HttpStatus.OK);
     }
-
-
-
     @GetMapping("/admin")
     public ResponseEntity<?> defineRole(@AuthenticationPrincipal User user){
         if(user==null){
