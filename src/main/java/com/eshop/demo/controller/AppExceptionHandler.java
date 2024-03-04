@@ -34,9 +34,4 @@ public class AppExceptionHandler {
     public ResponseEntity<String> handleException(UsernameOrEmailAlreadyExists usernameOrEmailAlreadyExists){
         return new ResponseEntity<>(usernameOrEmailAlreadyExists.getMessage(), HttpStatus.CONFLICT);
     }
-
-
-
-
-
 }

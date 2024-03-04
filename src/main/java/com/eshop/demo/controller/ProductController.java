@@ -45,6 +45,4 @@ public class ProductController{
     public ResponseEntity<List<Product>> getProducts(@PathVariable int categoryId) throws CategoryNotFound {
         return new ResponseEntity<>(productService.getProductsByCategoryId(categoryId),HttpStatus.OK);
     }
-
-
 }
