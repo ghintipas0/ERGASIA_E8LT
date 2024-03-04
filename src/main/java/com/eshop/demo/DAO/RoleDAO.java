@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
-@Repository
+
 public interface RoleDAO extends JpaRepository<Role,Integer> {
      Optional<Role> findByUsernameIgnoreCase(String username);
 
