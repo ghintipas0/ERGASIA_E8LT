@@ -18,8 +18,5 @@ public class RoleService {
 
     public Role addRole(Role role){
         return roleDAO.save(role);
-
     }
-
-
 }

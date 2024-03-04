@@ -30,10 +30,12 @@ public class UserController{
         }
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
+
     @DeleteMapping("/Users/{userId}")
     public ResponseEntity<String> deleteUser(@PathVariable int userId) throws UserNotFound {
         return new ResponseEntity<>(userService.deleteUser(userId),HttpStatus.OK);
     }
+
     @PutMapping("/Users")
     public ResponseEntity<?> updateUser(@AuthenticationPrincipal User user,@RequestBody User newUser) throws UsernameOrEmailAlreadyExists {
         if(user==null){

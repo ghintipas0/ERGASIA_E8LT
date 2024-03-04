@@ -17,8 +17,6 @@ public class JWTService {
     @Value("${jwt.expiryInSeconds}")
     private int expireInSeconds;
 
-
-
     public String generateToken(User localUser) {
         return Jwts.builder()
                 .setSubject(localUser.getUsername())

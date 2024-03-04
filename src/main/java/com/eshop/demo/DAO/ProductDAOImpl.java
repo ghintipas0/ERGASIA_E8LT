@@ -20,6 +20,7 @@ public class ProductDAOImpl implements ProductDAO{
     public ProductDAOImpl(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
+
     //return 3 random products from each category(phone,tv,laptop)
     @Override
     public List<Product> findProducts(){
@@ -50,7 +51,6 @@ public class ProductDAOImpl implements ProductDAO{
         return query;
     }
 
-
     @Override
     @Transactional
     public Product addProduct(Product product){
@@ -68,7 +68,6 @@ public class ProductDAOImpl implements ProductDAO{
     public void deleteProduct(Product product) {
         entityManager.remove(product);
     }
-
 
     @Override
     public List<Product> getProductByCategory(int id) {

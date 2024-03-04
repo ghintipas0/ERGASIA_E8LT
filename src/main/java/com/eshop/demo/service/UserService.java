@@ -32,9 +32,10 @@ public class UserService {
         this.encryptionService=encryptionService;
         this.jwtService=jwtService;
     }
-    //CREATING THE REGISTER FUNCTION
+
+    //REGISTER FUNCTION
     public User addUser(RegistrationBody registrationBody) throws UsersAlreadyExists {
-        //TODO: NOT ALLOWED TO PASS 2 SAME RECORDS
+        //NOT ALLOWED TO PASS 2 SAME RECORDS
         if(userDAO.findByEmailIgnoreCase(registrationBody.getEmail()).isPresent() ||
                 userDAO.findByUsernameIgnoreCase(registrationBody.getUsername()).isPresent()){
                 throw new UsersAlreadyExists("Username or Email already exists");
@@ -46,8 +47,7 @@ public class UserService {
         user.setfirstName(registrationBody.getFirstName());
         user.setPhoneNumber(registrationBody.getPhoneNumber());
         user.setBirthDate(registrationBody.getBirthDate());
-        //TODO:ENCRYPT PASSWORD
-        user.setPassword(encryptionService.encryptPassword(registrationBody.getPassword()));
+        user.setPassword(encryptionService.encryptPassword(registrationBody.getPassword()));//ENCRYPT PASSWORD
         Address address = new Address();
         address.setAddressLine1(registrationBody.getAddressLine());
         address.setPostCode(registrationBody.getPostCode());
@@ -62,7 +62,7 @@ public class UserService {
         return user;
     }
 
-    //TODO:CREATE THE LOGIN FORM
+    //LOGIN ENGINE
     public String loginUser(LoginBody loginBody) throws UserNotVerifiedException{
         Optional<User> user;
         if((user = userDAO.findByUsernameIgnoreCase(loginBody.getUsername())).isPresent()){

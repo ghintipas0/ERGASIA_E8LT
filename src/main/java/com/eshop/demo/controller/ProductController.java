@@ -31,6 +31,7 @@ public class ProductController{
     public ResponseEntity<List<Product>> searchProduct(@Param("keyword") String keyword)  {
         return new ResponseEntity<>(productService.searchProducts(keyword),HttpStatus.OK);
     }
+
     @PostMapping("/Products")
     public ResponseEntity<Product> addProduct(@RequestBody ProductBody productBody){
         return new ResponseEntity<>(productService.addProduct(productBody),HttpStatus.OK) ;
