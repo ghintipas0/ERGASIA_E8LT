@@ -2,6 +2,7 @@ package com.eshop.demo.controller;
 
 import com.eshop.demo.DAO.ProductDAO;
 import com.eshop.demo.entity.Product;
+import com.eshop.demo.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,16 +14,16 @@ import java.util.Objects;
 
 @RestController
 public class CartController {
-    private ProductDAO productDAO;
+    private final ProductService productService;
 
     @Autowired
-    public CartController(ProductDAO productDAO) {
-        this.productDAO = productDAO;
+    public CartController(ProductService productService) {
+        this.productService = productService;
     }
 
     @PostMapping("/cart")
-    public ResponseEntity<?> addToCart(@RequestBody List<Integer> ids){
+    public ResponseEntity<List<Product>> addToCart(@RequestBody List<Integer> ids){
 
-        return new ResponseEntity<>(productDAO.cart(ids), HttpStatus.OK);
+        return new ResponseEntity<>(productService.cart(ids), HttpStatus.OK);
     }
 }

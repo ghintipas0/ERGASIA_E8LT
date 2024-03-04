@@ -16,7 +16,7 @@ import java.util.List;
 
 @RestController
 public class UserController{
-    private UserService userService;
+    private final UserService userService;
 
     @Autowired
     public UserController(UserService userService) {
@@ -31,7 +31,7 @@ public class UserController{
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
     @DeleteMapping("/Users/{userId}")
-    public ResponseEntity<?> deleteUser(@PathVariable int userId) throws UserNotFound {
+    public ResponseEntity<String> deleteUser(@PathVariable int userId) throws UserNotFound {
         return new ResponseEntity<>(userService.deleteUser(userId),HttpStatus.OK);
     }
     @PutMapping("/Users")

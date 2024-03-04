@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/auth")
 public class AuthenticationController {
-    private UserService userService;
+    private final UserService userService;
 
     @Autowired
     public AuthenticationController(UserService userService) {
@@ -25,13 +25,13 @@ public class AuthenticationController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<?> registration(@RequestBody RegistrationBody registrationBody) throws UsersAlreadyExists {
+    public ResponseEntity<User> registration(@RequestBody RegistrationBody registrationBody) throws UsersAlreadyExists {
         User user = userService.addUser(registrationBody);
         return new ResponseEntity<>(user, HttpStatus.OK);
 
     }
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody LoginBody loginBody)  throws UserNotVerifiedException {
+    public ResponseEntity<String> login(@RequestBody LoginBody loginBody)  throws UserNotVerifiedException {
         String message = userService.loginUser(loginBody);
         return new ResponseEntity<>(message, HttpStatus.OK);
     }   
