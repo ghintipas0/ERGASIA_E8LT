@@ -12,7 +12,6 @@ import java.util.Optional;
 public interface ProductDAO {
     List<Product> findProducts();
     List<Product> searchProducts(String keyword);
-
     Product addProduct(Product product);
     void deleteProduct(Product product);
     Product findProductById(int id);

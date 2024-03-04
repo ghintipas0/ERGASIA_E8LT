@@ -49,12 +49,4 @@ public class UserController{
             return  new ResponseEntity<>(userService.defineUser(user.getUsername()),HttpStatus.OK);
         }
     }
-
-
-
-
-
-
-
-
 }
