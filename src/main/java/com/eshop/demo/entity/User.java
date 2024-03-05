@@ -16,7 +16,6 @@ public class User {
     private int id;
     @Column(name = "username")
     private String username;
-    //@JsonIgnore
     @Column(name = "password")
     private String password;
     @Column(name = "email")
@@ -33,6 +32,17 @@ public class User {
     private List<Address> addresses = new ArrayList<>();//The fetch type by default is lazy
 
     public User() {
+    }
+
+    public User(String username, String password, String email, String firstName, String lastName, String phoneNumber, String birthDate, List<Address> addresses) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phoneNumber = phoneNumber;
+        this.birthDate = birthDate;
+        this.addresses = addresses;
     }
 
     public void addAddress(Address address){

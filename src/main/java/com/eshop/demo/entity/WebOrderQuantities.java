@@ -1,5 +1,6 @@
 package com.eshop.demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -10,6 +11,7 @@ public class WebOrderQuantities {
     @Column(name = "id")
     private int id;
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "web_order_id")
     private WebOrder webOrder;
     @ManyToOne //Multiple orders can have the same product
@@ -19,6 +21,12 @@ public class WebOrderQuantities {
     private int quantity;
 
     public WebOrderQuantities() {
+    }
+
+    public WebOrderQuantities(WebOrder webOrder, Product product, int quantity) {
+        this.webOrder = webOrder;
+        this.product = product;
+        this.quantity = quantity;
     }
 
     public int getId() {

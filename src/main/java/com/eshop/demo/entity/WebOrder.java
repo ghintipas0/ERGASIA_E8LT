@@ -18,13 +18,20 @@ public class WebOrder {
     @ManyToOne //many orders to the same address.
     @JoinColumn(name = "address_id")
     private Address address;
-    @OneToMany(mappedBy = "webOrder",cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "webOrder",cascade = CascadeType.ALL)
     private List<WebOrderQuantities> quantities = new ArrayList<>();
     @OneToOne
     @JoinColumn(name = "payment_id")
     private Payment payment;
 
     public WebOrder() {
+    }
+
+    public WebOrder(User user, Address address, Payment payment) {
+        this.user = user;
+        this.address = address;
+
+        this.payment = payment;
     }
 
     public int getId() {
@@ -59,12 +66,19 @@ public class WebOrder {
         this.quantities = quantities;
     }
 
-    public Payment getPaymentId() {
+    public Payment getPayment() {
         return payment;
     }
 
-    public void setPaymentId(Payment payment) {
+    public void setPayment(Payment payment) {
         this.payment = payment;
+    }
+
+    public void addQuantities(WebOrderQuantities webOrderQuantities){
+        if(webOrderQuantities==null){
+            quantities=new ArrayList<>();
+        }
+        quantities.add(webOrderQuantities);
     }
 
     @Override
