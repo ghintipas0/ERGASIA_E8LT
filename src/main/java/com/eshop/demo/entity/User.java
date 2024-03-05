@@ -34,6 +34,17 @@ public class User {
     public User() {
     }
 
+    public User(String username, String password, String email, String firstName, String lastName, String phoneNumber, String birthDate, List<Address> addresses) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phoneNumber = phoneNumber;
+        this.birthDate = birthDate;
+        this.addresses = addresses;
+    }
+
     public void addAddress(Address address){
         if(addresses==null){
             addresses=new ArrayList<>();

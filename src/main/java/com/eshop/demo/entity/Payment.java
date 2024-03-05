@@ -19,6 +19,12 @@ public class Payment {
     public Payment() {
     }
 
+    public Payment(String cardNumber, String holderName, String expireDate) {
+        this.cardNumber = cardNumber;
+        this.holderName = holderName;
+        this.expireDate = expireDate;
+    }
+
     public int getId() {
         return id;
     }

@@ -32,8 +32,6 @@ public class ProductDAOImpl implements ProductDAO{
             products.addAll(query.getResultList());
         }
         return products;
-
-
     }
 
     @Override
@@ -60,7 +58,6 @@ public class ProductDAOImpl implements ProductDAO{
     @Override
     public Product findProductById(int id) {
         return entityManager.find(Product.class, id);
-
     }
 
     @Override
