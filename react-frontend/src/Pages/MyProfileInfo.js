@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { Col, Form, InputGroup, Row, Button } from 'react-bootstrap';
+import $ from "jquery";
+import {useNavigate} from "react-router-dom";
 
  const MyProfileInfo = () => {
      const [editMode, setEditMode] = useState(false);
@@ -73,10 +76,10 @@ import React, { useState, useEffect } from "react";
          const { name, value } = e.target;
 
          // Validate username length
-         if (name === 'username' && (value.length < 8 || value.length > 32)) {
-             setError("Username must be between 8 and 32 characters.");
-             return;
-         }
+       //  if (name === 'username' && (value.length < 8 || value.length > 32)) {
+       //      setError("Username must be between 8 and 32 characters.");
+        //     return;
+        // }
 
          // Validate email format
          if (name === 'email' && !value.includes('@')) {
@@ -102,8 +105,36 @@ import React, { useState, useEffect } from "react";
          setError(null);
      };
 
+     $(document).ready(function() {
+         $("#RegAlert").hide();
+     });
+
+     function popalert(toprint){
+         $(document).ready(function() {
+             if ($("#RegAlert").is(":hidden")) {
+                 $("#RegAlert").text(toprint);
+                 $("#RegAlert").show();
+                 window.scrollTo(0, 0);
+                 $('#RegAlert').delay(5000).fadeOut('slow');
+             }
+         });
+     }
+
+     function validationcheck(){
+         if(formData.username.length < 6){popalert("Your username is too long. It needs to have more than 6 characters"); return false;}
+         if(formData.username.length > 30){popalert("Your userame is too large. It needs to have less than 30 characters"); return false;}
+         if(formData.firstName.length < 2){popalert("Your firstname is too short. It needs to have more than 2 characters"); return false;}
+         if(formData.lastName.length < 2){popalert("Your lastname is too short. It needs to have more than 2 characters"); return false;}
+         if(formData.firstName.length > 36){popalert("Your firstname is too long. It needs to have less than 36 characters"); return false;}
+         if(formData.lastName.length > 36){popalert("Your lastname is too long. It needs to have less than 36 characters"); return false;}
+         if(formData.addresses[0].postCode.length !== 5 ){popalert("Your postal code must be exactly 5 numbers"); return false;}
+         return true;
+     }
+
      const handleSaveChanges = () => {
          const token = sessionStorage.getItem('token');
+
+        if (!validationcheck()){return;}
 
          fetch("http://localhost:8080/Users", {
              method: 'PUT',
@@ -146,6 +177,7 @@ import React, { useState, useEffect } from "react";
                                 <div className="card mb-4">
                                     <hr className="my-0" />
                                     <div className="card-body">
+                                        <div className='alert alert-danger' role='alert' id="RegAlert"> Some of the fields you entered are incorrect or empty!</div>
                                         <div className="row">
                                             {/* Input for Username */}
                                             <div className="mb-3 col-md-6">

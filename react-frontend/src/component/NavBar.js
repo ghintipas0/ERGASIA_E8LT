@@ -100,9 +100,7 @@ const NavBar = () => {
                                     </button>
                                 </div>)}
                         </div>
-
                     ) : null}
-
                     {isCartPopupOpen ? (
                         <div className="popup" id="cartpopup">
                             <div className="cart-summary">
