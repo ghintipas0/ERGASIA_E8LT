@@ -10,7 +10,7 @@
 
 ## Spring Boot: The framework used to develop this backend application.
 
-## JPA-Hibernate: For handles all of the low-level SQL, minimizes the amount of JDBC and provides the ORM(object-relational-mapping)
+## JPA-Hibernate: It used for handles all of the low-level SQL also for minimizes the amount of JDBC and to provides the ORM(object-relational-mapping)
 
 ## JWT (JSON Web Tokens): For secure authentication and authorization.
 
