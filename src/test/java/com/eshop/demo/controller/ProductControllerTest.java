@@ -1,8 +1,12 @@
 package com.eshop.demo.controller;
+import com.eshop.demo.DAO.CategoryDAO;
+import com.eshop.demo.entity.Category;
 import com.eshop.demo.entity.Product;
 import com.eshop.demo.model.ProductBody;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.hamcrest.CoreMatchers;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -25,11 +29,12 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 class ProductControllerTest {
-    private static final Product RECORD_1 = new Product()
     @Autowired
     private MockMvc mockMVC;
     @Autowired
     private ObjectMapper objectMapper;
+    @Autowired
+    private CategoryDAO categoryDAO;
 
     @Test
     public void testProductList() throws Exception {
