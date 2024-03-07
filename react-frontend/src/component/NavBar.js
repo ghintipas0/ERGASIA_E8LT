@@ -48,6 +48,7 @@ const NavBar = () => {
         setTotalCost(newTotalCost);
     }
 
+
     return (
         <nav className="navbar navbar-dark bg-dark" style={{position: "sticky", top:"0"}}>
             <div className="nav nav-pills nav-justified" style={{width:"100%",}}>
@@ -101,17 +102,33 @@ const NavBar = () => {
                         </div>
                     ) : null}
                     {isCartPopupOpen ? (
-                      <div className="popup" id="cartpopup">
-                        {/* Contents of the cart popup */}
-                        <div className="cart-summary">
-                            <h2>Shopping Cart</h2>
-                            <ul>
-                              {cart.map((item, index) => (
-                                <li key={index}>{item.name} - {item.price}€</li>
-                              ))}
-                            </ul>
-                            <p>Total: {totalCost}€</p>
-                          </div>
+                        <div className="popup" id="cartpopup">
+                            <div className="cart-summary">
+                                <h2>Your Shopping Cart</h2>
+                                <ul className="cart-items">
+                                    {cart.map((product, index) => (
+                                        <li key={index}>
+                                            <div className="cart-item">
+                                                <div className="item-image">
+                                                    <img src={product.photo} alt={product.name} />
+                                                </div>
+                                                <div className="item-details">
+                                                    <p className="item-name">{product.name}</p>
+                                                    <p className="item-price">{product.price}€</p>
+                                                    {/* Εδώ μπορείς να προσθέσεις περισσότερες λεπτομέρειες του προϊόντος, όπως ποσότητα, χρώμα, μέγεθος κλπ. */}
+                                                </div>
+                                            </div>
+                                        </li>
+                                    ))}
+                                </ul>
+                                <div className="cart-total">
+                                    <p>Total: {totalCost}€</p>
+                                </div>
+                                <div className="cart-buttons">
+                                    <Link to="/CartPage" className="checkout-button">Checkout</Link>
+                                    <button className="continue-shopping-button" onClick={toggleCartPopup}>Continue Shopping</button>
+                                </div>
+                            </div>
                         </div>
                     ) : null}
                 </div>

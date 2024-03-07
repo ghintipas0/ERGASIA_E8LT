@@ -62,6 +62,11 @@ import React, { useState, useEffect } from "react";
 
      const toggleEditMode = () => {
          setEditMode(!editMode);
+         formData.password = "";
+     };
+
+     const closeEditMode = () => {
+         setEditMode(!editMode);
      };
 
      const handleInputChange = (e) => {
@@ -72,38 +77,43 @@ import React, { useState, useEffect } from "react";
          }));
      };
 
-     const handleSaveChanges = () => {
-         const token = sessionStorage.getItem('token');
-         fetch("http://localhost:8080/Users", {
-             method: 'PUT',
-             headers: {
-                 'Authorization': 'Bearer ' + token,
-                 'Content-Type': 'application/json'
-             },
-             body: JSON.stringify(formData)
-         })
-         .then(response => {
-             if (!response.ok) {
-                 throw new Error("Failed to update user data");
-             }
-             return response.json();
-         })
-         .then(data => {
-             // Handle the response, e.g., extract token
-             console.log("Updated User Data:", data);
-         })
-         .catch(error => {
-             console.error('Error updating user data:', error);
-             setError("Failed to update user data. Please try again later.");
-         });
-     };
-
      if (error) {
          return <div>Error: {error}</div>;
      }
 
      // Extract address data if available
      const addressData = formData.addresses && formData.addresses.length > 0 ? formData.addresses[0] : {};
+
+    const handleSaveChanges = () => {
+        const token = sessionStorage.getItem('token');
+
+        fetch("http://localhost:8080/Users", {
+            method: 'PUT',
+            headers: {
+                'Authorization': 'Bearer ' + token,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Failed to update user data");
+            }
+            toggleEditMode();
+            return response.json();
+        })
+        .then(data => {
+            // Handle the response, e.g., extract token
+            console.log("Updated User Data:", data);
+        })
+        .catch(error => {
+            console.error('Error updating user data:', error);
+            setError("Failed to update user data. Please try again later.");
+        });
+    };
+
+
+
 
      return (
         <div className="layout-container">
@@ -132,6 +142,23 @@ import React, { useState, useEffect } from "react";
                                                     />
                                                 ) : (
                                                     <span className="form-control">{formData.username}</span>
+                                                )}
+                                            </div>
+                                            <div className="mb-3 col-md-6">
+                                                <label htmlFor="password" className="form-label">
+                                                    Password
+                                                </label>
+                                                {editMode ? (
+                                                    <input
+                                                        type="password"
+                                                        className="form-control"
+                                                        id="password"
+                                                        name="password"
+                                                        value={formData.password || ""}
+                                                        onChange={handleInputChange}
+                                                    />
+                                                ) : (
+                                                    <span className="form-control">&nbsp;</span>
                                                 )}
                                             </div>
                                             {/* Input for Birth Date */}
@@ -244,23 +271,23 @@ import React, { useState, useEffect } from "react";
                                                 )}
                                             </div>
                                             {/* Input for City */}
-                                                                                       <div className="mb-3 col-md-6">
-                                                                                           <label htmlFor="city" className="form-label">
-                                                                                               City
-                                                                                           </label>
-                                                                                           {editMode ? (
-                                                                                               <input
-                                                                                                   type="text"
-                                                                                                   className="form-control"
-                                                                                                   id="city"
-                                                                                                   name="city"
-                                                                                                   value={formData.addresses && formData.addresses.length > 0 ? formData.addresses[0].city : ""}
-                                                                                                   onChange={handleInputChange}
-                                                                                               />
-                                                                                           ) : (
-                                                                                               <span className="form-control">{formData.addresses && formData.addresses.length > 0 ? formData.addresses[0].city : ""}</span>
-                                                                                           )}
-                                                                                       </div>
+                                               <div className="mb-3 col-md-6">
+                                                   <label htmlFor="city" className="form-label">
+                                                       City
+                                                   </label>
+                                                   {editMode ? (
+                                                       <input
+                                                           type="text"
+                                                           className="form-control"
+                                                           id="city"
+                                                           name="city"
+                                                           value={formData.addresses && formData.addresses.length > 0 ? formData.addresses[0].city : ""}
+                                                           onChange={handleInputChange}
+                                                       />
+                                                   ) : (
+                                                       <span className="form-control">{formData.addresses && formData.addresses.length > 0 ? formData.addresses[0].city : ""}</span>
+                                                   )}
+                                               </div>
                                             {/* Input for Address */}
                                             <div className="mb-3 col-md-6">
                                                 <label htmlFor="address" className="form-label">
@@ -299,9 +326,20 @@ import React, { useState, useEffect } from "react";
                                             </div>
                                         </div>
                                         <div className="mt-2">
-                                            <button onClick={editMode ? handleSaveChanges : toggleEditMode} className="btn btn-outline-secondary">
+
+                                                <button onClick={editMode ? handleSaveChanges : toggleEditMode} className="btn btn-outline-secondary">
                                                 {editMode ? "Save" : "Edit"}
-                                            </button>
+                                                </button>
+
+                                        </div>
+                                        <div className="mt-2">
+                                              {editMode ? (
+                                                    <button onClick={editMode ? closeEditMode : toggleEditMode} className="btn btn-outline-secondary">
+                                                    {editMode ? "Cancel" : ""}
+                                                    </button>
+                                                    ) : (
+                                                    <span>&nbsp;</span>
+                                                    )}
                                         </div>
                                     </div>
                                 </div>

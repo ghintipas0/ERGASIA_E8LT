@@ -1,0 +1,186 @@
+/* CartPage.css */
+
+.cart-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.cart-title {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.cart-items {
+    list-style-type: none;
+    padding: 0;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+}
+
+.item-details {
+    display: flex;
+    align-items: center;
+}
+
+.item-photo {
+    width: 100px;
+    height: auto;
+    margin-right: 20px;
+}
+
+.item-name {
+    font-weight: bold;
+}
+
+.item-price {
+    margin-bottom: 5px;
+}
+
+.cart-total {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: right;
+    margin-top: 20px;
+}
+
+/* CartPage.css */
+
+/* Προσαρμογή εμφάνισης του input τύπου "number" */
+.input-container {
+    display: flex;
+    justify-content: flex-end; /* Τοποθέτηση στη δεξιά πλευρά */
+    align-items: center;
+}
+
+input[type="number"] {
+    width: 50px;
+    height: 30px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 16px;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"]::-webkit-inner-spin-button:after,
+input[type="number"]::-webkit-outer-spin-button:after {
+    content: '\25B2';
+    font-size: 12px;
+    color: #555;
+}
+
+input[type="number"]::-webkit-inner-spin-button:before,
+input[type="number"]::-webkit-outer-spin-button:before {
+    content: '\25BC';
+    font-size: 12px;
+    color: #555;
+}
+
+/* CartPage.css */
+
+.cart-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.cart-title {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.cart-items {
+    list-style-type: none;
+    padding: 0;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+}
+
+.item-details {
+    display: flex;
+    align-items: center;
+}
+
+.item-photo {
+    width: 80px;
+    height: 80px;
+    margin-right: 20px;
+    border-radius: 8px;
+}
+
+.item-name {
+    font-weight: bold;
+}
+
+.item-price {
+    margin-top: 5px;
+}
+
+.action-buttons {
+    display: flex;
+    align-items: center;
+}
+
+.action-buttons button {
+    background-color: #ff6347;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.input-container {
+    position: relative;
+}
+
+.input-container input {
+    width: 60px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.cart-total {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: right;
+    margin-top: 20px;
+}
+
+
+.action-buttons .delete-icon {
+    width: 18px; /* Προσδιορίζει το πλάτος του εικονιδίου */
+    height: 18px; /* Προσδιορίζει το ύψος του εικονιδίου */
+}
+
+

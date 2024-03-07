@@ -133,3 +133,88 @@
       align-items: center;
       height: 50%;
 }
+
+.popup p {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+.popup .cart-summary {
+    padding: 10px;
+}
+
+.popup .cart-summary h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.popup .cart-summary .cart-items {
+    list-style: none;
+    padding: 0;
+}
+
+.popup .cart-summary .cart-items li {
+    margin-bottom: 10px;
+}
+
+.popup .cart-summary .cart-items li:last-child {
+    margin-bottom: 0;
+}
+
+.popup .cart-summary .cart-items .cart-item {
+    display: flex;
+    align-items: center;
+}
+
+.popup .cart-summary .cart-items .cart-item .item-image {
+    margin-right: 10px;
+}
+
+.popup .cart-summary .cart-items .cart-item .item-image img {
+    width: 50px; /* Προσαρμογή μεγέθους εικόνας */
+    height: 50px; /* Προσαρμογή μεγέθους εικόνας */
+    border-radius: 5px; /* Στρογγυλεμένες γωνίες */
+}
+
+.popup .cart-summary .cart-total {
+    margin-top: 10px;
+}
+
+.popup .cart-summary .cart-total p {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.popup .cart-buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.popup .cart-buttons .checkout-button,
+.popup .cart-buttons .continue-shopping-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.popup .cart-buttons .checkout-button {
+    background-color: #4fe76e; /* Χρώμα για το Checkout button */
+    color: white;
+}
+
+.popup .cart-buttons .continue-shopping-button {
+    background-color: #eec92a; /* Χρώμα για το Continue Shopping button */
+    color: black;
+}
+
+.popup .cart-buttons .checkout-button:hover {
+    background-color: #26e54d;
+}
+
+.popup .cart-buttons .continue-shopping-button:hover {
+    background-color: #ffcb00;
+}

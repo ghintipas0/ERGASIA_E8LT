@@ -2,6 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\react-frontend",
+    "\\react-frontend\\src",
+    "\\react-frontend\\src\\Pages",
     "\\src",
     "\\src\\main",
     "\\src\\main\\java",
@@ -9,6 +11,6 @@
     "\\src\\main\\java\\com\\eshop",
     "\\src\\main\\java\\com\\eshop\\demo"
   ],
-  "SelectedNode": "\\src\\main\\java",
+  "SelectedNode": "\\react-frontend\\src\\Pages\\MyProfileInfo.js",
   "PreviewInSolutionExplorer": false
 }
