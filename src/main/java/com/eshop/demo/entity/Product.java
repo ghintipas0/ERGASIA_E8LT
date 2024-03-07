@@ -41,11 +41,17 @@ public class Product {
     }
 
     public Product(String name, Float price, String photo) {
-        this.name = name;
-        this.price = price;
-        this.photo = photo;
+        this(name,null,price,null,null,photo);
     }
 
+    public Product(String name, String longDesc, float price, Category category, String brandName, String photo) {
+        this.name = name;
+        this.longDesc = longDesc;
+        this.price = price;
+        this.category = category;
+        this.brandName = brandName;
+        this.photo = photo;
+    }
 
     public int getId() {
         return id;

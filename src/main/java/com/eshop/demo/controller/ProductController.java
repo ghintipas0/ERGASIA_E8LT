@@ -31,14 +31,15 @@ public class ProductController{
     public ResponseEntity<List<Product>> searchProduct(@Param("keyword") String keyword)  {
         return new ResponseEntity<>(productService.searchProducts(keyword),HttpStatus.OK);
     }
+
     @PostMapping("/Products")
-    public ResponseEntity<Product> addProduct(@RequestBody ProductBody productBody){
+    public ResponseEntity<Product> addProduct(@RequestBody ProductBody productBody) throws CategoryNotFound{
         return new ResponseEntity<>(productService.addProduct(productBody),HttpStatus.OK) ;
     }
 
     @DeleteMapping("/Products/{productId}")
     public ResponseEntity<String> deleteProduct(@PathVariable int productId) throws ProductNotFound {
-            return new ResponseEntity<>(productService.removeProduct(productId), HttpStatus.OK);
+        return new ResponseEntity<>(productService.removeProduct(productId), HttpStatus.OK);
     }
 
     @GetMapping("/ShopNow/{categoryId}")
