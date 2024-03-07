@@ -33,7 +33,7 @@ public class ProductController{
     }
 
     @PostMapping("/Products")
-    public ResponseEntity<Product> addProduct(@RequestBody ProductBody productBody){
+    public ResponseEntity<Product> addProduct(@RequestBody ProductBody productBody) throws CategoryNotFound{
         return new ResponseEntity<>(productService.addProduct(productBody),HttpStatus.OK) ;
     }
 

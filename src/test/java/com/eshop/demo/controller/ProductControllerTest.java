@@ -1,4 +1,5 @@
 package com.eshop.demo.controller;
+import com.eshop.demo.entity.Product;
 import com.eshop.demo.model.ProductBody;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.hamcrest.CoreMatchers;
@@ -24,6 +25,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 class ProductControllerTest {
+    private static final Product RECORD_1 = new Product()
     @Autowired
     private MockMvc mockMVC;
     @Autowired

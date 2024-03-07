@@ -40,19 +40,16 @@ public class UserService {
                 userDAO.findByUsernameIgnoreCase(registrationBody.getUsername()).isPresent()){
                 throw new UsersAlreadyExists("Username or Email already exists");
         }
-        User user = new User();
-        user.setUsername(registrationBody.getUsername());
-        user.setEmail(registrationBody.getEmail());
-        user.setLastName(registrationBody.getLastName());
-        user.setfirstName(registrationBody.getFirstName());
-        user.setPhoneNumber(registrationBody.getPhoneNumber());
-        user.setBirthDate(registrationBody.getBirthDate());
-        user.setPassword(encryptionService.encryptPassword(registrationBody.getPassword()));//ENCRYPT PASSWORD
-        Address address = new Address();
-        address.setAddressLine1(registrationBody.getAddressLine());
-        address.setPostCode(registrationBody.getPostCode());
-        address.setCountry(registrationBody.getCountry());
-        address.setCity(registrationBody.getCity());
+        User user = new User(registrationBody.getUsername()
+                            ,encryptionService.encryptPassword(registrationBody.getPassword())
+                            ,registrationBody.getEmail(),registrationBody.getFirstName()
+                            ,registrationBody.getLastName(),registrationBody.getPhoneNumber(),registrationBody.getBirthDate()
+                            ,null);
+        Address address = new Address(registrationBody.getAddressLine()
+                            ,registrationBody.getPostCode()
+                            ,registrationBody.getCountry()
+                            ,registrationBody.getCity()
+                            ,null);
         user.addAddress(address);
         userDAO.save(user);
         Role role = new Role();

@@ -33,16 +33,18 @@ public class ProductService {
 
         return productDAO.searchProducts(keyword);
     }
-    public Product addProduct(ProductBody productBody){
-        Product product = new Product();
-        product.setName(productBody.getName());
-        product.setLongDesc(productBody.getLongDesc());
-        product.setPrice(productBody.getPrice());
-        product.setBrand_name(productBody.getBrandName());
-        product.setPhoto(productBody.getPhoto());
+    public Product addProduct(ProductBody productBody) throws CategoryNotFound{
+        Product product = new Product(productBody.getName()
+                ,productBody.getLongDesc()
+                ,productBody.getPrice()
+                ,null
+                ,productBody.getBrandName()
+                ,productBody.getPhoto());
         Optional<Category> category = categoryDAO.findById(productBody.getCategory_id());
         if(category.isPresent()){
             product.setCategory(category.get());
+        }else{
+            throw new CategoryNotFound("The category not found");
         }
         return productDAO.addProduct(product);
     }
@@ -60,7 +62,7 @@ public class ProductService {
     public List<Product> getProductsByCategoryId(int id) throws CategoryNotFound {
         List<Product> products = productDAO.getProductByCategory(id);
         if(products.isEmpty()){
-            throw new CategoryNotFound("The category not found ");
+            throw new CategoryNotFound("The category not found");
         }
         return products;
 
