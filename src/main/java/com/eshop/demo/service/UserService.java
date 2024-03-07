@@ -20,10 +20,10 @@ import java.util.Optional;
 
 @Service
 public class UserService {
-     private UserDAO userDAO;
-     private RoleDAO roleDAO;
-     private EncryptionService encryptionService;
-     private JWTService jwtService;
+    private UserDAO userDAO;
+    private RoleDAO roleDAO;
+    private EncryptionService encryptionService;
+    private JWTService jwtService;
 
     @Autowired
     public UserService(UserDAO userDAO,RoleDAO roleDAO,EncryptionService encryptionService,JWTService jwtService) {
@@ -32,27 +32,24 @@ public class UserService {
         this.encryptionService=encryptionService;
         this.jwtService=jwtService;
     }
-    //CREATING THE REGISTER FUNCTION
+
+    //REGISTER FUNCTION
     public User addUser(RegistrationBody registrationBody) throws UsersAlreadyExists {
-        //TODO: NOT ALLOWED TO PASS 2 SAME RECORDS
+        //NOT ALLOWED TO PASS 2 SAME RECORDS
         if(userDAO.findByEmailIgnoreCase(registrationBody.getEmail()).isPresent() ||
                 userDAO.findByUsernameIgnoreCase(registrationBody.getUsername()).isPresent()){
-                throw new UsersAlreadyExists("Username or Email already exists");
+            throw new UsersAlreadyExists("Username or Email already exists");
         }
-        User user = new User();
-        user.setUsername(registrationBody.getUsername());
-        user.setEmail(registrationBody.getEmail());
-        user.setLastName(registrationBody.getLastName());
-        user.setfirstName(registrationBody.getFirstName());
-        user.setPhoneNumber(registrationBody.getPhoneNumber());
-        user.setBirthDate(registrationBody.getBirthDate());
-        //TODO:ENCRYPT PASSWORD
-        user.setPassword(encryptionService.encryptPassword(registrationBody.getPassword()));
-        Address address = new Address();
-        address.setAddressLine1(registrationBody.getAddressLine());
-        address.setPostCode(registrationBody.getPostCode());
-        address.setCountry(registrationBody.getCountry());
-        address.setCity(registrationBody.getCity());
+        User user = new User(registrationBody.getUsername()
+                ,encryptionService.encryptPassword(registrationBody.getPassword())
+                ,registrationBody.getEmail(),registrationBody.getFirstName()
+                ,registrationBody.getLastName(),registrationBody.getPhoneNumber(),registrationBody.getBirthDate()
+                ,null);
+        Address address = new Address(registrationBody.getAddressLine()
+                ,registrationBody.getPostCode()
+                ,registrationBody.getCountry()
+                ,registrationBody.getCity()
+                ,null);
         user.addAddress(address);
         userDAO.save(user);
         Role role = new Role();
@@ -62,7 +59,7 @@ public class UserService {
         return user;
     }
 
-    //TODO:CREATE THE LOGIN FORM
+    //LOGIN ENGINE
     public String loginUser(LoginBody loginBody) throws UserNotVerifiedException{
         Optional<User> user;
         if((user = userDAO.findByUsernameIgnoreCase(loginBody.getUsername())).isPresent()){
@@ -73,7 +70,7 @@ public class UserService {
                 throw new UserNotVerifiedException("Wrong password");
             }
         }else{
-             throw new UserNotVerifiedException("Wrong username");
+            throw new UserNotVerifiedException("Wrong username");
         }
     }
 

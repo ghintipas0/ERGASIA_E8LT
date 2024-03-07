@@ -34,12 +34,12 @@ public class ProductService {
         return productDAO.searchProducts(keyword);
     }
     public Product addProduct(ProductBody productBody) throws CategoryNotFound{
-        Product product = new Product();
-        product.setName(productBody.getName());
-        product.setLongDesc(productBody.getLongDesc());
-        product.setPrice(productBody.getPrice());
-        product.setBrand_name(productBody.getBrandName());
-        product.setPhoto(productBody.getPhoto());
+        Product product = new Product(productBody.getName()
+                ,productBody.getLongDesc()
+                ,productBody.getPrice()
+                ,null
+                ,productBody.getBrandName()
+                ,productBody.getPhoto());
         Optional<Category> category = categoryDAO.findById(productBody.getCategory_id());
         if(category.isPresent()){
             product.setCategory(category.get());
