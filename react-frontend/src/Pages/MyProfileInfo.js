@@ -71,46 +71,67 @@ import React, { useState, useEffect } from "react";
 
      const handleInputChange = (e) => {
          const { name, value } = e.target;
-         setFormData(prevState => ({
-             ...prevState,
-             [name]: value
-         }));
+
+         // Validate username length
+         if (name === 'username' && (value.length < 8 || value.length > 32)) {
+             setError("Username must be between 8 and 32 characters.");
+             return;
+         }
+
+         // Validate email format
+         if (name === 'email' && !value.includes('@')) {
+             setError("Please enter a valid email address.");
+             return;
+         }
+
+         // Check if the field belongs to the addresses object
+         if (name.startsWith("addresses")) {
+             const addressField = name.split(".")[1]; // Extract the field name after "addresses"
+             setFormData(prevState => ({
+                 ...prevState,
+                 addresses: [{ ...prevState.addresses[0], [addressField]: value }]
+             }));
+         } else {
+             setFormData(prevState => ({
+                 ...prevState,
+                 [name]: value
+             }));
+         }
+
+         // Clear error if validation passed
+         setError(null);
      };
 
-     if (error) {
-         return <div>Error: {error}</div>;
-     }
+     const handleSaveChanges = () => {
+         const token = sessionStorage.getItem('token');
 
-     // Extract address data if available
-     const addressData = formData.addresses && formData.addresses.length > 0 ? formData.addresses[0] : {};
-
-    const handleSaveChanges = () => {
-        const token = sessionStorage.getItem('token');
-
-        fetch("http://localhost:8080/Users", {
-            method: 'PUT',
-            headers: {
-                'Authorization': 'Bearer ' + token,
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(formData)
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("Failed to update user data");
-            }
-            toggleEditMode();
-            return response.json();
-        })
-        .then(data => {
-            // Handle the response, e.g., extract token
-            console.log("Updated User Data:", data);
-        })
-        .catch(error => {
-            console.error('Error updating user data:', error);
-            setError("Failed to update user data. Please try again later.");
-        });
-    };
+         fetch("http://localhost:8080/Users", {
+             method: 'PUT',
+             headers: {
+                 'Authorization': 'Bearer ' + token,
+                 'Content-Type': 'application/json'
+             },
+             body: JSON.stringify(formData)
+         })
+         .then(response => {
+             if (response.status === 409) {
+                 throw new Error("User with this username or email already exists.");
+             }
+             if (!response.ok) {
+                 throw new Error("Failed to update user data");
+             }
+             toggleEditMode();
+             return response.json();
+         })
+         .then(data => {
+             // Handle the response, e.g., extract token
+             console.log("Updated User Data:", data);
+         })
+         .catch(error => {
+             console.error('Error updating user data:', error);
+             setError(error.message);
+         });
+     };
 
 
 
@@ -128,7 +149,7 @@ import React, { useState, useEffect } from "react";
                                         <div className="row">
                                             {/* Input for Username */}
                                             <div className="mb-3 col-md-6">
-                                                <label htmlFor="username" className="form-label">
+                                                <label className="form-label">
                                                     Username
                                                 </label>
                                                 {editMode ? (
@@ -145,7 +166,7 @@ import React, { useState, useEffect } from "react";
                                                 )}
                                             </div>
                                             <div className="mb-3 col-md-6">
-                                                <label htmlFor="password" className="form-label">
+                                                <label className="form-label">
                                                     Password
                                                 </label>
                                                 {editMode ? (
@@ -163,7 +184,7 @@ import React, { useState, useEffect } from "react";
                                             </div>
                                             {/* Input for Birth Date */}
                                             <div className="mb-3 col-md-6">
-                                                <label htmlFor="birthDate" className="form-label">
+                                                <label className="form-label">
                                                     Birth Date
                                                 </label>
                                                 {editMode ? (
@@ -181,7 +202,7 @@ import React, { useState, useEffect } from "react";
                                             </div>
                                             {/* Input for First Name */}
                                             <div className="mb-3 col-md-6">
-                                                <label htmlFor="firstName" className="form-label">
+                                                <label className="form-label">
                                                     First Name
                                                 </label>
                                                 {editMode ? (
@@ -199,7 +220,7 @@ import React, { useState, useEffect } from "react";
                                             </div>
                                             {/* Input for Last Name */}
                                             <div className="mb-3 col-md-6">
-                                                <label htmlFor="lastName" className="form-label">
+                                                <label className="form-label">
                                                     Last Name
                                                 </label>
                                                 {editMode ? (
@@ -217,7 +238,7 @@ import React, { useState, useEffect } from "react";
                                             </div>
                                             {/* Input for Email */}
                                             <div className="mb-3 col-md-6">
-                                                <label htmlFor="email" className="form-label">
+                                                <label className="form-label">
                                                     Email
                                                 </label>
                                                 {editMode ? (
@@ -235,15 +256,15 @@ import React, { useState, useEffect } from "react";
                                             </div>
                                             {/* Input for Phone */}
                                             <div className="mb-3 col-md-6">
-                                                <label htmlFor="phone" className="form-label">
+                                                <label className="form-label">
                                                     Phone
                                                 </label>
                                                 {editMode ? (
                                                     <input
                                                         type="text"
                                                         className="form-control"
-                                                        id="phone"
-                                                        name="phone"
+                                                        id="phoneNumber"
+                                                        name="phoneNumber"
                                                         value={formData.phoneNumber || ""}
                                                         onChange={handleInputChange}
                                                     />
@@ -252,53 +273,47 @@ import React, { useState, useEffect } from "react";
                                                 )}
                                             </div>
 
-                                            {/* Input for Country */}
+                                          {/* Input for Country */}
+                                          <div className="mb-3 col-md-6">
+                                              <label className="form-label">Country</label>
+                                              {editMode ? (
+                                                  <input
+                                                      type="text"
+                                                      className="form-control"
+                                                      id="country"
+                                                      name="addresses.country"
+                                                      value={formData.addresses && formData.addresses.length > 0 ? formData.addresses[0].country : ""}
+                                                      onChange={handleInputChange}
+                                                  />
+                                              ) : (
+                                                  <span className="form-control">{formData.addresses && formData.addresses.length > 0 ? formData.addresses[0].country : ""}</span>
+                                              )}
+                                          </div>
+                                            {/* Input for City */}
                                             <div className="mb-3 col-md-6">
-                                                <label htmlFor="country" className="form-label">
-                                                    Country
-                                                </label>
+                                                <label className="form-label">City</label>
                                                 {editMode ? (
                                                     <input
                                                         type="text"
                                                         className="form-control"
-                                                        id="country"
-                                                        name="country"
-                                                        value={formData.addresses && formData.addresses.length > 0 ? formData.addresses[0].country : ""}
+                                                        id="city"
+                                                        name="addresses.city"
+                                                        value={formData.addresses && formData.addresses.length > 0 ? formData.addresses[0].city : ""}
                                                         onChange={handleInputChange}
                                                     />
                                                 ) : (
-                                                    <span className="form-control">{formData.addresses && formData.addresses.length > 0 ? formData.addresses[0].country : ""}</span>
+                                                    <span className="form-control">{formData.addresses && formData.addresses.length > 0 ? formData.addresses[0].city : ""}</span>
                                                 )}
                                             </div>
-                                            {/* Input for City */}
-                                               <div className="mb-3 col-md-6">
-                                                   <label htmlFor="city" className="form-label">
-                                                       City
-                                                   </label>
-                                                   {editMode ? (
-                                                       <input
-                                                           type="text"
-                                                           className="form-control"
-                                                           id="city"
-                                                           name="city"
-                                                           value={formData.addresses && formData.addresses.length > 0 ? formData.addresses[0].city : ""}
-                                                           onChange={handleInputChange}
-                                                       />
-                                                   ) : (
-                                                       <span className="form-control">{formData.addresses && formData.addresses.length > 0 ? formData.addresses[0].city : ""}</span>
-                                                   )}
-                                               </div>
                                             {/* Input for Address */}
                                             <div className="mb-3 col-md-6">
-                                                <label htmlFor="address" className="form-label">
-                                                    Address
-                                                </label>
+                                                <label className="form-label">Address</label>
                                                 {editMode ? (
                                                     <input
                                                         type="text"
                                                         className="form-control"
                                                         id="address"
-                                                        name="address"
+                                                        name="addresses.addressLine1"
                                                         value={formData.addresses && formData.addresses.length > 0 ? formData.addresses[0].addressLine1 : ""}
                                                         onChange={handleInputChange}
                                                     />
@@ -308,15 +323,13 @@ import React, { useState, useEffect } from "react";
                                             </div>
                                             {/* Input for Post Code */}
                                             <div className="mb-3 col-md-6">
-                                                <label htmlFor="postCode" className="form-label">
-                                                    Post Code
-                                                </label>
+                                                <label className="form-label">Post Code</label>
                                                 {editMode ? (
                                                     <input
                                                         type="text"
                                                         className="form-control"
                                                         id="postCode"
-                                                        name="postCode"
+                                                        name="addresses.postCode"
                                                         value={formData.addresses && formData.addresses.length > 0 ? formData.addresses[0].postCode : ""}
                                                         onChange={handleInputChange}
                                                     />
