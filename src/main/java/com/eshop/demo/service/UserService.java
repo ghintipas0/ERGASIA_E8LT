@@ -94,7 +94,7 @@ public class UserService {
         return role.map(value -> value.getRoleName().equals("ROLE_ADMIN")).orElse(false);
     }
 
-    public User updateUser(User user,User newUser) throws UsernameOrEmailAlreadyExists{
+    public String updateUser(User user,User newUser) throws UsernameOrEmailAlreadyExists{
         Optional<User> op = userDAO.findByUsernameIgnoreCase(user.getUsername());
         if(op.isPresent()){
             user = op.get();
@@ -113,7 +113,7 @@ public class UserService {
                 add1.get(i).setUser(add.get(i).getUser());
             }
             if(user.getUsername().equals(newUser.getUsername()) || userDAO.findByUsernameIgnoreCase(newUser.getUsername()).isEmpty() || userDAO.findByEmailIgnoreCase(newUser.getEmail()).isEmpty()){
-                return userDAO.save(newUser);
+                return jwtService.generateToken(userDAO.save(newUser));
             }
         }
         throw new UsernameOrEmailAlreadyExists("The username or email already exists");
