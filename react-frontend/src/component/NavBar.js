@@ -124,6 +124,7 @@ const NavBar = () => {
                                 <div className="cart-total">
                                     <p>Total: {totalCost}€</p>
                                 </div>
+
                                 <div className="cart-buttons">
                                     <Link to="/CartPage" className="checkout-button">Checkout</Link>
                                     <button className="continue-shopping-button" onClick={toggleCartPopup}>Continue Shopping</button>
