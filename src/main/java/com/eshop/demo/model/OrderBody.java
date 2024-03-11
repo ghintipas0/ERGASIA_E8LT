@@ -10,6 +10,17 @@ public class OrderBody {
     private String expireDate;
     private HashMap<Integer,Integer> productQuantities;
 
+    public OrderBody() {
+    }
+
+    public OrderBody(String addressLine1, String cardNumber, String holderName, String expireDate, HashMap<Integer, Integer> productQuantities) {
+        this.addressLine1 = addressLine1;
+        this.cardNumber = cardNumber;
+        this.holderName = holderName;
+        this.expireDate = expireDate;
+        this.productQuantities = productQuantities;
+    }
+
     public String getAddressLine1() {
         return addressLine1;
     }

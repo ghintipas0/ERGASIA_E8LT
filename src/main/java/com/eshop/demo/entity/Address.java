@@ -13,7 +13,7 @@ public class Address {
     @Column(name = "address_line_1")
     private String addressLine1;
     @Column(name = "city")
-        private String city;
+    private String city;
     @Column(name = "country")
     private String country;
     @Column(name = "post_code")

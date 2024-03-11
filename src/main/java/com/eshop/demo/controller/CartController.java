@@ -23,7 +23,6 @@ public class CartController {
 
     @PostMapping("/cart")
     public ResponseEntity<List<Product>> addToCart(@RequestBody List<Integer> ids){
-
         return new ResponseEntity<>(productService.cart(ids), HttpStatus.OK);
     }
 }

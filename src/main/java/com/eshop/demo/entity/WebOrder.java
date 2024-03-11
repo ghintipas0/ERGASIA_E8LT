@@ -30,7 +30,6 @@ public class WebOrder {
     public WebOrder(User user, Address address, Payment payment) {
         this.user = user;
         this.address = address;
-
         this.payment = payment;
     }
 
