@@ -45,13 +45,9 @@ class ProductControllerTest {
     @WithMockUser(username="admin", roles={"ADMIN"})
     public void testAddProduct() throws Exception {
         String requestBody= objectMapper.writeValueAsString(productBody);
-        MvcResult result= mockMVC.perform(MockMvcRequestBuilders.post("/Products")
+        mockMVC.perform(MockMvcRequestBuilders.post("/Products")
                         .contentType(MediaType.APPLICATION_JSON).content(requestBody))
-                .andExpect(status().is(HttpStatus.OK.value()))
-                .andReturn();
-        String response = result.getResponse().getContentAsString();
-        Product product = objectMapper.readValue(response, Product.class);
-
+                .andExpect(status().is(HttpStatus.OK.value()));
 
     }
 
