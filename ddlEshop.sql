@@ -116,7 +116,7 @@ CREATE TABLE `payment`(
 CREATE TABLE `web_order`(
 	`id` INT NOT NULL AUTO_INCREMENT , 
 	`user_id` INT NOT NULL,
-    `address_id` INT NOT NULL,
+    `address_id` INT,
     `payment_id` INT NOT NULL,  
     PRIMARY KEY(`id`), 
 	FOREIGN KEY(`user_id`) REFERENCES `users`(`id`), 
