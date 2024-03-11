@@ -15,6 +15,19 @@ public class RegistrationBody {
 
     public RegistrationBody() {
     }
+    public RegistrationBody(String username, String email, String password, String firstName, String lastName, String phoneNumber, String birthDate, String country, String city, String addressLine, String postCode) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phoneNumber = phoneNumber;
+        this.birthDate = birthDate;
+        this.country = country;
+        this.city = city;
+        this.addressLine = addressLine;
+        this.postCode = postCode;
+    }
 
     public String getUsername() {
         return username;

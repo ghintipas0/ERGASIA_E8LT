@@ -28,6 +28,9 @@ public class User {
     private String phoneNumber;
     @Column(name = "birth_date")
     private String birthDate;
+    @OneToMany(mappedBy = "user",cascade = CascadeType.REMOVE)// If a user remove from the db we want to erase his orders.
+    @JsonIgnore
+    private List<WebOrder> orders = new ArrayList<>();
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL,fetch = FetchType.EAGER)//one user can have many addresses. If a user remove from the db we want to erase his addresses.
     private List<Address> addresses = new ArrayList<>();//The fetch type by default is lazy
 
@@ -122,6 +125,14 @@ public class User {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public List<WebOrder> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<WebOrder> orders) {
+        this.orders = orders;
     }
 
     @Override

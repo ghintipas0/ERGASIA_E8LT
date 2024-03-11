@@ -44,4 +44,7 @@ public class OrderService {
         webOrderDAO.save(webOrder);
         return webOrder;
     }
+    public List<WebOrder> showOrders(User user){
+        return webOrderDAO.findByUserId(user.getId());
+    }
 }

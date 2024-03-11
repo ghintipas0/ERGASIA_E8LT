@@ -6,6 +6,10 @@ public class LoginBody {
 
     public LoginBody() {
     }
+    public LoginBody(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
 
     public String getUsername() {
         return username;
