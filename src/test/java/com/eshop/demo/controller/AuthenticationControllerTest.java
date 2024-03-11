@@ -100,10 +100,4 @@ class AuthenticationControllerTest {
                 .andExpect(MockMvcResultMatchers.status().isNotFound());
         userDAO.delete(userDAO.findByUsernameIgnoreCase("TestUsername").get());
     }
-
-
-
-
-
-
 }

@@ -1,5 +1,8 @@
 package com.eshop.demo.controller;
+import com.eshop.demo.DAO.ProductDAO;
+import com.eshop.demo.entity.Product;
 import com.eshop.demo.model.ProductBody;
+import com.eshop.demo.service.ProductService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.hamcrest.CoreMatchers;
 import org.junit.jupiter.api.Test;
@@ -28,7 +31,11 @@ class ProductControllerTest {
     private MockMvc mockMVC;
     @Autowired
     private ObjectMapper objectMapper;
-
+    @Autowired
+    private ProductService productService;
+    @Autowired
+    private ProductDAO productDAO;
+    private final ProductBody productBody = new ProductBody("TestProduct","TestDesc",5,1,"Sony","");
     @Test
     public void testProductList() throws Exception {
         mockMVC.perform(get("/ShopNow")).andExpect(status().is(HttpStatus.OK.value()));
@@ -37,25 +44,29 @@ class ProductControllerTest {
     @Test
     @WithMockUser(username="admin", roles={"ADMIN"})
     public void testAddProduct() throws Exception {
-        ProductBody productBody = new ProductBody("TestProduct","TestDesc",5,1,"Sony","");
         String requestBody= objectMapper.writeValueAsString(productBody);
-        mockMVC.perform(post("/Products")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(requestBody))
-                .andExpect(status().is(HttpStatus.OK.value()));
+        MvcResult result= mockMVC.perform(MockMvcRequestBuilders.post("/Products")
+                        .contentType(MediaType.APPLICATION_JSON).content(requestBody))
+                .andExpect(status().is(HttpStatus.OK.value()))
+                .andReturn();
+        String response = result.getResponse().getContentAsString();
+        Product product = objectMapper.readValue(response, Product.class);
+
+
     }
 
     @Test
     @WithMockUser(username="admin", roles={"ADMIN"})
     public void testDeleteProduct() throws Exception{
-        MvcResult result= mockMVC.perform(MockMvcRequestBuilders.delete("/Products/{productId}",276)
+        Product product = productService.addProduct(productBody);
+        MvcResult result= mockMVC.perform(MockMvcRequestBuilders.delete("/Products/{productId}",product.getId())
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().is(HttpStatus.OK.value()))
                 .andReturn();
         String response = result.getResponse().getContentAsString();
-        assertEquals("The product delete successfully with id "+276,response);
+        assertEquals("The product delete successfully with id "+product.getId(),response);
 
-        mockMVC.perform(MockMvcRequestBuilders.delete("/Products/{productId}", 276)
+        mockMVC.perform(MockMvcRequestBuilders.delete("/Products/{productId}", product.getId())
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isNotFound());
     }
