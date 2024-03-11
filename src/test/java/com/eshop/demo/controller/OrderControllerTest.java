@@ -48,22 +48,23 @@ class OrderControllerTest {
     private ObjectMapper objectMapper;
     @Autowired
     private WebOrderDAO webOrderDAO;
-
+    @Autowired
+    private OrderService orderService;
+    private final RegistrationBody registrationBody = new RegistrationBody(
+            "TestUsername"
+            ,"test@gmail.com"
+            ,"testpass"
+            ,"testFirstName"
+            ,"testLastName"
+            ,"6874324223"
+            ,"2001/08/03"
+            ,"Greece"
+            ,"Athens"
+            ,"Aretis 3"
+            ,"13122");
 
     @Test
     void testAddOrderSuccessful() throws Exception {
-        RegistrationBody registrationBody = new RegistrationBody(
-                "TestUsername"
-                ,"test@gmail.com"
-                ,"testpass"
-                ,"testFirstName"
-                ,"testLastName"
-                ,"6874324223"
-                ,"2001/08/03"
-                ,"Greece"
-                ,"Athens"
-                ,"Aretis 3"
-                ,"13122");
         User user=userService.addUser(registrationBody);
         HashMap<Integer,Integer> quantities= new HashMap<>();
         quantities.put(3,4);
@@ -77,7 +78,7 @@ class OrderControllerTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(content))
                 .andExpect(status().isOk());
-        //userService.deleteUser(user.getId());
+        userService.deleteUser(user.getId());
     }
 
     @Test
@@ -96,6 +97,13 @@ class OrderControllerTest {
     }
     @Test
     void testShowOrdersSuccessful() throws Exception {
+        User user=userService.addUser(registrationBody);
+        HashMap<Integer,Integer> quantities= new HashMap<>();
+        quantities.put(3,4);
+        quantities.put(1,2);
+        quantities.put(10,3);
+        OrderBody order = new OrderBody("Aretis 3","284729834729834","Test","04/26",quantities);
+        orderService.saveOrder(user,order);
         mockMVC.perform(MockMvcRequestBuilders
                         .get("/orders")
                         .header("Authorization","Bearer "+userService.loginUser(new LoginBody("TestUsername","testpass"))))
@@ -103,6 +111,7 @@ class OrderControllerTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("$",hasSize(1)))
                 .andExpect(jsonPath("$[0].user.username",is("TestUsername")))
                 .andExpect(jsonPath("$[0].quantities",hasSize(3)));
+        userService.deleteUser(user.getId());
     }
     @Test
     void testShowOrdersUnauthorized() throws Exception {
