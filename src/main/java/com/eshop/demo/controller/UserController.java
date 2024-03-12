@@ -35,7 +35,7 @@ public class UserController{
         return new ResponseEntity<>(userService.deleteUser(userId),HttpStatus.OK);
     }
     @PutMapping("/Users")
-    public ResponseEntity<?> updateUser(@AuthenticationPrincipal User user,@RequestBody User newUser) throws UsernameOrEmailAlreadyExists {
+    public ResponseEntity<String> updateUser(@AuthenticationPrincipal User user,@RequestBody User newUser) throws UsernameOrEmailAlreadyExists {
         if(user==null){
             return new ResponseEntity<>("The user is not authorized", HttpStatus.UNAUTHORIZED);
         }
