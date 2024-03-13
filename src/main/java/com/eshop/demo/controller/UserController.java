@@ -1,18 +1,13 @@
 package com.eshop.demo.controller;
-import com.eshop.demo.entity.Role;
 import com.eshop.demo.entity.User;
-import com.eshop.demo.exception.ProductNotFound;
 import com.eshop.demo.exception.UserNotFound;
-import com.eshop.demo.exception.UsernameOrEmailAlreadyExists;
+import com.eshop.demo.exception.UserAlreadyExists;
 import com.eshop.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 public class UserController{
@@ -30,12 +25,14 @@ public class UserController{
         }
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
+
     @DeleteMapping("/Users/{userId}")
     public ResponseEntity<String> deleteUser(@PathVariable int userId) throws UserNotFound {
         return new ResponseEntity<>(userService.deleteUser(userId),HttpStatus.OK);
     }
+
     @PutMapping("/Users")
-    public ResponseEntity<String> updateUser(@AuthenticationPrincipal User user,@RequestBody User newUser) throws UsernameOrEmailAlreadyExists {
+    public ResponseEntity<?> updateUser(@AuthenticationPrincipal User user,@RequestBody User newUser) throws UserAlreadyExists {
         if(user==null){
             return new ResponseEntity<>("The user is not authorized", HttpStatus.UNAUTHORIZED);
         }

@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 public class AppExceptionHandler {
 
     @ExceptionHandler
-    public ResponseEntity<String> handleException(UsersAlreadyExists usersAlreadyExists){
-        return new ResponseEntity<>(usersAlreadyExists.getMessage(), HttpStatus.CONFLICT);
+    public ResponseEntity<String> handleException(UserAlreadyExists userAlreadyExists){
+        return new ResponseEntity<>(userAlreadyExists.getMessage(), HttpStatus.CONFLICT);
     }
     @ExceptionHandler
     public ResponseEntity<String> handleException(UserNotVerifiedException userNotVerifiedException){
@@ -30,8 +30,5 @@ public class AppExceptionHandler {
     public ResponseEntity<String> handleException(UserNotFound userNotFound){
         return new ResponseEntity<>(userNotFound.getMessage(), HttpStatus.NOT_FOUND);
     }
-    @ExceptionHandler
-    public ResponseEntity<String> handleException(UsernameOrEmailAlreadyExists usernameOrEmailAlreadyExists){
-        return new ResponseEntity<>(usernameOrEmailAlreadyExists.getMessage(), HttpStatus.CONFLICT);
-    }
+
 }

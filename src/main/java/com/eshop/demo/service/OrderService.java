@@ -6,20 +6,17 @@ import com.eshop.demo.model.OrderBody;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 
 @Service
 public class OrderService {
-    private WebOrderQuantitiesDAO webOrderQuantitiesDAO;
-    private WebOrderDAO webOrderDAO;
-    private AddressDAO addressDAO;
-    private ProductDAO productDAO;
-    private PaymentDAO paymentDAO;
+    private final WebOrderDAO webOrderDAO;
+    private final AddressDAO addressDAO;
+    private final ProductDAO productDAO;
+    private final PaymentDAO paymentDAO;
     @Autowired
-    public OrderService(WebOrderQuantitiesDAO webOrderQuantitiesDAO, WebOrderDAO webOrderDAO, AddressDAO addressDAO,ProductDAO productDAO,PaymentDAO paymentDAO) {
-        this.webOrderQuantitiesDAO = webOrderQuantitiesDAO;
+    public OrderService( WebOrderDAO webOrderDAO, AddressDAO addressDAO,ProductDAO productDAO,PaymentDAO paymentDAO) {
         this.webOrderDAO = webOrderDAO;
         this.addressDAO = addressDAO;
         this.productDAO = productDAO;
