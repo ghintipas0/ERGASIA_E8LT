@@ -19,7 +19,7 @@ public class WebOrder {
     @JoinColumn(name = "address_id")
     private Address address;
     @OneToMany(mappedBy = "webOrder",cascade = CascadeType.ALL)
-    private List<WebOrderQuantities> quantities = new ArrayList<>();
+    private List<WebOrderQuantities> quantities;
     @OneToOne
     @JoinColumn(name = "payment_id")
     private Payment payment;
@@ -74,7 +74,7 @@ public class WebOrder {
     }
 
     public void addQuantities(WebOrderQuantities webOrderQuantities){
-        if(webOrderQuantities==null){
+        if(quantities==null){
             quantities=new ArrayList<>();
         }
         quantities.add(webOrderQuantities);

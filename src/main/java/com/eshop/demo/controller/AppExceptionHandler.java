@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 public class AppExceptionHandler {
 
     @ExceptionHandler
-    public ResponseEntity<String> handleException(UsersAlreadyExists usersAlreadyExists){
-        return new ResponseEntity<>(usersAlreadyExists.getMessage(), HttpStatus.CONFLICT);
+    public ResponseEntity<String> handleException(UserAlreadyExists userAlreadyExists){
+        return new ResponseEntity<>(userAlreadyExists.getMessage(), HttpStatus.CONFLICT);
     }
     @ExceptionHandler
     public ResponseEntity<String> handleException(UserNotVerifiedException userNotVerifiedException){

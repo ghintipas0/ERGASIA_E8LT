@@ -15,8 +15,8 @@ import java.util.Optional;
 
 @Service
 public class ProductService {
-    private ProductDAO productDAO;
-    private CategoryDAO categoryDAO;
+    private final ProductDAO productDAO;
+    private final CategoryDAO categoryDAO;
 
     @Autowired
     public ProductService(ProductDAO productDAO,CategoryDAO categoryDAO) {

@@ -9,7 +9,7 @@ import java.util.Optional;
 
 @Service
 public class RoleService {
-    private RoleDAO roleDAO;
+    private final RoleDAO roleDAO;
 
     @Autowired
     public RoleService(RoleDAO roleDAO) {

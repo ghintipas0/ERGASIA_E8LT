@@ -2,7 +2,7 @@ package com.eshop.demo.controller;
 
 import com.eshop.demo.entity.User;
 import com.eshop.demo.exception.UserNotVerifiedException;
-import com.eshop.demo.exception.UsersAlreadyExists;
+import com.eshop.demo.exception.UserAlreadyExists;
 import com.eshop.demo.model.LoginBody;
 import com.eshop.demo.model.RegistrationBody;
 import com.eshop.demo.service.UserService;
@@ -25,7 +25,7 @@ public class AuthenticationController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<User> registration(@RequestBody RegistrationBody registrationBody) throws UsersAlreadyExists {
+    public ResponseEntity<User> registration(@RequestBody RegistrationBody registrationBody) throws UserAlreadyExists {
         User user = userService.addUser(registrationBody);
         return new ResponseEntity<>(user, HttpStatus.OK);
 

@@ -26,12 +26,11 @@ public class Address {
     public Address() {
     }
 
-    public Address(String addressLine1, String city, String country, String postCode,User user) {
+    public Address(String addressLine1, String city, String country, String postCode) {
         this.addressLine1 = addressLine1;
         this.city = city;
         this.country = country;
         this.postCode = postCode;
-        this.user=user;
     }
 
     public int getId() {
