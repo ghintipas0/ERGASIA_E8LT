@@ -176,6 +176,10 @@ BEGIN
 END//
 DELIMITER ;
 
+/*this index was made for search engine*/
+ALTER TABLE `eshop`.`product` 
+ADD FULLTEXT INDEX `full_text_search_idx` (`name`, `long_desc`, `brand_name`) VISIBLE;
+
 INSERT INTO `category` (`category_name`) VALUES
 ('Smartphones'),
 ('Televisions'),
