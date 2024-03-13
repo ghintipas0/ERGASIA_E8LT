@@ -7,14 +7,12 @@ import com.eshop.demo.entity.Role;
 import com.eshop.demo.entity.User;
 import com.eshop.demo.exception.UserNotFound;
 import com.eshop.demo.exception.UserNotVerifiedException;
-import com.eshop.demo.exception.UsernameOrEmailAlreadyExists;
 import com.eshop.demo.exception.UsersAlreadyExists;
 import com.eshop.demo.model.LoginBody;
 import com.eshop.demo.model.RegistrationBody;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Optional;
 
@@ -91,7 +89,7 @@ public class UserService {
         return role.map(value -> value.getRoleName().equals("ROLE_ADMIN")).orElse(false);
     }
 
-    public User updateUser(User user,User newUser) throws UsernameOrEmailAlreadyExists{
+    public User updateUser(User user,User newUser) throws UsersAlreadyExists{
         Optional<User> op = userDAO.findByUsernameIgnoreCase(user.getUsername());
         if(op.isPresent()){
             user = op.get();
@@ -113,6 +111,6 @@ public class UserService {
                 return userDAO.save(newUser);
             }
         }
-        throw new UsernameOrEmailAlreadyExists("The username or email already exists");
+        throw new UsersAlreadyExists("The username or email already exists");
     }
 }
