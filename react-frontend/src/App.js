@@ -7,9 +7,9 @@ import Login from './Pages/Login';
 import Register from './Pages/Register';
 import Admin from './Pages/Admin';
 import Products from './Pages/Products';
-import Phone from './Pages/Phone';
 import TV from './Pages/TV';
 import CartPage from './Pages/CartPage';
+import OrderSuccess from "./Pages/OrderSuccess";
 function App() {
     return (
             <div className="App">
@@ -23,6 +23,7 @@ function App() {
                     <Route exact path="/Admin" element={<Admin/>} />
                     <Route exact path="/Products/:id" element={<Products/>} />
                     <Route exact path="/CartPage" element={<CartPage />} />
+                    <Route exact path="/OrderSuccess" element={<OrderSuccess />} />
                     {/*<Route exact path="/Phone" element={<Phone/>} />*/}
                     {/*<Route exact path="/TV" element={<TV/>} />*/}
                 </Routes>

@@ -43,7 +43,7 @@ public class UserController{
         if(user==null){
             return new ResponseEntity<>(false,HttpStatus.OK);
         }else{
-            return  new ResponseEntity<>(userService.defineUser(user.getUsername()),HttpStatus.OK);
+            return new ResponseEntity<>(userService.defineUser(user.getUsername()),HttpStatus.OK);
         }
     }
 }

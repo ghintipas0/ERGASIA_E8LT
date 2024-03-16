@@ -9,6 +9,4 @@ import java.util.Optional;
 
 public interface RoleDAO extends JpaRepository<Role,Integer> {
      Optional<Role> findByUsernameIgnoreCase(String username);
-
-
 }

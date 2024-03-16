@@ -5,8 +5,6 @@ import './Products.css';
 const Products = () => {
   const location = useLocation();
   const [products, setProducts] = useState([]);
-  const [cart, setCart] = useState([]);
-  const [totalCost, setTotalCost] = useState(0);
   let { id } = useParams();
   useEffect(() => {
     fetchProducts();
@@ -26,10 +24,13 @@ const Products = () => {
   };
 
   const addToCart = (product) => {
-    const newCart = [...cart, product];
-    const newTotalCost = totalCost + product.price;
-    setCart(newCart);
-    setTotalCost(newTotalCost);
+    let cart = JSON.parse(sessionStorage.getItem('Cart')) || {};
+    if (cart.hasOwnProperty(product.id)) {
+      cart[product.id]++;
+    } else {
+      cart[product.id] = 1;
+    }
+    sessionStorage.setItem('Cart', JSON.stringify(cart));
   };
 
   return (

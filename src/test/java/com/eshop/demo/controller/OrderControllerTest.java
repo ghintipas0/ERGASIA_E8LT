@@ -70,7 +70,7 @@ class OrderControllerTest {
         quantities.put(3,4);
         quantities.put(1,2);
         quantities.put(10,3);
-        OrderBody order = new OrderBody("Aretis 3","284729834729834","Test","04/26",quantities);
+        OrderBody order = new OrderBody("284729834729834","Test","04/26",quantities);
         String content = objectMapper.writeValueAsString(order);
         mockMVC.perform(MockMvcRequestBuilders
                 .post("/orders")
@@ -87,7 +87,7 @@ class OrderControllerTest {
         quantities.put(3,4);
         quantities.put(1,2);
         quantities.put(10,3);
-        OrderBody order = new OrderBody("Aretis 3","284729834729834","Test","04/26",quantities);
+        OrderBody order = new OrderBody("284729834729834","Test","04/26",quantities);
         String content = objectMapper.writeValueAsString(order);
         mockMVC.perform(MockMvcRequestBuilders
                         .post("/orders")
@@ -102,7 +102,7 @@ class OrderControllerTest {
         quantities.put(3,4);
         quantities.put(1,2);
         quantities.put(10,3);
-        OrderBody order = new OrderBody("Aretis 3","284729834729834","Test","04/26",quantities);
+        OrderBody order = new OrderBody("284729834729834","Test","04/26",quantities);
         orderService.saveOrder(user,order);
         mockMVC.perform(MockMvcRequestBuilders
                         .get("/orders")

@@ -37,6 +37,7 @@
     width: 100px;
     height: auto;
     margin-right: 20px;
+    object-fit: contain;
 }
 
 .item-name {
@@ -133,6 +134,7 @@ input[type="number"]::-webkit-outer-spin-button:before {
     height: 80px;
     margin-right: 20px;
     border-radius: 8px;
+    object-fit: contain;
 }
 
 .item-name {
