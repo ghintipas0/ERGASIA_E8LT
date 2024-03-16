@@ -11,9 +11,12 @@ const NavBar = () => {
     const [isProfilePopupOpen, setProfilePopupOpen] = useState(false);
     const [isCartPopupOpen, setCartPopupOpen] = useState(false);
     const [isLoggedin, setLoggedin] = useState(false);
-      const [products, setProducts] = useState([]);
-      const [cart, setCart] = useState([]);
-      const [totalCost, setTotalCost] = useState(0);
+    const [products, setProducts] = useState([]);
+    const [cart, setCart] = useState([]);
+    const [totalCost, setTotalCost] = useState(0);
+    const [searchQuery, setSearchQuery] = useState('');
+    const [suggestedOptions, setSuggestedOptions] = useState([]);
+    const [showSuggestions, setShowSuggestions] = useState(false)
     useEffect(() => {
         if (sessionStorage.getItem('token')) {
             $('#isshow').hide();
@@ -22,6 +25,30 @@ const NavBar = () => {
             setLoggedin(false);
         }
     }, []);
+
+    useEffect(() => {
+            if (searchQuery.trim() === '') {
+                // Εάν η αναζήτηση είναι κενή, εμφάνισε τις προτεινόμενες επιλογές
+                setShowSuggestions(true);
+                setSuggestedOptions([]);
+            } else {
+                // Εάν η αναζήτηση δεν είναι κενή, κάνε αναζήτηση και εμφάνισε τις προτεινόμενες επιλογές
+                // Προσοχή: Εδώ μπορείς να προσθέσεις τη λογική που αποφασίζει τις προτεινόμενες επιλογές
+                // Για τώρα, ας υποθέσουμε ότι έχουμε μερικές σταθερές επιλογές
+                const hardcodedOptions = ['Laptops', 'Smartphones', 'Τηλεοράσεις'];
+                const filteredOptions = hardcodedOptions.filter(option =>
+                    option.toLowerCase().includes(searchQuery.toLowerCase())
+                );
+                setSuggestedOptions(filteredOptions);
+            }
+        }, [searchQuery]);
+
+        function handleSearchInputChange(event) {
+            const { value } = event.target;
+            setSearchQuery(value);
+            setShowSuggestions(value.trim() === ''); // Εάν η αναζήτηση είναι κενή, εμφάνισε τις προτεινόμενες επιλογές
+        }
+
 
     function toggleProfilePopup() {
         if (document.cookie.indexOf('token=') !== -1) {
@@ -48,6 +75,7 @@ const NavBar = () => {
         setTotalCost(newTotalCost);
     }
 
+
     return (
         <nav className="navbar navbar-dark bg-dark" style={{position: "sticky", top:"0"}}>
             <div className="nav nav-pills nav-justified" style={{width:"100%",}}>
@@ -67,8 +95,30 @@ const NavBar = () => {
                         </Dropdown>
                     </div>
                     <div className="search-container">
-                        <input type="text" placeholder="Ψάχνεις για..." className="search-input"/>
+                        <input
+                            type="text"
+                            placeholder="Ψάχνεις για..."
+                            className="search-input"
+                            value={searchQuery}
+                            onChange={handleSearchInputChange}
+                        />
+                        <div className="suggested-options">
+                            {suggestedOptions.map((option, index) => (
+                                <div key={index} className="suggested-option">
+                                    {option === 'Laptops' && (
+                                        <Link to="/Products/3">{option}</Link>
+                                    )}
+                                    {option === 'Smartphones' && (
+                                        <Link to="/Products/1">{option}</Link>
+                                    )}
+                                    {option === 'Τηλεοράσεις' && (
+                                        <Link to="/Products/2">{option}</Link>
+                                    )}
+                                </div>
+                            ))}
+                        </div>
                     </div>
+
 
                     <div className="container" style={{justifyContent: "flex-end"}}>
                         <button className="rotate-on-hover">
@@ -123,8 +173,9 @@ const NavBar = () => {
                                 <div className="cart-total">
                                     <p>Total: {totalCost}€</p>
                                 </div>
+
                                 <div className="cart-buttons">
-                                    <button className="checkout-button">Checkout</button>
+                                    <Link to="/CartPage" className="checkout-button">Checkout</Link>
                                     <button className="continue-shopping-button" onClick={toggleCartPopup}>Continue Shopping</button>
                                 </div>
                             </div>
