@@ -26,14 +26,14 @@ public class OrderService {
     public WebOrder saveOrder(User user, OrderBody orderBody){
         Payment payment = new Payment(orderBody.getCardNumber(), orderBody.getHolderName(), orderBody.getExpireDate());
         payment = paymentDAO.save(payment);
-        int id=0;
+        /*int id=0;
         for(var elem:user.getAddresses()){
             if(elem.getAddressLine1().equals(orderBody.getAddressLine1())){//1 user can't have 2 same addresses so this is going to be true 1 only time
                 id= elem.getId();//keep the id of the address
                 break;
             }
-        }
-        Address address = addressDAO.findById(id).get();
+        }*/
+        Address address = addressDAO.findById(user.getAddresses().get(0).getId()).get();
         WebOrder webOrder = new WebOrder(user,address,payment);
         for(var elem:orderBody.getProductQuantities().keySet()){
             webOrder.addQuantities(new WebOrderQuantities(webOrder,productDAO.findProductById(elem),orderBody.getProductQuantities().get(elem)));
