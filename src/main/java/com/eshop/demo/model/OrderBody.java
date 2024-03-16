@@ -13,13 +13,20 @@ public class OrderBody {
     public OrderBody() {
     }
 
-    public OrderBody(String cardNumber, String holderName, String expireDate, HashMap<Integer, Integer> productQuantities) {
+    public OrderBody( String cardNumber, String holderName, String expireDate, HashMap<Integer, Integer> productQuantities) {
         this.cardNumber = cardNumber;
         this.holderName = holderName;
         this.expireDate = expireDate;
         this.productQuantities = productQuantities;
     }
 
+    public String getAddressLine1() {
+        return addressLine1;
+    }
+
+    public void setAddressLine1(String addressLine1) {
+        this.addressLine1 = addressLine1;
+    }
 
     public String getCardNumber() {
         return cardNumber;
