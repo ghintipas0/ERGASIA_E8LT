@@ -36,7 +36,6 @@ const LoginForm = () => {
         if(!validation()){return;}
         const apiUrl = 'http://localhost:8080/auth/login';
 
-
         try {
             const response = await fetch(apiUrl, {
                 method: 'POST',
@@ -46,9 +45,7 @@ const LoginForm = () => {
                 body: JSON.stringify(formData),
             });
 
-
             if (response.ok) {
-
                 let token = await response.text();
                 sessionStorage.setItem('token', token);
                 navigate('/');
