@@ -101,7 +101,7 @@ public class UserService {
             }
             List<Address> add = user.getAddresses();
             List<Address> add1 = newUser.getAddresses();
-            //we add the ids and user id of old addresses to the new addresses
+            //we add the ids and user id of old addresses to the new addresses to understand that we do not want to add new addresses cause for update and insert run the same method and spring understand that is update by the id
             for(int i=0;i<add1.size();i++){
                 add1.get(i).setId(add.get(i).getId());
                 add1.get(i).setUser(add.get(i).getUser());

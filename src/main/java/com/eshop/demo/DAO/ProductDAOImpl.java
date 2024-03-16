@@ -78,10 +78,10 @@ public class ProductDAOImpl implements ProductDAO{
     }
 
     @Override
-    public List<Product> cart(List<Integer> ids) {
+    public List<Product> cart(List<String> ids) {
         ArrayList<Product> products =new ArrayList<>();
         for(var elem:ids) {
-            products.add(entityManager.find(Product.class,elem));
+            products.add(entityManager.find(Product.class,Integer.parseInt(elem)));
         }
         return products;
     }
