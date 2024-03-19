@@ -26,7 +26,6 @@ public class OrderService {
     public WebOrder saveOrder(User user, OrderBody orderBody){
         Payment payment = new Payment(orderBody.getCardNumber(), orderBody.getHolderName(), orderBody.getExpireDate());
         Optional<Payment> pay = paymentDAO.findByCardNumber(orderBody.getCardNumber());
-
         if(pay.isPresent()){
             payment=pay.get();
         }else {
