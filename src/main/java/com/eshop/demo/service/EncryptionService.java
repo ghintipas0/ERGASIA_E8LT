@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class EncryptionService {
     @Value("${encryption.salt.rounds}")
-    private int saltRounds;
+    private int saltRounds;//first create the instance of this class and then do the injection of saltRounds, so we must use @PostConstructor
     private String salt;
 
     @PostConstruct

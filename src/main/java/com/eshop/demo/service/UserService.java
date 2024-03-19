@@ -44,9 +44,9 @@ public class UserService {
                             ,registrationBody.getLastName(),registrationBody.getPhoneNumber(),registrationBody.getBirthDate()
                             );
         Address address = new Address(registrationBody.getAddressLine()
-                            ,registrationBody.getPostCode()
+                            ,registrationBody.getCity()
                             ,registrationBody.getCountry()
-                            ,registrationBody.getCity());
+                            ,registrationBody.getPostCode());
         user.addAddress(address);
         userDAO.save(user);
         Role role = new Role();

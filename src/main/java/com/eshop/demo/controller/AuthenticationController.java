@@ -28,7 +28,6 @@ public class AuthenticationController {
     public ResponseEntity<User> registration(@RequestBody RegistrationBody registrationBody) throws UserAlreadyExists {
         User user = userService.addUser(registrationBody);
         return new ResponseEntity<>(user, HttpStatus.OK);
-
     }
     @PostMapping("/login")
     public ResponseEntity<String> login(@RequestBody LoginBody loginBody)  throws UserNotVerifiedException {
