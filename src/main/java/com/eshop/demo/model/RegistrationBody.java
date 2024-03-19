@@ -1,16 +1,47 @@
 package com.eshop.demo.model;
 
+import jakarta.validation.constraints.*;
+
 public class RegistrationBody {
+    @NotNull
+    @NotBlank
+    @Size(min = 6,max = 10)
     private String username;
+    @NotNull
+    @NotBlank
+    @Email
     private String email;
+    @NotNull
+    @NotBlank
+    @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$",message = "The password must have at least one capital letter,one symbol and one number")
     private String password;
+    @NotNull
+    @NotBlank
+    @Pattern(regexp ="^[a-zA-Z]+$")
     private String firstName;
+    @NotNull
+    @NotBlank
+    @Pattern(regexp ="^[a-zA-Z]+$")
     private String lastName;
+    @NotNull
+    @NotBlank
+    @Pattern(regexp = "^\\d{10}$")
     private String phoneNumber;
+    @NotNull
+    @NotBlank
     private String birthDate;
+    @NotNull
+    @NotBlank
     private String country;
+    @NotNull
+    @NotBlank
     private String city;
+    @NotNull
+    @NotBlank
     private String addressLine;
+    @NotNull
+    @NotBlank
+    @Pattern(regexp = "^\\d{5}$")
     private String postCode;
 
     public RegistrationBody() {

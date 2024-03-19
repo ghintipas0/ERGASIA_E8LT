@@ -89,27 +89,24 @@ public class UserService {
     }
 
     public User updateUser(User user,User newUser) throws UserAlreadyExists {
-        Optional<User> op = userDAO.findByUsernameIgnoreCase(user.getUsername());
-        if(op.isPresent()){
-            user = op.get();
-            newUser.setId(user.getId());//get the id
-            if(newUser.getPassword().isEmpty()) {
-                newUser.setPassword(user.getPassword());
-            }
-            else {
-                newUser.setPassword(encryptionService.encryptPassword(newUser.getPassword()));//Encrypt the password
-            }
-            List<Address> add = user.getAddresses();
-            List<Address> add1 = newUser.getAddresses();
-            //we add the ids and user id of old addresses to the new addresses
-            for(int i=0;i<add1.size();i++){
-                add1.get(i).setId(add.get(i).getId());
-                add1.get(i).setUser(add.get(i).getUser());
-            }
-            if(user.getUsername().equals(newUser.getUsername()) || userDAO.findByUsernameIgnoreCase(newUser.getUsername()).isEmpty() || userDAO.findByEmailIgnoreCase(newUser.getEmail()).isEmpty()){
-                return userDAO.save(newUser);
-            }
+        newUser.setId(user.getId());//get the id
+        if(newUser.getPassword().isEmpty()) {
+            newUser.setPassword(user.getPassword());//front end will send default pass "" if the user didn't change the password in the update
         }
-        throw new UserAlreadyExists("The username or email already exists");
+        else {
+            newUser.setPassword(encryptionService.encryptPassword(newUser.getPassword()));//Encrypt the password
+        }
+        List<Address> add = user.getAddresses();
+        List<Address> add1 = newUser.getAddresses();
+        //we add the ids and user id of old addresses to the new addresses
+        for(int i=0;i<add1.size();i++){
+            add1.get(i).setId(add.get(i).getId());
+            add1.get(i).setUser(add.get(i).getUser());
+        }
+        if(user.getUsername().equals(newUser.getUsername()) || userDAO.findByUsernameIgnoreCase(newUser.getUsername()).isEmpty() || userDAO.findByEmailIgnoreCase(newUser.getEmail()).isEmpty()){
+            return userDAO.save(newUser);
+        }else{
+            throw new UserAlreadyExists("The username or email already exists");
+        }
     }
 }

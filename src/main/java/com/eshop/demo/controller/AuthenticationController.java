@@ -6,6 +6,7 @@ import com.eshop.demo.exception.UserAlreadyExists;
 import com.eshop.demo.model.LoginBody;
 import com.eshop.demo.model.RegistrationBody;
 import com.eshop.demo.service.UserService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,7 +26,7 @@ public class AuthenticationController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<User> registration(@RequestBody RegistrationBody registrationBody) throws UserAlreadyExists {
+    public ResponseEntity<User> registration(@Valid @RequestBody RegistrationBody registrationBody) throws UserAlreadyExists {
         User user = userService.addUser(registrationBody);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
