@@ -88,8 +88,8 @@ public class UserService {
         return role.map(value -> value.getRoleName().equals("ROLE_ADMIN")).orElse(false);
     }
 
-    public User updateUser(User user,User newUser) throws UserAlreadyExists {
-        newUser.setId(user.getId());//get the id
+    public String updateUser(User user,User newUser) throws UserAlreadyExists {
+        newUser.setId(user.getId());//get the id !!very important for not inserting again the user
         if(newUser.getPassword().isEmpty()) {
             newUser.setPassword(user.getPassword());//front end will send default pass "" if the user didn't change the password in the update
         }
@@ -104,7 +104,7 @@ public class UserService {
             add1.get(i).setUser(add.get(i).getUser());
         }
         if(user.getUsername().equals(newUser.getUsername()) || userDAO.findByUsernameIgnoreCase(newUser.getUsername()).isEmpty() || userDAO.findByEmailIgnoreCase(newUser.getEmail()).isEmpty()){
-            return userDAO.save(newUser);
+            return jwtService.generateToken(userDAO.save(newUser));
         }else{
             throw new UserAlreadyExists("The username or email already exists");
         }
