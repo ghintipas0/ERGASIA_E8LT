@@ -3,6 +3,9 @@ import { Col, Form, InputGroup, Row, Button } from 'react-bootstrap';
 import $ from "jquery";
 import {useNavigate} from "react-router-dom";
 
+
+ var prevusername = '';
+
  const MyProfileInfo = () => {
      const [editMode, setEditMode] = useState(false);
      const [formData, setFormData] = useState({});
@@ -11,6 +14,7 @@ import {useNavigate} from "react-router-dom";
      useEffect(() => {
          fetchUserData();
      }, []);
+
 
      const fetchUserData = () => {
          const token = sessionStorage.getItem('token');
@@ -53,6 +57,7 @@ import {useNavigate} from "react-router-dom";
              console.log("Fetched User Data:", data); // Log fetched data
              if (data !== null) {
                  setFormData(data);
+                 prevusername = data.username;
              } else {
                  setFormData({});
              }
@@ -74,6 +79,11 @@ import {useNavigate} from "react-router-dom";
 
      const handleInputChange = (e) => {
          const { name, value } = e.target;
+
+//            if (name === 'username'){
+ //               alert(formData.username + ' -- ' + value);
+  //          }
+
 
          // Validate username length
        //  if (name === 'username' && (value.length < 8 || value.length > 32)) {
@@ -152,20 +162,22 @@ import {useNavigate} from "react-router-dom";
                  throw new Error("Failed to update user data");
              }
              toggleEditMode();
-             return response.json();
+             //return response.json();
          })
          .then(data => {
              // Handle the response, e.g., extract token
              console.log("Updated User Data:", data);
+             if (formData.username != prevusername){
+                sessionStorage.removeItem("token");
+                window.location.href = "/Login";
+             }
+
          })
          .catch(error => {
              console.error('Error updating user data:', error);
              setError(error.message);
          });
      };
-
-
-
 
      return (
         <div className="layout-container">

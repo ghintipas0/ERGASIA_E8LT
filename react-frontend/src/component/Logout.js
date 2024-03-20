@@ -4,6 +4,10 @@ import './NavBar.css';
 
 
 const Logout = () => {
+    function myprofileinfo(){
+        window.location.href = "/MyProfileInfo";
+    }
+
     function logout(){
         if(sessionStorage.getItem('token')){
             sessionStorage.removeItem("token");
@@ -12,10 +16,15 @@ const Logout = () => {
     }
     return (
         <div id="regpopup">
+            <button className="login-button" onClick={myprofileinfo}>My Profile</button>
             <button className="login-button" onClick={logout}> Logout </button>
         </div>
 
     );
+
+
 };
+
+
 
 export default Logout;
