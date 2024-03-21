@@ -146,7 +146,7 @@ import {useNavigate} from "react-router-dom";
 
         if (!validationcheck()){return;}
 
-         fetch("http://localhost:8080/Users", {
+          fetch("http://localhost:8080/Users", {
              method: 'PUT',
              headers: {
                  'Authorization': 'Bearer ' + token,
@@ -162,17 +162,21 @@ import {useNavigate} from "react-router-dom";
                  throw new Error("Failed to update user data");
              }
              toggleEditMode();
+             //console.log(response.json());
+             return response.json();
+             //window.location.reload();
              //return response.json();
          })
          .then(data => {
              // Handle the response, e.g., extract token
+             const token = data.token;
+             sessionStorage.setItem('token', token);
              console.log("Updated User Data:", data);
-             if (formData.username != prevusername){
+             /*if (formData.username != prevusername){
                 sessionStorage.removeItem("token");
                 window.location.href = "/Login";
-             }
-
-         })
+             }*/
+       })
          .catch(error => {
              console.error('Error updating user data:', error);
              setError(error.message);

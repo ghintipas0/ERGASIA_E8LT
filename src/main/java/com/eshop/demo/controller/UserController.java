@@ -32,11 +32,11 @@ public class UserController{
     }
 
     @PutMapping("/Users")
-    public ResponseEntity<?> updateUser(@AuthenticationPrincipal User user,@RequestBody User newUser) throws UserAlreadyExists {
+    public ResponseEntity<String> updateUser(@AuthenticationPrincipal User user,@RequestBody User newUser) throws UserAlreadyExists {
         if(user==null){
             return new ResponseEntity<>("The user is not authorized", HttpStatus.UNAUTHORIZED);
         }
-        return new ResponseEntity<>(userService.updateUser(user,newUser),HttpStatus.OK);
+        return new ResponseEntity<>("{\"token\": \"" + userService.updateUser(user,newUser) + "\"}",HttpStatus.OK);
     }
     @GetMapping("/admin")
     public ResponseEntity<?> defineRole(@AuthenticationPrincipal User user){
