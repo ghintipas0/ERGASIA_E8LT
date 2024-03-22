@@ -37,11 +37,8 @@ public class OrderController {
         List<WebOrder> orders;
         if(user==null){
             return new ResponseEntity<>("The user is not authorize",HttpStatus.UNAUTHORIZED);
-        }
-        if((orders = orderService.showOrders(user)).isEmpty()){
-            return new ResponseEntity<>("There is no orders for this user",HttpStatus.OK);
         }else {
-            return new ResponseEntity<>(orders, HttpStatus.OK);
+            return new ResponseEntity<>(orderService.showOrders(user), HttpStatus.OK);
         }
     }
 }
