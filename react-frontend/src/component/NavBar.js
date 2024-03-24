@@ -9,14 +9,9 @@ import Logout from "./Logout";
 const NavBar = () => {
     const navigate = useNavigate();
     const [isProfilePopupOpen, setProfilePopupOpen] = useState(false);
-    const [isCartPopupOpen, setCartPopupOpen] = useState(false);
     const [isLoggedin, setLoggedin] = useState(false);
-    const [products, setProducts] = useState([]);
     const [cart, setCart] = useState([]);
     const [totalCost, setTotalCost] = useState(0);
-    const [searchQuery, setSearchQuery] = useState('');
-    const [suggestedOptions, setSuggestedOptions] = useState([]);
-    const [showSuggestions, setShowSuggestions] = useState(false)
     useEffect(() => {
         if (sessionStorage.getItem('token')) {
             $('#isshow').hide();
@@ -26,28 +21,8 @@ const NavBar = () => {
         }
     }, []);
 
-    useEffect(() => {
-            if (searchQuery.trim() === '') {
-                // Εάν η αναζήτηση είναι κενή, εμφάνισε τις προτεινόμενες επιλογές
-                setShowSuggestions(true);
-                setSuggestedOptions([]);
-            } else {
-                // Εάν η αναζήτηση δεν είναι κενή, κάνε αναζήτηση και εμφάνισε τις προτεινόμενες επιλογές
-                // Προσοχή: Εδώ μπορείς να προσθέσεις τη λογική που αποφασίζει τις προτεινόμενες επιλογές
-                // Για τώρα, ας υποθέσουμε ότι έχουμε μερικές σταθερές επιλογές
-                const hardcodedOptions = ['Laptops', 'Smartphones', 'Τηλεοράσεις'];
-                const filteredOptions = hardcodedOptions.filter(option =>
-                    option.toLowerCase().includes(searchQuery.toLowerCase())
-                );
-                setSuggestedOptions(filteredOptions);
-            }
-        }, [searchQuery]);
 
-        function handleSearchInputChange(event) {
-            const { value } = event.target;
-            setSearchQuery(value);
-            setShowSuggestions(value.trim() === ''); // Εάν η αναζήτηση είναι κενή, εμφάνισε τις προτεινόμενες επιλογές
-        }
+
 
 
     function toggleProfilePopup() {
@@ -76,7 +51,7 @@ const NavBar = () => {
     return (
         <nav className="navbar navbar-dark bg-dark" style={{position: "sticky", top:"0"}}>
             <div className="nav nav-pills nav-justified" style={{width:"100%",}}>
-                <div style={{display:"grid",gridTemplateColumns:"auto auto auto",gridTemplateRows:"auto",width:"100%"}}>
+                <div style={{display:"grid",gridTemplateColumns:"auto auto",gridTemplateRows:"auto",width:"100%"}}>
                     <div style={{display:"grid",gridTemplateColumns:"auto auto auto",gridTemplateRows:"auto",width:"100%"}}>
                         <Link to="/" className="text-light nav-item nav-link text-decoration-none" style={{height:"100%",display:"flex",alignItems:"center",justifyContent: "center"}}> Home </Link>
                         {isLoggedin && (<Link to="/MyProfile" className="text-light nav-item nav-link text-decoration-none" style={{height:"100%",display:"flex",alignItems:"center",justifyContent: "center"}}>Orders</Link>)}
@@ -91,31 +66,6 @@ const NavBar = () => {
                             </Dropdown.Menu>
                         </Dropdown>
                     </div>
-                    <div className="search-container">
-                        <input
-                            type="text"
-                            placeholder="Ψάχνεις για..."
-                            className="search-input"
-                            value={searchQuery}
-                            onChange={handleSearchInputChange}
-                        />
-                        <div className="suggested-options">
-                            {suggestedOptions.map((option, index) => (
-                                <div key={index} className="suggested-option">
-                                    {option === 'Laptops' && (
-                                        <Link to="/Products/3">{option}</Link>
-                                    )}
-                                    {option === 'Smartphones' && (
-                                        <Link to="/Products/1">{option}</Link>
-                                    )}
-                                    {option === 'Τηλεοράσεις' && (
-                                        <Link to="/Products/2">{option}</Link>
-                                    )}
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-
 
                     <div className="container" style={{justifyContent: "flex-end"}}>
                         <button className="rotate-on-hover">
