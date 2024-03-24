@@ -63,10 +63,7 @@ const NavBar = () => {
         }
     }
 
-    function toggleCartPopup() {
-        // Logic to toggle cart popup
-        setCartPopupOpen(!isCartPopupOpen);
-    }
+
 
     function addToCart(product) {
         const newCart = [...cart, product];
@@ -127,9 +124,9 @@ const NavBar = () => {
                         <button className="rotate-on-hover" onClick={toggleProfilePopup}>
                             <img src="/Media/profile.png" alt="Profile Icon" />
                         </button>
-                        <button className="rotate-on-hover" onClick={toggleCartPopup}>
+                        <Link to="/CartPage" className="rotate-on-hover">
                             <img src="/Media/Cart.png" alt="Cart Icon" />
-                        </button>
+                        </Link>
                     </div>
                 </div>
                 <div id="isshow">
@@ -150,37 +147,7 @@ const NavBar = () => {
                                 </div>)}
                         </div>
                     ) : null}
-                    {isCartPopupOpen ? (
-                        <div className="popup" id="cartpopup">
-                            <div className="cart-summary">
-                                <h2>Your Shopping Cart</h2>
-                                <ul className="cart-items">
-                                    {cart.map((product, index) => (
-                                        <li key={index}>
-                                            <div className="cart-item">
-                                                <div className="item-image">
-                                                    <img src={product.photo} alt={product.name} />
-                                                </div>
-                                                <div className="item-details">
-                                                    <p className="item-name">{product.name}</p>
-                                                    <p className="item-price">{product.price}€</p>
-                                                    {/* Εδώ μπορείς να προσθέσεις περισσότερες λεπτομέρειες του προϊόντος, όπως ποσότητα, χρώμα, μέγεθος κλπ. */}
-                                                </div>
-                                            </div>
-                                        </li>
-                                    ))}
-                                </ul>
-                                <div className="cart-total">
-                                    <p>Total: {totalCost}€</p>
-                                </div>
 
-                                <div className="cart-buttons">
-                                    <Link to="/CartPage" className="checkout-button">Checkout</Link>
-                                    <button className="continue-shopping-button" onClick={toggleCartPopup}>Continue Shopping</button>
-                                </div>
-                            </div>
-                        </div>
-                    ) : null}
                 </div>
             </div>
         </nav>
