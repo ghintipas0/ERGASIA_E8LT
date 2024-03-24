@@ -90,12 +90,12 @@ function Home() {
                     <button className="button2">
                         <img src="Media/iphone15.png" alt="Image" />
                         <p>Iphone 15 Pro Max</p>
-                        <p>1.480,92 €</p>
+                        <p>1.430 €</p>
                     </button>
                     <button className="button2">
                         <img src="Media/iphone14.png" alt="Image" />
                         <p>Iphone 14 Pro Max</p>
-                        <p>1.269,94 €</p>
+                        <p>1.300 €</p>
                     </button>
                 </div>
             </div>
