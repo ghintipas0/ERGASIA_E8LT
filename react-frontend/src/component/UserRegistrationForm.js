@@ -20,6 +20,7 @@ const UserRegistrationForm = () => {
         addressLine : '',
         postCode : ''
     });
+    const { password_val, ...formDataWithoutPasswordVal } = formData;
     const navigate = useNavigate();
     const handleChange = (field, value) => {
         setFormData((prevFormData) => ({
@@ -52,6 +53,7 @@ const UserRegistrationForm = () => {
         if(formData.firstName.length > 36){popalert("Your firstname is too long. It needs to have less than 36 characters"); return false;}
         if(formData.lastName.length > 36){popalert("Your lastname is too long. It needs to have less than 36 characters"); return false;}
         if(formData.postCode.length !== 5){popalert("Your postal code must be exactly 5 numbers"); return false;}
+        if(formData.country.length < 2){popalert("Your country must have at least 2 characters"); return false;}
         if(formData.password !== formData.password_val){popalert("Your passwords do not match!"); return false;}
         return true;
     }
@@ -62,12 +64,14 @@ const UserRegistrationForm = () => {
         const apiUrl = 'http://localhost:8080/auth/register';
 
         try {
+            console.log(formDataWithoutPasswordVal);
             const response = await fetch(apiUrl, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(formData),
+
+                body: JSON.stringify(formDataWithoutPasswordVal),
             });
 
             if (response.ok) {
@@ -202,9 +206,9 @@ const UserRegistrationForm = () => {
                                         </Form.Group>
                                     </Col>
                                     <Col>
-                                        <Form.Group className="mb-3" controlId="phoneNumber">
+                                        <Form.Group className="mb-3" controlId="phoneNumber" >
                                             <Form.Label>Phone</Form.Label>
-                                            <InputGroup>
+                                            <InputGroup >
                                                 <InputGroup.Text id="inputGroupPrepend">+30</InputGroup.Text>
                                                 <Form.Control
                                                     type="number"
@@ -236,6 +240,8 @@ const UserRegistrationForm = () => {
                                             />
                                         </Form.Group>
                                     </Col>
+                                </Row>
+                                <Row>
                                     <Col>
                                         <Form.Group className="mb-3" controlId="country">
                                             <Form.Label>Country</Form.Label>
