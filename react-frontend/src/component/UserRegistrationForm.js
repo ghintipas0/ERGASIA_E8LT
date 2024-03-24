@@ -237,6 +237,17 @@ const UserRegistrationForm = () => {
                                         </Form.Group>
                                     </Col>
                                     <Col>
+                                        <Form.Group className="mb-3" controlId="country">
+                                            <Form.Label>Country</Form.Label>
+                                            <Form.Control
+                                                type="text"
+                                                placeholder="Enter your country"
+                                                onChange={(e) => handleChange('country', e.target.value)}
+                                            />
+                                        </Form.Group>
+                                    </Col>
+                                    <Col>
+
                                         <Form.Group className="mb-3" controlId="city">
                                             <Form.Label>City</Form.Label>
                                             <Form.Control
