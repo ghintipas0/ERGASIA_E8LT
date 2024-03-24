@@ -68,9 +68,6 @@ const NavBar = () => {
                     </div>
 
                     <div className="container" style={{justifyContent: "flex-end"}}>
-                        <button className="rotate-on-hover">
-                            <img src="/Media/wishlist.png" alt="Wishlist Icon" />
-                        </button>
                         <button className="rotate-on-hover" onClick={toggleProfilePopup}>
                             <img src="/Media/profile.png" alt="Profile Icon" />
                         </button>
