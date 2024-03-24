@@ -53,16 +53,16 @@ const NavBar = () => {
             <div className="nav nav-pills nav-justified" style={{width:"100%",}}>
                 <div style={{display:"grid",gridTemplateColumns:"auto auto",gridTemplateRows:"auto",width:"100%"}}>
                     <div style={{display:"grid",gridTemplateColumns:"auto auto auto",gridTemplateRows:"auto",width:"100%"}}>
-                        <Link to="/" className="text-light nav-item nav-link text-decoration-none" style={{height:"100%",display:"flex",alignItems:"center",justifyContent: "center"}}> Home </Link>
-                        {isLoggedin && (<Link to="/MyProfile" className="text-light nav-item nav-link text-decoration-none" style={{height:"100%",display:"flex",alignItems:"center",justifyContent: "center"}}>Orders</Link>)}
+                        <Link to="/" className="text-light nav-item nav-link text-decoration-none" style={{height:"100%",width:"100%",display:"flex",alignItems:"center",justifyContent: "center"}}> Home </Link>
+                        {isLoggedin && (<Link to="/MyProfile" className="text-light nav-item nav-link text-decoration-none" style={{height:"100%",width:"100%",display:"flex",alignItems:"center",justifyContent: "center"}}>Orders</Link>)}
                         <Dropdown>
-                            <Dropdown.Toggle variant="dark" className="text-light nav-item nav-link text-decoration-none" id="dropdown-basic" style={{height:"100%"}}>
+                            <Dropdown.Toggle variant="dark" className="text-light nav-item nav-link text-decoration-none" id="dropdown-basic" style={{height:"100%",width:"100%"}}>
                                 Products
                             </Dropdown.Toggle>
                             <Dropdown.Menu>
-                                <Link className="text-light nav-item nav-link text-decoration-none" to="Products/3">PC & Laptops</Link>
-                                <Link className="text-light nav-item nav-link text-decoration-none" to="Products/1">Smartphones</Link>
-                                <Link className="text-light nav-item nav-link text-decoration-none" to="Products/2">Τηλεοράσεις</Link>
+                                <Link className="text-light nav-item nav-link text-decoration-none"  to="Products/3">PC & Laptops</Link>
+                                <Link className="text-light nav-item nav-link text-decoration-none"  to="Products/1">Smartphones</Link>
+                                <Link className="text-light nav-item nav-link text-decoration-none"  to="Products/2">Τηλεοράσεις</Link>
                             </Dropdown.Menu>
                         </Dropdown>
                     </div>
