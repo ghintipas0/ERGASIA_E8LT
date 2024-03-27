@@ -20,4 +20,4 @@
 
 # Database
 
-## MySQL is utilized as the database management system for storing application data. It would be helpful to take a look at EER diagram to have a full understanding of our database structure.
+## MySQL is utilized as the database management system for storing application data. It would be helpful to take a look at ERD diagram to have a full understanding of our database structure.
